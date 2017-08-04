@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/usuario', 'UsuarioController@lista');
+Route::get('/usuario/detalhes/{id}', 'UsuarioController@mostra')->where('id', '[0-9]+');
+Route::get('/usuario/novo', 'UsuarioController@novo');
+Route::post('/usuario/adiciona', 'UsuarioController@adiciona');
+Route::get('/usuario/remove/{id}','UsuarioController@remove');
+Route::get('/usuario/muda/{id}','UsuarioController@muda')->where('id', '[0-9]+');
+Route::post('/usuario/muda/alterar', 'UsuarioController@alterar');
