@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/teste', function() {
+	echo 'testando';	
+});
+
+//Servidor
+Route::get('/servidor/adicionar', 'ServidorController@adicionar');
+Route::post('/servidor/salvar', 'ServidorController@salvar');
+Route::get('/servidor/recuperar', 'ServidorController@recuperar');
+Route::post('/servidor/atualizar', 'ServidorController@atualizar');
+Route::get('/servidor/remover', 'ServidorController@remover');
+Route::get('/servidor/listar', 'ServidorController@listar');
+
+
