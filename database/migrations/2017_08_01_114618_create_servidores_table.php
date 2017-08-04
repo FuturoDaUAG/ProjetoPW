@@ -14,9 +14,14 @@ class CreateServidoresTable extends Migration
     public function up()
     {
         Schema::create('servidores', function (Blueprint $table) {
-		$table->increments('id');
-		$table->timestamps();
-	});
+          $table->increments('id');
+          $table->string('nome');
+          $table->string('cargo');
+          $table->string('matricula');
+          $table->integer('usuario_id')->unsigned();
+          $table->timestamps();
+          $table->foreign('usuario_id')->references('id')->on('usuarios');
+      });
     }
 
     /**

@@ -28,3 +28,4 @@ Route::get('/servidor/remover', 'ServidorController@remover');
 Route::get('/servidor/listar', 'ServidorController@listar');
 
 
+
