@@ -1,4 +1,4 @@
-@extends('layout.principal')
+@extends('layout.principa')
 @section('conteudo')
 
 @if(empty($usuarios))

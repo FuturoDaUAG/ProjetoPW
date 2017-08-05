@@ -19,7 +19,7 @@
 				</div>
 				<nav class="menu">
 					<ul class="nav navbar-nav navbar-left">
-						menu li ul li li
+						
 						<li >
 							<a href="#" class="dropdown-dropup" data-toggle="dropdown">Pessoas<b class="caret"></b></a>
 								<ul class="dropdown-menu" >
@@ -41,20 +41,13 @@
 								<a href="#" class="dropdown-dropup" data-toggle="dropdown">link <b class="caret"></b></a>
 								<ul class="dropdown-menu" >
 
-									<li class="dropdown">
-											<li class="divider"></li>
-									<ul >usuarios </ul>
-										<li><a href="#">Novo</a></li>
-										<li><a href="#">Todos</a></li>
-										<li class="divider"></li>
-									<ul>exemplo </ul>
-										<li><a href="#">Novo</a></li>
-										<li><a href="#">Todos</a></li>
-										
-							
-						</li>
-
-									</li>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+  		<li><a tabindex="-1" href="#">Ação</a></li>
+  <li><a tabindex="-1" href="#">Outra ação</a></li>
+  <li><a tabindex="-1" href="#">Algo a mais aqui</a></li>
+  <li class="divider"></li>
+  <li><a tabindex="-1" href="#">Link separador</a></li>
+</ul>
 
 								</ul>
 
@@ -96,9 +89,21 @@
 							</p>
 						</footer>
 					</div>
-					<script src="{{ asset('/js/app.js') }}"></script>
+					<script src="{{ asset('/js/jquery-3.2.1.js') }}"></script>
 
 
 				</body>
+				<script type="text/javascript">$(document).ready(function(){
+    $(".dropdown1").hover(            
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+            $(this).toggleClass('open');       
+        }
+    );
+});</script>
 				</html>
 
