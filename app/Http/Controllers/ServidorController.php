@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace web\Http\Controllers;
 
-use App\Servidor;
+use web\Http\Requests\ServidorRequest;
+use web\Servidor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,37 +15,37 @@ class ServidorController extends Controller
         return view('servidor/adicionar');
     }
 
-    public function salvar(Request $request)
+    public function salvar(ServidorRequest $request)
     {
 
         $servidor = new Servidor();
         $servidor->create($request->all());
 
-        \Session::flash('msg_sucesso', 'Cliente cadastrado com sucesso !!');
+        \Session::flash('msg_sucesso', 'Servidor cadastrado com sucesso !!');
 
 
         return redirect('/servidor/adicionar');
     }
 
-    public function recuperar(Request $request)
+    public function recuperar(ServidorRequest $request)
     {
         $servidor = Servidor::find($request->id);
         return view('servidor/recuperar', ['servidor'=>$servidor]);
 
     }
 
-    public function atualizar(Request $request)
+    public function atualizar(ServidorRequest $request)
     {
         $servidor = Servidor::find($request->id);
         $servidor->nome = $request->nome;
-        $servidor->cargo = $request->request->cargo;
-        $servidor->matricula = $request->request->matricula;
+        $servidor->cargo = $request->cargo;
+        $servidor->matricula = $request->matricula;
 
         $servidor->update();
         return redirect('/servidor/listar');
     }
 
-    public function remover(Request $request)
+    public function remover(ServidorRequest  $request)
     {
         $servidor = Servidor::find($request->id);
         $servidor->delete();
@@ -56,5 +57,6 @@ class ServidorController extends Controller
         $servidores = Servidor::all();
         return view('servidor/listar', ['servidores' => $servidores]);
     }
+
 
 }

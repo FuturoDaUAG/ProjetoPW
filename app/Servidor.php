@@ -1,13 +1,20 @@
 <?php
 
-namespace App;
+namespace web;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Servidor extends Model
 {
+
+    protected $fillable = [
+        'nome','cargo','matricula', 'usuario_id'
+    ];
+
     public function usuario()
     {
-        return $this->hasOne('App\Usuario');
+        return $this->hasOne('web\Usuario');
     }
+
+
 }
