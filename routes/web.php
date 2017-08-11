@@ -22,3 +22,15 @@ Route::post('/usuario/adiciona', 'UsuarioController@adiciona');
 Route::get('/usuario/remove/{id}','UsuarioController@remove');
 Route::get('/usuario/muda/{id}','UsuarioController@muda')->where('id', '[0-9]+');
 Route::post('/usuario/muda/alterar', 'UsuarioController@alterar');
+
+/*------------------------------ Patrimônio ---------------------------------------------------*/
+Route::get('/patrimonio', 'PatrimonioController@listar');
+Route::get('/patrimonio/adicionar', 'PatrimonioController@prepararAdicionar');
+Route::post('/patrimonio/adicionar', 'PatrimonioController@adicionar');
+Route::get('/patrimonio/editar/{id}','PatrimonioController@editar');
+Route::post('/patrimonio/atualizar', 'PatrimonioController@atualizar');
+
+/*------------------------------ Marca --------------------------------------------------------*/
+Route::get('/marca', 'MarcaController@listar');
+Route::get('/marca/adicionar','MarcaController@prepararAdicionar');
+Route::post('/marca/adicionar', 'MarcaController@adicionar');
