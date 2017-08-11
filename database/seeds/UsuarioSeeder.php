@@ -11,6 +11,9 @@ class UsuarioSeeder extends Seeder
      */
     public function run()
     {
-        //
+
+        DB::table('usuarios')->insert(['apelido' => 'Zé', 'email' => 'jose@teste.com',
+                                            'senha' => '123']);
+
     }
 }

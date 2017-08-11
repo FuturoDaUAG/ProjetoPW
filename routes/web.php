@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/teste', function() {
+	echo 'testando';	
+});
+
+//Usuário
 Route::get('/usuario', 'UsuarioController@lista');
 Route::get('/usuario/detalhes/{id}', 'UsuarioController@mostra')->where('id', '[0-9]+');
 Route::get('/usuario/novo', 'UsuarioController@novo');
@@ -34,3 +40,13 @@ Route::post('/patrimonio/atualizar', 'PatrimonioController@atualizar');
 Route::get('/marca', 'MarcaController@listar');
 Route::get('/marca/adicionar','MarcaController@prepararAdicionar');
 Route::post('/marca/adicionar', 'MarcaController@adicionar');
+
+//Servidor
+Route::get('/servidor/novo', 'ServidorController@novo');
+Route::post('/servidor/salvar', 'ServidorController@salvar');
+Route::get('/servidor/recuperar/{id}', 'ServidorController@recuperar');
+Route::post('/servidor/recuperar/alterar/', 'ServidorController@alterar');
+Route::get('/servidor/remover/{id}', 'ServidorController@remover');
+Route::get('/servidor/visualizar/{id}', 'ServidorController@visualizar');
+Route::get('/servidor/listar', 'ServidorController@listar');
+
