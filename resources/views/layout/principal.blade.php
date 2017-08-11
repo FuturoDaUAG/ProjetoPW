@@ -30,7 +30,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">PatrimÔnio</a>
+      <a class="navbar-brand" href="#">Patrimônio</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,26 +41,34 @@
         <li class="dropdown mega-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pessoas </a>
           <ul class="dropdown-menu mega-dropdown-menu">
-    				<li class="dropdown1 col-sm-3">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios</a>
-          <ul class="dropdown-menu">
-            	<li><a href="{{action('UsuarioController@novo')}}">Novo</a></li>
-							<li><a href="{{action('UsuarioController@lista')}}">Todos</a></li>
-          
-            <li role="separator" class="divider"></li>
-            <li><a href="#">link</a></li>
+              <li class="dropdown1 col-sm-3">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+                    <ul class="dropdown-menu">
+            	        <li><a href="{{action('UsuarioController@novo')}}">Novo</a></li>
+                        <li><a href="{{action('UsuarioController@lista')}}">Todos</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">link</a></li>
+                    </ul>
+              </li>
+              <li class="dropdown1 col-sm-3">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servidor</a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <a href="{{action('ServidorController@novo')}}">
+                              <span class="glyphicon glyphicon-user"> Novo </span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{action('ServidorController@listar')}}">
+                              <span class="glyphicon glyphicon-list"> Todos </span>
+                          </a>
+                      </li>
+                  </ul>
+              </li>
+
+              <li class="col-sm-3">Administrador</li>
+
           </ul>
-        </li>
-					<li class="col-sm-3">Usuarios
-						
-					</li>
-					<li class="col-sm-3">Administrador 
-						
-					</li>
-					<li class="col-sm-3">link
-						
-					</li>
-				</ul>		
         </li>
          <li class="dropdown mega-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
@@ -96,7 +104,7 @@
           <ul class="dropdown-menu">
             <li><a href="#">link</a></li>
             <li><a href="#">link</a></li>
-            <li><a href="#">Slink/a></li>
+            <li><a href="#">Slink</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Slink</a></li>
           </ul>
@@ -142,7 +150,7 @@
 					<li class="dropdown1 col-sm-3">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link </a>
           <ul class="dropdown-menu">
-            <li><a href="#">link/a></li>
+            <li><a href="#">link</a></li>
             <li><a href="#">link</a></li>
             <li><a href="#">ve</a></li>
             <li role="separator" class="divider"></li>
@@ -194,7 +202,7 @@
           <ul class="dropdown-menu">
             <li><a href="#">link</a></li>
             <li><a href="#">link</a></li>
-            <li><a href="#">link/a></li>
+            <li><a href="#">link</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">link</a></li>
           </ul>

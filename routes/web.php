@@ -30,10 +30,12 @@ Route::get('/usuario/muda/{id}','UsuarioController@muda')->where('id', '[0-9]+')
 Route::post('/usuario/muda/alterar', 'UsuarioController@alterar');
 
 //Servidor
-Route::get('/servidor/adicionar', 'ServidorController@adicionar');
+Route::get('/servidor/novo', 'ServidorController@novo');
 Route::post('/servidor/salvar', 'ServidorController@salvar');
 Route::get('/servidor/recuperar/{id}', 'ServidorController@recuperar');
-Route::post('/servidor/atualizar', 'ServidorController@atualizar');
+Route::post('/servidor/recuperar/alterar/', 'ServidorController@alterar');
 Route::get('/servidor/remover/{id}', 'ServidorController@remover');
+Route::get('/servidor/visualizar/{id}', 'ServidorController@visualizar');
 Route::get('/servidor/listar', 'ServidorController@listar');
+
 

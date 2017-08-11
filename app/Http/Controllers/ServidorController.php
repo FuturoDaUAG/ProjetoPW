@@ -3,60 +3,58 @@
 namespace web\Http\Controllers;
 
 use web\Http\Requests\ServidorRequest;
+//use web\Http\Requests\Request;
 use web\Servidor;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Request;
 
 class ServidorController extends Controller
 {
 
-    public function adicionar()
+    public function novo()
     {
-        return view('servidor/adicionar');
+        return view('servidor/novo');
     }
 
     public function salvar(ServidorRequest $request)
     {
-
         $servidor = new Servidor();
         $servidor->create($request->all());
-
-        \Session::flash('msg_sucesso', 'Servidor cadastrado com sucesso !!');
-
-
-        return redirect('/servidor/adicionar');
+        return redirect()
+            ->action('ServidorController@listar')
+            ->withInput(Request::only('nome'));
     }
 
-    public function recuperar(ServidorRequest $request)
+    public function recuperar($id)
     {
-        $servidor = Servidor::find($request->id);
-        return view('servidor/recuperar', ['servidor'=>$servidor]);
-
+        $servidor = Servidor::find($id);
+        return view('servidor.recuperar')->with('servidor', $servidor);
     }
 
-    public function atualizar(ServidorRequest $request)
+    public function alterar(ServidorRequest $request)
     {
         $servidor = Servidor::find($request->id);
-        $servidor->nome = $request->nome;
-        $servidor->cargo = $request->cargo;
-        $servidor->matricula = $request->matricula;
-
-        $servidor->update();
-        return redirect('/servidor/listar');
+        $servidor->update($request->all());
+        return redirect()
+            ->action('ServidorController@listar')
+            ->withInput(Request::only('matricula'));
     }
 
-    public function remover(ServidorRequest  $request)
+    public function remover($id)
     {
-        $servidor = Servidor::find($request->id);
+        $servidor = Servidor::find($id);
         $servidor->delete();
         return redirect("/servidor/listar");
     }
 
-    public function listar()
+    public function visualizar($id)
     {
-        $servidores = Servidor::all();
-        return view('servidor/listar', ['servidores' => $servidores]);
+        $servidor = Servidor::find($id);
+        return view('servidor.visualizar')->with('servidor', $servidor);
     }
 
-
+    public function listar()
+    {
+        $servidores = Servidor::paginate(5);
+        return view('servidor/listar', ['servidores' => $servidores]);
+    }
 }

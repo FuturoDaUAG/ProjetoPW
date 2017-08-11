@@ -11,9 +11,11 @@ class Servidor extends Model
         'nome','cargo','matricula', 'usuario_id'
     ];
 
+    protected $table ='servidors';
+
     public function usuario()
     {
-        return $this->hasOne('web\Usuario');
+        return $this->belongsTo('web\Usuario');
     }
 
 

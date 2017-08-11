@@ -34,8 +34,8 @@ class ServidorRequest extends FormRequest
     {
         return [
             'nome.required' => 'O :attribute  não pode ficar vazio.',
-            'cargo.required' => '0 :attribute não pode ficar vazio.',
-            'matricula.required' => '0 :attribute não pode ficar vazio.',
+            'cargo.required' => 'O :attribute não pode ficar vazio.',
+            'matricula.required' => 'A :attribute não pode ficar vazia.',
         ];
     }
 }

@@ -17,7 +17,7 @@
 <!-- Form Name -->
 
  <input type="hidden"
-    name="_token" value="{{{ csrf_token() }}}" />
+    name="_token" value="{{ csrf_token() }}" />
 
      <input type="hidden"
     name="id" value="{{$u->id}}" />
@@ -61,7 +61,7 @@
     </div>
   </section>
 </div>
-
+</fieldset>
 
 </form>
 

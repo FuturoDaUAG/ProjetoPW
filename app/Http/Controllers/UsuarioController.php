@@ -10,20 +10,14 @@ use web\Http\Requests\UsuariosRequest;
 
 class UsuarioController extends Controller
 {
-
-
     public function lista()
     {
        $usuarios = Usuario::paginate(5);
         return view('usuario.listagem')->withUsuarios($usuarios);
     }
- 
-       
-   
 
     public function mostra($id)
     {
-
         $usuario = Usuario::find($id);
         if(empty($usuario)) {
             return "Esse Usuario não existe";
@@ -44,8 +38,6 @@ class UsuarioController extends Controller
             return "Esse Usuario não existe";
         }
         return view('usuario.form_alterar')->with('u', $usuario);
-
-
     }
 
     
@@ -56,8 +48,6 @@ class UsuarioController extends Controller
         return redirect()
             ->action('UsuarioController@lista')
             ->withInput(Request::only('apelido'));
-
-        
 
     }
 

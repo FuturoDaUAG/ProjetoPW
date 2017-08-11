@@ -12,7 +12,7 @@
 <!-- Form Name -->
 
  <input type="hidden"
-    name="_token" value="{{{ csrf_token() }}}" />
+    name="_token" value="{{ csrf_token() }}" />
 <div class="container-fluid">
     <section class="container">
     <div class="container-page">        
@@ -54,7 +54,7 @@
     </div>
   </section>
 </div>
-
+</fieldset>
 
 </form>
 

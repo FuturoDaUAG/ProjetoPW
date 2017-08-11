@@ -10,7 +10,7 @@ class Usuario extends Model
 
     public function servidor()
     {
-        return $this->belongsTo('web\Servidor');
+        return $this->hasOne('web\Servidor');
     }
 
 
