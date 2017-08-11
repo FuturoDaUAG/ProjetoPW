@@ -54,13 +54,13 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servidor</a>
                   <ul class="dropdown-menu">
                       <li>
-                          <a href="{{action('ServidorController@novo')}}">
-                              <span class="glyphicon glyphicon-user"> Novo </span>
+                          <a href="{{action('ServidorController@novo')}}" class="glyphicon glyphicon-user">
+                              Novo
                           </a>
                       </li>
                       <li>
-                          <a href="{{action('ServidorController@listar')}}">
-                              <span class="glyphicon glyphicon-list"> Todos </span>
+                          <a href="{{action('ServidorController@listar')}}" class="glyphicon glyphicon-list">
+                              Todos
                           </a>
                       </li>
                   </ul>
