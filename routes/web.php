@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/layout/principal');
 });
 
 
@@ -49,4 +49,20 @@ Route::post('/servidor/recuperar/alterar/', 'ServidorController@alterar');
 Route::get('/servidor/remover/{id}', 'ServidorController@remover');
 Route::get('/servidor/visualizar/{id}', 'ServidorController@visualizar');
 Route::get('/servidor/listar', 'ServidorController@listar');
+/*------------------------------ Sala ---------------------------------------------------*/
+Route::get('/sala', 'SalaController@listar');
+Route::get('/sala/novo', 'SalaController@novo');
+Route::get('/sala/muda/{id}', 'SalaController@muda')->where('id', '[0-9]+');
+Route::get('/sala/detalhes/{id}', 'SalaController@mostra')->where('id', '[0-9]+');
+Route::post('/sala/adicionar', 'SalaController@adicionar');
+Route::get('/sala/remover/{id}','SalaController@remover');
+Route::post('/sala/muda/atualizar/', 'SalaController@atualizar');
+/*------------------------------ Predio ---------------------------------------------------*/
+Route::get('/predio', 'PredioController@listar');
+Route::get('/predio/novo', 'PredioController@novo');
+Route::get('/predio/muda/{id}', 'PredioController@muda')->where('id', '[0-9]+');
+Route::get('/predio/detalhes/{id}', 'PredioController@mostra')->where('id', '[0-9]+');
+Route::post('/predio/adicionar', 'PredioController@adicionar');
+Route::get('/predio/remover/{id}','PredioController@remover');
+Route::post('/predio/muda/atualizar', 'PredioController@atualizar');
 
