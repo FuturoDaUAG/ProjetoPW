@@ -15,6 +15,15 @@ class CreatePatrimoniosTable extends Migration
     {
         Schema::create('patrimonios', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('marca_id')->unsigned();
+            $table->string('descricao');
+            $table->integer('valor');
+            $table->integer('numeroempenho');
+            $table->integer('numeropatrimonio');
+            $table->integer('numeropregao');
+            $table->integer('numeropantigo');
+            $table->integer('numeronotafiscal');
+            $table->foreign('marca_id')->references('id')->on('marcas');
             $table->timestamps();
         });
     }
