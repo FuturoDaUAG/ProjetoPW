@@ -7,6 +7,7 @@
         </div>
     @else
         <h1>Servidores cadastrados</h1>
+        <a href="novo" class="btn-sm btn-success  glyphicon glyphicon-plus" > Servidor <br/></a>
 
         <table class="tini table table table-hover table-striped table-bordered" id="servidor-table"  >
 
@@ -45,11 +46,11 @@
 
     @if(old('nome'))
         <div class="alert alert-success">
-            <strong>O Servidor {{ old('nome')}} foi adicionado com sucesso !!</strong>.
+            <strong>O Servidor {{ old('nome')}} foi adicionado com sucesso !</strong>.
         </div>
     @elseif(old('matricula'))
         <div class="alert alert-success">
-            <strong>O Servidor (Matr: {{ old('matricula')}}) foi Atualizado com sucesso !!</strong>.
+            <strong>O Servidor (Matr: {{ old('matricula')}}) foi Atualizado com sucesso !</strong>.
         </div>
     @endif
 @stop

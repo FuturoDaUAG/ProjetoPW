@@ -17,8 +17,8 @@ class Usuario extends Model
     protected $fillable = ['apelido','email','senha'];
 
 
-    public function departamentos() {
-        return $this->hasMany('web\Departamento');   
+    public function departamento() {
+        return $this->belongsTo('web\Departamento');
     }
      
 }

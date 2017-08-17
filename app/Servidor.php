@@ -15,4 +15,12 @@ class Servidor extends Model
     public function usuario()
     {
         return $this->belongsTo('web\Usuario');
-    }}
+
+    }
+
+    public function setor()
+    {
+        return $this->hasMany('web\Setor');
+    }
+
+}

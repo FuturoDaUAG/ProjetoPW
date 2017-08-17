@@ -12,12 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('/layout/principal');
+    return view('index');
 });
 
-
-Route::get('/teste', function() {
-	echo 'testando';	
+Route::get('/index', function () {
+   return view('index');
 });
 
 //Usuário
@@ -65,4 +64,13 @@ Route::get('/predio/detalhes/{id}', 'PredioController@mostra')->where('id', '[0-
 Route::post('/predio/adicionar', 'PredioController@adicionar');
 Route::get('/predio/remover/{id}','PredioController@remover');
 Route::post('/predio/muda/atualizar', 'PredioController@atualizar');
+
+//Setor
+Route::get('/setor/novo', 'SetorController@novo');
+Route::post('/setor/salvar', 'SetorController@salvar');
+Route::get('/setor/recuperar/{id}', 'SetorController@recuperar');
+Route::post('/setor/recuperar/alterar/', 'SetorController@alterar');
+Route::get('/setor/remover/{id}', 'SetorController@remover');
+Route::get('/setor/visualizar/{id}', 'SetorController@visualizar');
+Route::get('/setor/listar', 'SetorController@listar');
 

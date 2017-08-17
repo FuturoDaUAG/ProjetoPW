@@ -8,8 +8,11 @@ use web\Sala;
 class Predio extends Model
 {
     protected $fillable = ['descricao'];
+
     
-    public function salas() {
+    public function salas()
+    {
         return $this->hasMany('web\Sala');   
     }
+
 }

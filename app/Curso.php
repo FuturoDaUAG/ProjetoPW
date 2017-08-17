@@ -1,21 +1,19 @@
 <?php
 
 namespace web;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Sala extends Model
+class Curso extends Model
 {
     protected $fillable = [
-        'descricao', 'ramal', 'predio_id'
+        'nome'
     ];
 
     public function setor()
     {
         return $this->hasMany('web\Setor');
     }
-    
-    public function predio()
-    {
-        return $this->belongsTo('web\Predio');
-    }
+
+
 }
