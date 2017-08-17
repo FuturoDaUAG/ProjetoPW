@@ -15,6 +15,12 @@ class CreatePatrimoniosTable extends Migration
     {
         Schema::create('patrimonios', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descricao');
+            $table->int('valor');
+            $table->int('numeroempenho');
+            $table->int('numeropatrimonio');
+            $table->int('numeropregao');
+            $table->int('numeropantigo');
             $table->timestamps();
         });
     }
