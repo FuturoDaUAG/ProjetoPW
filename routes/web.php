@@ -12,12 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 
 Route::get('/teste', function() {
 	echo 'testando';	
+});
+
+Route::get('/index', function () {
+   return view('index');
 });
 
 //Usuário
