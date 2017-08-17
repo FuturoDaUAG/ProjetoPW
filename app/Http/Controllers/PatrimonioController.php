@@ -54,5 +54,11 @@ class PatrimonioController extends Controller {
         $patrimonio->update();
         return redirect("patrimonio/");
     }
+    
+    public function visualizar($id)
+    {
+        $patrimonio = Patrimonio::find($id);
+        return view('patrimonio.visualizar')->with('patrimonio', $patrimonio);
+    }
 
 }

@@ -34,6 +34,7 @@ Route::get('/patrimonio/adicionar', 'PatrimonioController@prepararAdicionar');
 Route::post('/patrimonio/adicionar', 'PatrimonioController@adicionar');
 Route::get('/patrimonio/editar/{id}','PatrimonioController@editar');
 Route::post('/patrimonio/atualizar', 'PatrimonioController@atualizar');
+Route::get('/patrimonio/visualizar/{id}', 'PatrimonioController@visualizar');
 
 /*------------------------------ Marca --------------------------------------------------------*/
 Route::get('/marca', 'MarcaController@listar');
