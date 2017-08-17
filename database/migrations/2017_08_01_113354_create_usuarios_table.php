@@ -15,7 +15,12 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('apelido');
+            $table->string('email');
+            $table->string('senha');
+            $table->integer('departamento_id')->unsigned();
             $table->timestamps();
+            $table->foreign('departamento_id')->references('id')->on('departamentos');
         });
     }
 
