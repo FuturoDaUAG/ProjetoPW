@@ -13,4 +13,9 @@ class Sala extends Model
     {
         return $this->hasMany('web\Setor');
     }
+    
+    public function predio()
+    {
+        return $this->belongsTo('web\Predio');
+    }
 }

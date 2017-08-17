@@ -21,6 +21,7 @@ class CreateUsuariosTable extends Migration
             $table->integer('departamento_id')->unsigned();
             $table->timestamps();
             $table->foreign('departamento_id')->references('id')->on('departamentos');
+            $table->timestamps();
         });
     }
 

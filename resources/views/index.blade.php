@@ -9,7 +9,8 @@
                 <section class="container">
                     <div class="container-page">
                         <div class="col-md-6">
-                            <h1 class="dark-grey">Patrimonio UFRPE-UAG</h1>
+                           <h1 class="dark-grey">UFRPE-UAG</h1>
+                           <h2>Patrimonio</h2>
 
 
                         </div>
