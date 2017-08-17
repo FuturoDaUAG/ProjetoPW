@@ -16,7 +16,7 @@
                                 <input type="text" name="descricao" class="form-control" id="" value="{{ old('descricao') }}">
                             </div>
 
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-7">
                                 <label>@lang('messages.sala')</label>
                                 <select class="selectpicker" name="sala_id">
                                     @foreach($salas as $sala)
@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="form-group col-lg-6">
-                                <label>@lang('messages.responsavel')</label>
+                                <label>@lang('messages.responsavel')</label><br/>
                                 <select class="selectpicker" name="servidor_id">
                                     @foreach($servidores as $servidor)
                                         <option value="{{ $servidor->id }}">{{ $servidor->nome }} - {{ $servidor->cargo }}</option>
@@ -34,7 +34,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-8">
                                 <label>@lang('messages.curso')</label>
                                 <select class="selectpicker" name="curso_id">
                                     @foreach($cursos as $curso)

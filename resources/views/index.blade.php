@@ -12,6 +12,8 @@
                            <h1 class="dark-grey">UFRPE-UAG</h1>
                            <h2>Patrimonio</h2>
 
+                            < inserir Logo >
+
 
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 @extends('layout.principal')
 @section('conteudo')
 
-    <h1>Editar</h1>
+    <h1>Editar Setor - {{ $setor->id }}</h1>
 
     @if(count($errors)>0)
         <div class="alert alert-danger">
@@ -33,7 +33,7 @@
                                 <input type="text" name="descricao" class="form-control" id="" value="{{ $setor->descricao }}">
                             </div>
 
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-7">
                                 <label>@lang('messages.sala')</label>
                                 <select class="selectpicker" name="sala_id">
                                     @foreach($salas as $sala)
@@ -51,7 +51,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-8">
                                 <label>@lang('messages.curso')</label>
                                 <select class="selectpicker" name="curso_id" selected>
                                     @foreach($cursos as $curso)

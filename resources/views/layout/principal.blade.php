@@ -105,6 +105,16 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="dropdown1 col-sm-3">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sala</a>
+
+                </li>
+
+                <li class="dropdown1 col-sm-3">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prédio</a>
+
+                </li>
 			</ul>
         </li>
          <li class="dropdown mega-dropdown">
@@ -180,39 +190,31 @@
 				</ul>		
         </li>
         <li class="dropdown mega-dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locais</a>
-            <ul class="dropdown-menu mega-dropdown-menu">
-                <li class="dropdown1 col-sm-3">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Predios</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{action('PredioController@novo')}}">Adicionar Prédio</a></li>
-                            <li><a href="{{action('PredioController@listar')}}">Mostar Todos</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">link</a></li>
-                        </ul>
- 
-                </li>
-
-                <li class="dropdown1 col-sm-3">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Salas</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{action('SalaController@novo')}}">Adicionar Sala</a></li>
-                        <li><a href="{{action('SalaController@listar')}}">Mostar Todas</a></li>
-
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">link</a></li>
-                    </ul>
-
-                </li>
-                <li class="col-sm-3">link
-
-                </li> 
-                <li class="col-sm-3">link
-
-                </li>
-
-            </ul>		
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
+          <ul class="dropdown-menu mega-dropdown-menu">
+					<li class="dropdown1 col-sm-3">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">link</a></li>
+          </ul>
         </li>
+					<li class="col-sm-3">link
+						
+					</li>
+					<li class="col-sm-3">link
+						
+					</li>
+					<li class="col-sm-3">link
+						
+					</li>
+				</ul>		
+        </li>
+
+      </ul>
       
       <ul class="nav navbar-nav navbar-right">
         

@@ -49,11 +49,11 @@
 
     @if(old('descricao'))
         <div class="alert alert-success">
-            <strong>O Setor {{ old('descricao')}} foi adicionado com sucesso !!</strong>.
+            <strong>O Setor {{ old('descricao')}} foi adicionado com sucesso !</strong>.
         </div>
     @elseif(old('curso_id')) <!-- curso_id usado apenas como condição de controle -->
         <div class="alert alert-success">
-            <strong>Setor atualizado com sucesso !!</strong>.
+            <strong>Setor atualizado com sucesso !</strong>.
         </div>
     @endif
 @stop

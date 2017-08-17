@@ -46,11 +46,11 @@
 
     @if(old('nome'))
         <div class="alert alert-success">
-            <strong>O Servidor {{ old('nome')}} foi adicionado com sucesso !!</strong>.
+            <strong>O Servidor {{ old('nome')}} foi adicionado com sucesso !</strong>.
         </div>
     @elseif(old('matricula'))
         <div class="alert alert-success">
-            <strong>O Servidor (Matr: {{ old('matricula')}}) foi Atualizado com sucesso !!</strong>.
+            <strong>O Servidor (Matr: {{ old('matricula')}}) foi Atualizado com sucesso !</strong>.
         </div>
     @endif
 @stop
