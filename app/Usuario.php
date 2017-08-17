@@ -1,6 +1,4 @@
 <?php
-
-
 namespace web;
 
 use Illuminate\Database\Eloquent\Model;
@@ -23,5 +21,4 @@ class Usuario extends Model
         return $this->belongsTo('web\Departamento');
     }
      
-
 }
