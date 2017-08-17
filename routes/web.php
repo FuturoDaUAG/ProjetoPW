@@ -38,4 +38,15 @@ Route::get('/servidor/remover/{id}', 'ServidorController@remover');
 Route::get('/servidor/visualizar/{id}', 'ServidorController@visualizar');
 Route::get('/servidor/listar', 'ServidorController@listar');
 
+//Setor
+Route::get('/setor/novo', 'SetorController@novo');
+Route::post('/setor/salvar', 'SetorController@salvar');
+Route::get('/setor/recuperar/{id}', 'SetorController@recuperar');
+Route::post('/setor/recuperar/alterar/', 'SetorController@alterar');
+Route::get('/setor/remover/{id}', 'SetorController@remover');
+Route::get('/setor/visualizar/{id}', 'SetorController@visualizar');
+Route::get('/setor/listar', 'SetorController@listar');
+
+
+
 

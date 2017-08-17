@@ -7,6 +7,7 @@
         </div>
     @else
         <h1>Servidores cadastrados</h1>
+        <a href="novo" class="btn-sm btn-success  glyphicon glyphicon-plus" > Servidor <br/></a>
 
         <table class="tini table table table-hover table-striped table-bordered" id="servidor-table"  >
 

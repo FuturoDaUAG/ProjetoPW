@@ -11,8 +11,8 @@ class Departamento extends Model
     
     protected $fillable = ['departamento'];
 
-public function usuario() {
-      return $this->belongsTo('web\Usuario');   
+public function usuarios() {
+      return $this->hasMany('web\Usuario');
    }
    
 }

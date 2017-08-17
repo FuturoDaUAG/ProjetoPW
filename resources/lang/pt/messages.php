@@ -3,12 +3,17 @@
 
 return [
 
-	'apelido' => 'Apelido',
+    'apelido' => 'Apelido',
     'cargo' => 'Cargo',
-	'email'=>'Email',
+    'curso' => 'Curso',
+    'descricao' => 'Descricao',
+    'email'=>'Email',
     'matricula' => 'Matricula',
     'nome' => 'Nome',
+    'responsavel' => 'Responsável',
+    'sala' => 'Sala',
     'senha'=> 'Senha',
+    'servidor' => 'Servidor',
     'usuario' => 'Usuário',
 ];
 

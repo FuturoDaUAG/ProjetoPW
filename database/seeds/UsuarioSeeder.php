@@ -13,7 +13,7 @@ class UsuarioSeeder extends Seeder
     {
 
         DB::table('usuarios')->insert(['apelido' => 'Zé', 'email' => 'jose@teste.com',
-                                            'senha' => '123']);
+                                            'senha' => '123', 'departamento_id' => '1']);
 
     }
 }

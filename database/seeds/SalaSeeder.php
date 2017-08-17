@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DepartamentoSeed extends Seeder
+class SalaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,7 @@ class DepartamentoSeed extends Seeder
      */
     public function run()
     {
-        DB::table('departamentos')->insert(['departamento' => 'Escolaridade']);
+        DB::table('salas')->insert(['descricao' => 'Superior',
+            'ramal' => '789', 'predio_id' => 1]);
     }
 }
