@@ -15,6 +15,9 @@ class MarcaSeeder extends Seeder
         DB::table('marcas')->insert(['descricao' => 'AOC']);
         DB::table('marcas')->insert(['descricao' => 'Samsung']);
         DB::table('marcas')->insert(['descricao' => 'HP']);
+        DB::table('marcas')->insert(['descricao' => 'Positivo']);
+        DB::table('marcas')->insert(['descricao' => 'Acer']);
+        DB::table('marcas')->insert(['descricao' => 'Asus']);
         //
     }
 }

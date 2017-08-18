@@ -11,7 +11,10 @@
 
 <table class="tini table table table-hover table-striped table-bordered" id="patrimonio-table"  >
     <thead>
-    <td></td>
+    <td>@lang('ID')</td>
+    <td>@lang('Nome')</td>
+    <td>@lang('Valor')</td>
+    <td>@lang('Marca')</td>
     <td></td>
     <td></td>
     <td></td>
@@ -26,14 +29,14 @@
         <td> {{$p -> descricao}}  </td>
         <td> {{$p -> valor}} </td>
         <td> {{$p -> marca -> descricao}}</td>
-        <td> <a href="{{action('UsuarioController@mostra', $p->id)}}"><span class="glyphicon glyphicon-search"></span></a> </td>
-        <td> <a href="{{action('UsuarioController@remove', $p->id)}}"><span class="glyphicon glyphicon-trash"></span></a> </td>
-        <td> <a href="{{action('UsuarioController@muda', $p->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+        <td> <a href="{{action('PatrimonioController@listar', $p->id)}}"><span class="glyphicon glyphicon-search"></span></a> </td>
+        <td> <a href="{{action('PatrimonioController@remover', $p->id)}}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+        <td> <a href="{{action('PatrimonioController@editar', $p->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
     </tr>
     @endforeach
 </tbody>
 </table>
-
+{!!$patrimonio->links()!!}
 @endif
 
 @if(old('descricao'))

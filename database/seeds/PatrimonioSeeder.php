@@ -10,9 +10,18 @@ class PatrimonioSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        DB::table('patrimonios')->insert(['descricao' => 'Monitor', 'valor' => '100', 'numeropatrimonio' => '12345',
-            'numeropantigo' => '54321', 'numeroempenho'=>'09876', 'numeropregao' => '56789', 'numeronotafiscal' => '12356124',
-            'marca_id'=> '2']);
+    {       
+        
+    $descricao = array("Monitor","Mouse","Desktop","Teclado","Impressora","Estabilizador","DataShow");
+        for ($i = 1; $i <= 5000; $i++){
+        DB::table('patrimonios')->insert(['descricao' => $descricao[rand(0,6)],
+                                            'valor' => rand(10,5000),
+                                            'numeropatrimonio' => '2017'.$i,
+                                            'numeropantigo' => '2017'.$i."42",
+                                            'numeroempenho'=>$i."42",
+                                            'numeropregao' => '4242',
+                                            'numeronotafiscal' => "3333.".$i,
+                                            'marca_id'=> rand(1,7)]);
     }
+     }
 }

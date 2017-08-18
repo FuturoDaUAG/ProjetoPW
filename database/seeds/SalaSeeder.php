@@ -11,7 +11,10 @@ class SalaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('salas')->insert(['descricao' => 'Superior',
-            'ramal' => '789', 'predio_id' => 1]);
+        for ($i = 10; $i <= 70; $i++){
+        DB::table('salas')->insert(['descricao' => 'Sala'.$i,
+            'ramal' => '55'.$i, 'predio_id' => ($i/10)]);
+        }
+    
     }
 }

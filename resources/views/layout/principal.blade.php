@@ -108,26 +108,53 @@
 
                 <li class="dropdown1 col-sm-3">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sala</a>
-
+                         <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{action('SalaController@novo')}}" class="glyphicon glyphicon-hdd">
+                                Novo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{action('SalaController@listar')}}" class="glyphicon glyphicon-list">
+                                Todos
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="dropdown1 col-sm-3">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prédio</a>
-
+                         <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{action('PredioController@novo')}}" class="glyphicon glyphicon-hdd">
+                                Novo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{action('PredioController@listar')}}" class="glyphicon glyphicon-list">
+                                Todos
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 			</ul>
         </li>
          <li class="dropdown mega-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventário</a>
           <ul class="dropdown-menu mega-dropdown-menu">
 					<li class="dropdown1 col-sm-3">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bens Móveis</a>
           <ul class="dropdown-menu">
-            <li><a href="#">link</a></li>
-            <li><a href="#">link</a></li>
-            <li><a href="#">Slink</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Slink</a></li>
+            <li>
+                            <a href="{{action('PatrimonioController@adicionar')}}" class="glyphicon glyphicon-hdd">
+                                Novo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{action('PatrimonioController@listar')}}" class="glyphicon glyphicon-list">
+                                Todos
+                            </a>
+                        </li>
           </ul>
         </li>
 					<li class="col-sm-3">link
@@ -165,70 +192,9 @@
 					</li>
 				</ul>		
         </li>
-         <li class="dropdown mega-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
-          <ul class="dropdown-menu mega-dropdown-menu">
-					<li class="dropdown1 col-sm-3">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">link</a></li>
-            <li><a href="#">link</a></li>
-            <li><a href="#">ve</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">link</a></li>
-          </ul>
-        </li>
-					<li class="col-sm-3">link
-						
-					</li>
-					<li class="col-sm-3">link
-						
-					</li>
-					<li class="col-sm-3">link
-						
-					</li>
-				</ul>		
-        </li>
-        <li class="dropdown mega-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
-          <ul class="dropdown-menu mega-dropdown-menu">
-					<li class="dropdown1 col-sm-3">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">link</a></li>
-            <li><a href="#">link</a></li>
-            <li><a href="#">link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">link</a></li>
-          </ul>
-        </li>
-					<li class="col-sm-3">link
-						
-					</li>
-					<li class="col-sm-3">link
-						
-					</li>
-					<li class="col-sm-3">link
-						
-					</li>
-				</ul>		
-        </li>
 
       </ul>
       
-      <ul class="nav navbar-nav navbar-right">
-        
-        <li class="dropdown1">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">link</a></li>
-            <li><a href="#">link</a></li>
-            <li><a href="#">link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">link</a></li>
-          </ul>
-        </li>
-      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

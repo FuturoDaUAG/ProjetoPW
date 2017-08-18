@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('layout/principal');
 });
 
 Route::get('/index', function () {
@@ -35,6 +35,7 @@ Route::post('/patrimonio/adicionar', 'PatrimonioController@adicionar');
 Route::get('/patrimonio/editar/{id}','PatrimonioController@editar');
 Route::post('/patrimonio/atualizar', 'PatrimonioController@atualizar');
 Route::get('/patrimonio/visualizar/{id}', 'PatrimonioController@visualizar');
+Route::get('/patrimonio/remover/{id}', 'PatrimonioController@remover');
 
 /*------------------------------ Marca --------------------------------------------------------*/
 Route::get('/marca', 'MarcaController@listar');
