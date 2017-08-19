@@ -22,3 +22,10 @@ Route::post('/usuario/adiciona', 'UsuarioController@adiciona');
 Route::get('/usuario/remove/{id}','UsuarioController@remove');
 Route::get('/usuario/muda/{id}','UsuarioController@muda')->where('id', '[0-9]+');
 Route::post('/usuario/muda/alterar', 'UsuarioController@alterar');
+
+
+Route::get('/departamento', 'DepartamentoController@lista');
+Route::get('/departamento/novo', 'DepartamentoController@novo');
+Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
+Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
+Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');

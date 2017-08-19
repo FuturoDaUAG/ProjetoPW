@@ -10,7 +10,7 @@ class Departamento extends Model
     
     protected $fillable = ['departamento'];
 
-public function usuario() {
+public function usuarios() {
       return $this->belongsTo('web\Usuario');   
    }
    

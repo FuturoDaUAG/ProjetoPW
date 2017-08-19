@@ -25,6 +25,7 @@
 <tbody>
   <tr >
     <td>{{$u->apelido}} </td>
+    dfsfsf
     <td> {{$u->email}}  </td>
 
     <td>
