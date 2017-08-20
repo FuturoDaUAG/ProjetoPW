@@ -16,7 +16,7 @@ class UsuarioController extends Controller
 
     public function lista()
     {
-     $usuarios = Usuario::paginate(5);
+     $usuarios = Usuario::paginate(3);
      return view('usuario.listagem')->withUsuarios($usuarios);
  }
  
