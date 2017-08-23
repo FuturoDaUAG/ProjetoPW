@@ -29,9 +29,9 @@
         <td> {{$p -> descricao}}  </td>
         <td> {{$p -> valor}} </td>
         <td> {{$p -> marca -> descricao}}</td>
-        <td> <a href="{{action('PatrimonioController@listar', $p->id)}}"><span class="glyphicon glyphicon-search"></span></a> </td>
-        <td> <a href="{{action('PatrimonioController@remover', $p->id)}}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+        <td> <a href="{{action('PatrimonioController@visualizar', $p->id)}}"><span class="glyphicon glyphicon-search"></span></a> </td>
         <td> <a href="{{action('PatrimonioController@editar', $p->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+        <td> <a href="{{action('PatrimonioController@remover', $p->id)}}"><span class="glyphicon glyphicon-time"></span></a> </td>
     </tr>
     @endforeach
 </tbody>

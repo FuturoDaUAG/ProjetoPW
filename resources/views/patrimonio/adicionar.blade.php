@@ -1,6 +1,6 @@
 @extends('layout.principal')
 @section('conteudo')
-
+ 
 <form action="adicionar" method='post'>
     <div class="container-fluid">
         <section class="container">
@@ -37,7 +37,7 @@
                         Número Nota Fiscal <input name="numeronotafiscal" type="text" />
                     </div>
                     
-                    <div>
+                    <div class="form-group col-lg-6">
                         Marca: <br/>
                         
                         <select name="marca_id">
@@ -46,6 +46,10 @@
                             @endforeach
                         </select>
                         <a href="/marca/adicionar"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
+                    </div>
+                    
+                    <div class="form-group col-lg-6">
+                        Data Aquisição: <input name="dataaquisicao" type="date" />
                     </div>
 
                     <div class="col-md-12">

@@ -61,10 +61,10 @@ class PatrimonioController extends Controller {
         return view('patrimonio.visualizar')->with('patrimonio', $patrimonio);
     }
     
-    public function remover($id){
-        $patrimonio = patrimonio::find($id);
-        $patrimonio->delete();
-        return redirect()->action('PatrimonioController@listar');
-    }
+//    public function remover($id){
+//        $patrimonio = patrimonio::find($id);
+//        $patrimonio->delete();
+//        return redirect()->action('PatrimonioController@listar');
+//    }
 
 }
