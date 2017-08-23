@@ -23,4 +23,11 @@ class Setor extends Model
     {
         return $this->belongsTo('web\Sala');
     }
+     
+        public function solicitacaos()
+    {
+        return $this->hasMany('web\Solicitacao');
+    }
+
+ 
 }

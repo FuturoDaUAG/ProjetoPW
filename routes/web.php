@@ -19,7 +19,7 @@ Route::get('/index', function () {
    return view('index');
 });
 
-//Usuário
+/*------------------------------ Usuario ---------------------------------------------------*/
 Route::get('/usuario', 'UsuarioController@lista');
 Route::get('/usuario/detalhes/{id}', 'UsuarioController@mostra')->where('id', '[0-9]+');
 Route::get('/usuario/novo', 'UsuarioController@novo');
@@ -65,7 +65,7 @@ Route::post('/predio/adicionar', 'PredioController@adicionar');
 Route::get('/predio/remover/{id}','PredioController@remover');
 Route::post('/predio/muda/atualizar', 'PredioController@atualizar');
 
-//Setor
+/*------------------------------ Setor---------------------------------------------------*/
 Route::get('/setor/novo', 'SetorController@novo');
 Route::post('/setor/salvar', 'SetorController@salvar');
 Route::get('/setor/recuperar/{id}', 'SetorController@recuperar');
@@ -74,3 +74,6 @@ Route::get('/setor/remover/{id}', 'SetorController@remover');
 Route::get('/setor/visualizar/{id}', 'SetorController@visualizar');
 Route::get('/setor/listar', 'SetorController@listar');
 
+/*------------------------------ Solicitação---------------------------------------------------*/
+Route::get('/solicitacao/adicionar', 'SolicitacaoController@prepararAdicionar');
+Route::post('/solicitacao/adicionar', 'SolicitacaoController@adicionar');

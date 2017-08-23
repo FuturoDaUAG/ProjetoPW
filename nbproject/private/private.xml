@@ -3,15 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/dev/site/ProjetoPW/app/Patrimonio.php</file>
-            <file>file:/home/dev/site/ProjetoPW/app/Marca.php</file>
-            <file>file:/home/dev/site/ProjetoPW/resources/views/patrimonio/adicionar.blade.php</file>
-            <file>file:/home/dev/site/ProjetoPW/database/migrations/2017_08_01_115105_create_patrimonios_table.php</file>
-            <file>file:/home/dev/site/ProjetoPW/resources/views/marca/adicionar.blade.php</file>
-            <file>file:/home/dev/site/ProjetoPW/resources/views/patrimonio/editar.blade.php</file>
-            <file>file:/home/dev/site/ProjetoPW/resources/views/patrimonio/listagem.blade.php</file>
-            <file>file:/home/dev/site/ProjetoPW/routes/web.php</file>
-            <file>file:/home/dev/site/ProjetoPW/app/Http/Controllers/PatrimonioController.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Patrimonio.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Solicitacao.php</file>
+            <file>file:/home/joao/ProjetoPW/database/migrations/2017_08_01_115105_create_patrimonios_table.php</file>
+            <file>file:/home/joao/ProjetoPW/resources/views/patrimonio/adicionar.blade.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/PatrimonioController.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/SetorController.php</file>
+            <file>file:/home/joao/ProjetoPW/resources/views/solicitacao/adicionar.blade.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/SolicitacaoController.php</file>
+            <file>file:/home/joao/ProjetoPW/database/migrations/2017_08_17_191816_create_solicitacaos_table.php</file>
+            <file>file:/home/joao/ProjetoPW/routes/web.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Marca.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Setor.php</file>
         </group>
     </open-files>
 </project-private>

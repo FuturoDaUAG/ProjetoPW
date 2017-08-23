@@ -15,6 +15,10 @@ return [
     'senha'=> 'Senha',
     'servidor' => 'Servidor',
     'usuario' => 'Usuário',
+    'ramal' => 'Ramal',
+    'predio' => 'Prédio',
+    'data' => 'Data',
+    'drecricao' => 'Descrição',
 ];
 
 ?>
