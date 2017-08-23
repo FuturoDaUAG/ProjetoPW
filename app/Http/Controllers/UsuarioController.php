@@ -5,6 +5,7 @@ namespace web\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Request;
 use web\Usuario;
+use web\Departamento;
 use web\Http\Requests\UsuariosRequest;
 
 class UsuarioController extends Controller {
@@ -14,7 +15,7 @@ class UsuarioController extends Controller {
     }
 
     public function lista() {
-        $usuarios = Usuario::paginate(5);
+        $usuarios = Usuario::paginate(3);
         return view('usuario.listagem')->withUsuarios($usuarios);
     }
 
@@ -27,8 +28,8 @@ class UsuarioController extends Controller {
     }
 
     public function novo() {
-
-        return view('usuario.formulario');
+        $departamento = Departamento::all();
+        return view('usuario.formulario')->with('d', $departamento);
     }
 
     public function muda($id) {
@@ -40,15 +41,19 @@ class UsuarioController extends Controller {
     }
 
     public function adiciona(UsuariosRequest $request) {
+        $usuario = new Usuario();
+        $usuario->apelido = $request->apelido;
+        $usuario->email = $request->email;
+        $usuario->senha = $request->senha;
+        $usuario->departamento_id = $request->departamento_id;
 
-        Usuario::create($request->all());
+        $usuario->save();
         return redirect()
                         ->action('UsuarioController@lista')
                         ->withInput(Request::only('apelido'));
     }
 
     public function alterar(UsuariosRequest $request) {
-
         Usuario::find($request->input('id'))->update($request->all());
         return redirect()
                         ->action('UsuarioController@lista')

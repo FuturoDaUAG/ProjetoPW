@@ -81,3 +81,10 @@ Route::get('/setor/listar', 'SetorController@listar');
 Auth::routes();
 
 Route::get('/index', 'HomeController@index')->name('home');
+
+Route::get('/departamento', 'DepartamentoController@lista');
+Route::get('/departamento/novo', 'DepartamentoController@novo');
+Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
+Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
+Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
+
