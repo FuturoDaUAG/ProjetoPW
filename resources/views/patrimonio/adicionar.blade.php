@@ -38,7 +38,7 @@
                     </div>
                     
                     <div>
-                        Marca: <br/>
+                        Marca:
                         
                         <select name="marca_id">
                             @foreach ($m as $marca)
@@ -48,6 +48,30 @@
                         <a href="/marca/adicionar"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
                     </div>
 
+                    
+                     <div>
+                        Grupo:
+                        
+                        <select name="grupo_id">
+                            @foreach ($g as $grupo)
+				<option value="{{$grupo -> id}}"> {{$grupo -> descricao}}</option>
+                            @endforeach
+                        </select>
+                        <a href="/grupo/adicionar"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
+                    </div>
+                    
+                    
+                      <div>
+                        SubGrupo:
+                        <select name="subgrupos_id">
+                            @foreach ($s as $subgrupo)
+				<option value="{{$subgrupo -> id}}"> {{$subgrupo -> descricao}}</option>
+                            @endforeach
+                        </select>
+                        <a href="/subgrupo/adicionar"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
+                    </div>
+                    
+                    
                     <div class="col-md-12">
                         <input type="submit" value="Cadastrar"/>
                     </div>

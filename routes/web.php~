@@ -76,19 +76,3 @@ Route::get('/setor/remover/{id}', 'SetorController@remover');
 Route::get('/setor/visualizar/{id}', 'SetorController@visualizar');
 Route::get('/setor/listar', 'SetorController@listar');
 
-//Grupo
-Route::get('/grupo/listar', "GrupoController@listar");
-Route::get('/grupo/editar/{id}', "GrupoController@editar");
-Route::get('/grupo/remover/{id}', "GrupoController@remover");
-Route::post('/grupo/atualizar', "GrupoController@atualizar");
-Route::get('/grupo/adicionar', "GrupoController@prepararAdicionar");
-Route::post('/grupo/adicionar', "GrupoController@adicionar");
-
-//Subgrupo
-Route::get('/subgrupo/listar', "SubgrupoController@listar");
-Route::get('/subgrupo/editar/{id}', "SubgrupoController@editar");
-Route::get('/subgrupo/remover/{id}', "SubgrupoController@remover");
-Route::post('/subgrupo/atualizar', "SubgrupoController@atualizar");
-Route::get('/subgrupo/adicionar', "SubgrupoController@prepararAdicionar");
-Route::post('/subgrupo/adicionar', "SubgrupoController@adicionar");
-
