@@ -10,6 +10,10 @@ use web\Http\Requests\PatrimonioRequest;
 
 class PatrimonioController extends Controller {
 
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     public function listar() {
         $patrimonio = Patrimonio::paginate(10);
         

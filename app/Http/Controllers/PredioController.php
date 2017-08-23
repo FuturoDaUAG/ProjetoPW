@@ -10,6 +10,10 @@ use web\Http\Requests\PredioRequest;
 
 class PredioController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
       public function listar()
     {
        $predios= Predio::paginate(5);
