@@ -23,6 +23,7 @@ class Setor extends Model
     {
         return $this->belongsTo('web\Sala');
     }
+<<<<<<< HEAD
      
         public function solicitacaos()
     {
@@ -30,4 +31,11 @@ class Setor extends Model
     }
 
  
+=======
+    
+    public function patrimonio()
+    {
+        return $this->belongsToMany('\web\Patrimonio');
+    }
+>>>>>>> 63298016783898f4d2b1242d524976cc9a3cf6c8
 }

@@ -12,4 +12,8 @@ class Patrimonio extends Model
     public function marca(){
         return $this->belongsTo('\web\Marca');
     }
+    
+    public function setor(){
+        return $this->belongsToMany('\web\Setor');
+    }
 }

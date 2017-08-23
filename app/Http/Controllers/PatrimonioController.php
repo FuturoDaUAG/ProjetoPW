@@ -10,6 +10,10 @@ use web\Http\Requests\PatrimonioRequest;
 
 class PatrimonioController extends Controller {
 
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     public function listar() {
         $patrimonio = Patrimonio::paginate(10);
         
@@ -53,6 +57,18 @@ class PatrimonioController extends Controller {
         $patrimonio->marca_id = $request->marca_id;
         $patrimonio->update();
         return redirect("patrimonio/");
+    }
+    
+    public function visualizar($id)
+    {
+        $patrimonio = Patrimonio::find($id);
+        return view('patrimonio.visualizar')->with('patrimonio', $patrimonio);
+    }
+    
+    public function remover($id){
+        $patrimonio = patrimonio::find($id);
+        $patrimonio->delete();
+        return redirect()->action('PatrimonioController@listar');
     }
 
 }

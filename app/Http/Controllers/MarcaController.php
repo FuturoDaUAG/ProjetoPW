@@ -7,6 +7,10 @@ use web\Marca;
 
 class MarcaController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     public function prepararAdicionar(){
         return view('marca.adicionar');
     }

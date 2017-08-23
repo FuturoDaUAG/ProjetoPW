@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('index');
 });
@@ -34,6 +35,8 @@ Route::get('/patrimonio/adicionar', 'PatrimonioController@prepararAdicionar');
 Route::post('/patrimonio/adicionar', 'PatrimonioController@adicionar');
 Route::get('/patrimonio/editar/{id}','PatrimonioController@editar');
 Route::post('/patrimonio/atualizar', 'PatrimonioController@atualizar');
+Route::get('/patrimonio/visualizar/{id}', 'PatrimonioController@visualizar');
+Route::get('/patrimonio/remover/{id}', 'PatrimonioController@remover');
 
 /*------------------------------ Marca --------------------------------------------------------*/
 Route::get('/marca', 'MarcaController@listar');
@@ -74,6 +77,13 @@ Route::get('/setor/remover/{id}', 'SetorController@remover');
 Route::get('/setor/visualizar/{id}', 'SetorController@visualizar');
 Route::get('/setor/listar', 'SetorController@listar');
 
+<<<<<<< HEAD
 /*------------------------------ Solicitação---------------------------------------------------*/
 Route::get('/solicitacao/adicionar', 'SolicitacaoController@prepararAdicionar');
 Route::post('/solicitacao/adicionar', 'SolicitacaoController@adicionar');
+=======
+
+Auth::routes();
+
+Route::get('/index', 'HomeController@index')->name('home');
+>>>>>>> 63298016783898f4d2b1242d524976cc9a3cf6c8

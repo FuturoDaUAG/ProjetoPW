@@ -10,6 +10,6 @@ class Marca extends Model
     protected $fillable = ['descricao'];
     
     public function patrimonio(){
-        return $this->hasOne('\web\Patrimonio');
+        return $this->hasMany('\web\Patrimonio');
     }
 }

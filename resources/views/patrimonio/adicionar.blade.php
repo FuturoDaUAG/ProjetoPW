@@ -39,11 +39,13 @@
                     
                     <div>
                         Marca: <br/>
+                        
                         <select name="marca_id">
                             @foreach ($m as $marca)
 				<option value="{{$marca -> id}}"> {{$marca -> descricao}}</option>
                             @endforeach
                         </select>
+                        <a href="/marca/adicionar"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
                     </div>
 
                     <div class="col-md-12">
