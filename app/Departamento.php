@@ -13,8 +13,10 @@ class Departamento extends Model
 public function usuarios() {
 
       return $this->hasMany('web\Usuario');
-     
-      return $this->belongsTo('web\Usuario');   
+}
+public function usuario(){
+
+    return $this->belongsTo('web\Usuario');   
    }
    
 }

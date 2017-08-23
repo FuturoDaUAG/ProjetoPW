@@ -56,12 +56,15 @@
                             <input type="text" name="descricao" class="form-control" id=""  value="{{ old('descricao') }}">                           </div>
                             </div>   
                     
-                    
-                        <div class="form-group col-lg-6">
-                                <!-- <label>@lang('messages.matricula')</label> -->
-                                <!-- Value '1' porque já está cadastrado no banco esse usuário, e não pode deixar esse campo NULL-->
-                                <input type="hidden" name="setor_id" class="form-control" id=""  value="{{ 1 }}">
+                          <div class="form-group col-lg-8">
+                                <label>@lang('messages.setor')</label>
+                                <select class="selectpicker" name="setor_id">
+                                    @foreach($setors as $setor)
+                                        <option value="{{ $setor->id }}">{{ $setor->nome }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+
                         <div class="col-md-12">
                             <button type="submit" class="btn-inverse btn-large btn-block">Registrar</button>
                         </div>

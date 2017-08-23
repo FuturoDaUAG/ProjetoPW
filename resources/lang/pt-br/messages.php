@@ -18,7 +18,8 @@ return [
     'ramal' => 'Ramal',
     'predio' => 'Prédio',
     'data' => 'Data',
-    'drecricao' => 'Descrição',
+    'descricao' => 'Descrição',
+    'setor' => 'Setor',
 ];
 
 ?>

@@ -4,12 +4,14 @@ namespace web\Http\Controllers;
 
  use web\Http\Requests\SolicitacaoRequest;
  use web\Solicitacao;
+ use web\Setor;
 
 class SolicitacaoController extends Controller
  
 {
     public function prepararAdicionar(SolicitacaoRequest $request){
-		return view('solicitacao.adicionar');
+         $setor = Setor::all();
+	return view('solicitacao.adicionar')->with('setors', $setor);
     
     }
     public function adicionar(SolicitacaoRequest $request) {

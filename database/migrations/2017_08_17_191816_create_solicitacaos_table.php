@@ -25,8 +25,8 @@ class CreateSolicitacaosTable extends Migration
             $table->string('curso');
               $table->date('data');
               $table->text('descricao');
-              $table->timestamps();
               $table->foreign('setor_id')->references('id')->on('setors');
+              $table->timestamps();
         });
     }
 

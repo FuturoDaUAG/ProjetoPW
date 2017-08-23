@@ -21,9 +21,9 @@ class Usuario extends Model
     public function departamento() {
         return $this->belongsTo('web\Departamento');
     }
-
-/*public function departamento() {
+    public function departamentos(){
+    
         return $this->hasMany('web\Departamento');   
-   }*/
+   }
      
 }

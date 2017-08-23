@@ -13,7 +13,7 @@ class PatrimonioSeeder extends Seeder
     {       
         
     $descricao = array("Monitor","Mouse","Desktop","Teclado","Impressora","Estabilizador","DataShow");
-        for ($i = 1; $i <= 5000; $i++){
+        for ($i = 1; $i <= 10; $i++){
         DB::table('patrimonios')->insert(['descricao' => $descricao[rand(0,6)],
                                             'valor' => rand(10,5000),
                                             'numeropatrimonio' => '2017'.$i,
