@@ -2,8 +2,6 @@
 
 namespace web\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-use Request;
 use web\Patrimonio;
 use web\Marca;
 use web\Http\Requests\PatrimonioRequest;
