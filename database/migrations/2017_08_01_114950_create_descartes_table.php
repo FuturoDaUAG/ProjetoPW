@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHistoricoPatrimonioStatusTable extends Migration
+class CreateDescartesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateHistoricoPatrimonioStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('historicopatrimoniostatus', function (Blueprint $table) {
-		$table->increments('id');
-		$table->timestamps();
-	});
+        Schema::create('descartes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('motivo');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -26,6 +27,6 @@ class CreateHistoricoPatrimonioStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historicopatrimoniostatus');
+        Schema::dropIfExists('descartes');
     }
 }

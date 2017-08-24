@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/index';
 
     /**
      * Create a new controller instance.
@@ -47,11 +47,22 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $regras = [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+        ];
+        /*
+        $mensagens = [
+            'unique' => 'Já existe um usuario com este email.',
+            'confirmed' => 'A confirmação da senha não corresponde.',
+            'string' => 'Caracter invalido.',
+            'min:6' => 'A senha deve conter pelo menos 6 caracteres',
+            'max:255' => 'Numero maximo atingido.',
+        ];
+         * 
+         */
+        return Validator::make($data,$regras);
     }
 
     /**

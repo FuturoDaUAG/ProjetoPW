@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('index');
 });
@@ -30,10 +31,15 @@ Route::post('/usuario/muda/alterar', 'UsuarioController@alterar');
 
 /*------------------------------ Patrimônio ---------------------------------------------------*/
 Route::get('/patrimonio', 'PatrimonioController@listar');
+Route::get('/patrimonio/pesquisar', 'PatrimonioController@pesquisar');
 Route::get('/patrimonio/adicionar', 'PatrimonioController@prepararAdicionar');
 Route::post('/patrimonio/adicionar', 'PatrimonioController@adicionar');
 Route::get('/patrimonio/editar/{id}','PatrimonioController@editar');
 Route::post('/patrimonio/atualizar', 'PatrimonioController@atualizar');
+Route::get('/patrimonio/visualizar/{id}', 'PatrimonioController@visualizar');
+Route::get('/patrimonio/remover/{id}', 'PatrimonioController@remover');
+Route::get('/patrimonio/transferir/{id}', 'PatrimonioController@prepararTransferir');
+Route::post('/patrimonio/transferir', 'PatrimonioController@transferir');
 
 /*------------------------------ Marca --------------------------------------------------------*/
 Route::get('/marca', 'MarcaController@listar');
@@ -77,4 +83,12 @@ Route::get('/setor/listar', 'SetorController@listar');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/index', 'HomeController@index')->name('home');
+Route::get('/departamento', 'DepartamentoController@lista');
+Route::get('/departamento/novo', 'DepartamentoController@novo');
+Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
+Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
+Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
+
+

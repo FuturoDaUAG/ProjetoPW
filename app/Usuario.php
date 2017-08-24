@@ -1,24 +1,20 @@
 <?php
+
 namespace web;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
-{
+class Usuario extends Model {
 
-    public function servidor()
-    {
+    public function servidor() {
         return $this->hasOne('web\Servidor');
     }
 
-
-    protected $table ='usuarios';
-    
-    protected $fillable = ['apelido','email','senha'];
-
+    protected $table = 'usuarios';
+    protected $fillable = ['apelido', 'email', 'senha', 'departamento_id'];
 
     public function departamento() {
-        return $this->belongsTo('web\Departamento');
+        return $this->hasMany('web\Departamento');
     }
-     
+
 }

@@ -23,4 +23,9 @@ class Setor extends Model
     {
         return $this->belongsTo('web\Sala');
     }
+    
+    public function patrimonio()
+    {
+        return $this->belongsToMany('\web\Patrimonio');
+    }
 }
