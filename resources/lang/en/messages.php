@@ -6,7 +6,7 @@ return [
     'apelido' => 'Apelido',
     'cargo' => 'Cargo',
     'curso' => 'Curso',
-    'descricao' => 'Descricao',
+    'descricao' => 'Descrição',
     'email'=>'Email',
     'matricula' => 'Matricula',
     'nome' => 'Nome',

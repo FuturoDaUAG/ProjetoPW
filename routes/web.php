@@ -74,3 +74,7 @@ Route::get('/setor/remover/{id}', 'SetorController@remover');
 Route::get('/setor/visualizar/{id}', 'SetorController@visualizar');
 Route::get('/setor/listar', 'SetorController@listar');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
