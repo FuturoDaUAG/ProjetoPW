@@ -1,6 +1,8 @@
 @extends('layout.principal')
 @section('conteudo')
 
+
+
 <form action="adicionar" method='post'>
     <fieldset>
         <div class="container-fluid">
@@ -51,6 +53,28 @@
                                 @endforeach
                             </select>
                             <a href="/marca/adicionar"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
+                        </div>
+                        
+                        <div class="form-group col-lg-6">
+
+                            <div class="form-group">
+                                <label for="">Grupo</label>
+                                <select class="form-control input-sm" name="">
+                                    <option value="">
+                                        
+                                    </option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="">Subgrupo</label>
+                                <select class="form-group input-sm">
+                                    <option value="">
+                                        
+                                    </option>
+                                </select>
+                            </div>
+
                         </div>
 
                         <div class="col-md-12">

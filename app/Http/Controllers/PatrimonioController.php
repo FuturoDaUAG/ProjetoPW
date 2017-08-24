@@ -22,6 +22,11 @@ class PatrimonioController extends Controller {
         $marca = Marca::all();
         return view('patrimonio.adicionar')->with('m', $marca);
     }
+    
+    public function pesquisar(PatrimonioRequest $request){
+        $patrimonio = Patrimonio::where('descricao', 'like', $request-> nome."%")->paginate(10);
+        return view('patrimonio.listagem')->withPatrimonio($patrimonio);
+    }
 
     public function adicionar(PatrimonioRequest $request) {
         $patrimonio = new Patrimonio();
@@ -32,6 +37,7 @@ class PatrimonioController extends Controller {
         $patrimonio->numeropregao = $request->numeropregao;
         $patrimonio->numeropantigo = $request->numeropantigo;
         $patrimonio->numeronotafiscal = $request->numeronotafiscal;
+        $patrimonio->dataaquisicao = $request->dataaquisicao;
         $patrimonio->marca_id = $request->marca_id;
         $patrimonio->save();
         return redirect("patrimonio/");
@@ -63,10 +69,17 @@ class PatrimonioController extends Controller {
         return view('patrimonio.visualizar')->with('patrimonio', $patrimonio);
     }
     
-//    public function remover($id){
-//        $patrimonio = patrimonio::find($id);
-//        $patrimonio->delete();
-//        return redirect()->action('PatrimonioController@listar');
-//    }
+    public function prepararTransferir(PatrimonioRequest $request){
+        $patrimonio = Patrimonio::find($request -> id);
+        $setor = \web\Setor::all();
+        $status = \web\Status::all();
+        return view('patrimonio.transferir')->with('p', $patrimonio)->with('s', $setor)->with('st', $status);
+    }
+    
+    public function transferir(PatrimonioRequest $request){
+        $patrimonio = Patrimonio::find($request -> id);
+        $patrimonio->setor()->attach($request -> setor_id, array('dataaquisicao' => $request->dataaquisicao));
+        return redirect("patrimonio/");
+    }
 
 }
