@@ -21,8 +21,10 @@ class UsuarioController extends Controller {
     return view('usuario.detalhes')->with('u', $usuario);
 }
     public function novo() {
+        
         $tipousuario = TipoUsuario::all();
-        if (empty($tipousuario)) {
+        
+       if (empty($tipousuario)) {
             return view('auth/register')->with('tiposusuarios',null);
         }
         return view('auth/register')->with('tiposusuarios',$tipousuario);
