@@ -20,11 +20,6 @@ class DepartamentoController extends Controller
         return view('departamento.listagem')->withDepartamentos($departamentos);
     }
  
-       
-   
-
-    
-
     public function novo(){
 
         return view('departamento.formulario');
@@ -42,7 +37,16 @@ class DepartamentoController extends Controller
     }
 
     
+     public function mostra($id)
+    {
 
+        $departamento = Departamento::find($id);
+        if(empty($departamento)) {
+            return "Esse Sala não existe";
+        }
+        return view('departamento.detalhes')->with('d', $departamento);
+    }
+    
     public function adiciona(DepartamentoRequest $request){
 
         Departamento::create($request->all());

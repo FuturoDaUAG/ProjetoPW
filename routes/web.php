@@ -35,6 +35,7 @@ Route::get('/departamento', 'DepartamentoController@lista');
 Route::get('/departamento/novo', 'DepartamentoController@novo');
 Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
 Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
+Route::get('/departamento/detalhes/{id}','DepartamentoController@mostra')->where('id', '[0-9]+');
 Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
 /*------------------------------ Patrimônio ---------------------------------------------------*/
 Route::get('/patrimonio', 'PatrimonioController@listar');
