@@ -15,7 +15,7 @@ class CreatePatrimoniosTable extends Migration
     {
         Schema::create('patrimonios', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('marca_id')->unsigned();
+            $table->integer('marca_id')->nullable()->unsigned();
             $table->integer('descarte_id')->nullable()->unsigned();
             $table->string('descricao');
             $table->integer('subgrupo_id')->unsigned();

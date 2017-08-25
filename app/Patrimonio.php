@@ -20,4 +20,8 @@ class Patrimonio extends Model
     public function subgrupo(){
         return $this->belongsTo('\web\Subgrupo');
     }
+    
+    public function status(){
+        return $this->belongsToMany('\web\Status');
+    }
 }

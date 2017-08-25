@@ -25,6 +25,15 @@
     <li>
         <h4><b> Número Nota Fiscal: </b> {{ $patrimonio->numeronotafiscal}}</h4>
     </li>
+    <li>
+        <h4><b> Grupo: </b> {{ $patrimonio->subgrupo->grupo->descricao}}</h4>
+    </li>
+    <li>
+        <h4><b> Subgrupo: </b> {{ $patrimonio->subgrupo->descricao}}</h4>
+    </li>
+    <li>
+        <h4><b> Status: </b> {{$teste->descricao}}</h4>
+    </li>
 </ul>
 
 @stop

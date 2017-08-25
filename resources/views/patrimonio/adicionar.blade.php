@@ -43,26 +43,17 @@
                         </div>
 
                         <div class="form-group col-lg-6">
-                            Marca: <input type="text" name="marca" /> <br/>
-
-                            <select name="marca_id">
-                                @foreach ($m as $marca)
-                                <option value="{{$marca -> id}}"> {{$marca -> descricao}}</option>
-                                @endforeach
-                            </select>
-                            <a href="/marca/adicionar"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
+                            Marca: <input type="text" class="form-control" name="marca" /> <br/>
                         </div>
 
                         <div class="form-group col-lg-6">
-                                <label for="">Grupo</label>
-                                <input type="text" name="grupo" />
+                            Grupo: <input type="text" class="form-control" name="grupo" />
                         </div>
 
                         <div class="form-group col-lg-6" >
-                                <label for="">Subgrupo</label>
-                                <input type="text" name="subgrupo"/>
+                            Subgrupo: <input type="text" class="form-control" name="subgrupo"/>
                         </div>
-                            
+
                         <div class="col-md-12">
                             <input type="submit" value="Cadastrar"/>
                         </div>
