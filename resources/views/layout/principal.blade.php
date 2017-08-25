@@ -13,6 +13,7 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
         <!-- Styles -->
         <link href="{{ asset('css/prim.css') }}" rel="stylesheet">
@@ -79,6 +80,14 @@
                                     <li><a href="{{action('PatrimonioController@listar')}}" >Bens Móveis</a></li>
 
                                 </ul>
+                            </li>
+                            <li class="dropdown1 col-sm-3">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solicitações</a>
+                                <ul class="dropdown-menu ">
+
+                                    <li ><a href="{{action('SolicitacaoController@listar')}}" >Bem Permanente</a></li>
+
+                                </ul>		
                             </li>
                             @endif
                         </ul>
@@ -150,7 +159,7 @@
         body,html {
             font-family: 'Open Sans', 'sans-serif';
             height: 100%;
-            background-repeat: no-repeat;
+            background-repeat: repeat-y;
             background-image: linear-gradient(rgb(217, 227, 231), rgb(217, 227, 231));
         }
         .mega-dropdown {

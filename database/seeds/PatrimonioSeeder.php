@@ -1,16 +1,12 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
 class PatrimonioSeeder extends Seeder {
-
     /**
      * Run the database seeds.
      *
      * @return void
      */
     public function run() {
-
         $descricao = array("Monitor", "Mouse", "Desktop", "Teclado", "Impressora", "Estabilizador", "DataShow");
         $date = array("2017/08/01", "2017/08/10", "2017/07/01", "2017/06/12");
         for ($i = 1; $i <= 100; $i++) {
@@ -26,5 +22,4 @@ class PatrimonioSeeder extends Seeder {
                 'subgrupo_id'=>rand(1,3)]);
         }
     }
-
 }

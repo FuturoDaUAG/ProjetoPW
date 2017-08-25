@@ -105,6 +105,13 @@ Route::get('/setor/ordemCurso', 'SetorController@ordemCurso')->middleware('auth.
 Route::get('/setor/ordemResponsavel', 'SetorController@ordemResponsavel')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 
 
+/*------------------------------ Solicitação---------------------------------------------------*/
+Route::get('/solicitacao/adicionar', 'SolicitacaoController@prepararAdicionar');
+Route::post('/solicitacao/adicionar', 'SolicitacaoController@adicionar');
+Route::get('/solicitacao/listar', 'SolicitacaoController@listar');
+Route::get('/solicitacao/remover/{id}', 'SolicitacaoController@remover');
+Route::get('/solicitacao/visualizar/{id}', 'SolicitacaoController@visualizar');
+
 Route::get('/setor/novo', 'SetorController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::post('/setor/salvar', 'SetorController@salvar')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/setor/recuperar/{id}', 'SetorController@recuperar')->middleware('auth.TipoUsuario:Administrador,Operador');

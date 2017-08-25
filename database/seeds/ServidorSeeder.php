@@ -11,7 +11,7 @@ class ServidorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('servidors')->insert(['nome' => 'Maria', 'cargo' => 'Assistente',
-                                        'matricula' => '123', 'usuario_id' => 1]);
+        DB::table('servidors')->insert(['usuario_id' => 1,'nome' => 'Maria', 'cargo' => 'Assistente',
+                                        'matricula' => '123']);
     }
 }

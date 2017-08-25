@@ -1,7 +1,10 @@
 <?php
+
 namespace web\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
-class PredioRequest extends FormRequest
+
+class SolicitacaoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -12,6 +15,7 @@ class PredioRequest extends FormRequest
     {
         return true;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -20,13 +24,18 @@ class PredioRequest extends FormRequest
     public function rules()
     {
         return [
-                'descricao' => 'required|max:100',
-                ];
+              //'data'=>'required|max:10',
+        ];
+        
+        
     }
-     public function messages()
+    
+    public function messages()
     {
-      return [
-                'decricao.required' => 'O :attribute  não pode ficar vazio.', 
-      ];
+        return [
+            //'matricula.required' => 'O campo :attribute não pode ficar vazio.',
+        ];
     }
+    
+    
 }

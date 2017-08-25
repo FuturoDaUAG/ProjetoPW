@@ -1,9 +1,6 @@
 <?php
-
 namespace web\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
-
 class SalaRequest extends FormRequest
 {
     /**
@@ -15,14 +12,11 @@ class SalaRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-
-
     public function rules()
     {
         return [
@@ -32,14 +26,12 @@ class SalaRequest extends FormRequest
         
         ];
     }
-
      public function messages()
     {
       return [
                 'descricao.required' => 'O :attribute  não pode ficar vazio.', 
                 'ramal.required' => 'O :attribute  não pode ficar vazio.', 
                 'predio_id'=> 'O :attribute  não pode ficar vazio.', 
-
       ];
     }
 }
