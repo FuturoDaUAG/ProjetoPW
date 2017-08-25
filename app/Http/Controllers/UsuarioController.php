@@ -2,10 +2,10 @@
 
 namespace web\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Request;
 use web\Usuario;
-use web\Http\Requests\UsuariosRequest;
+
 
 class UsuarioController extends Controller {
 
@@ -28,7 +28,7 @@ class UsuarioController extends Controller {
 
     public function novo() {
 
-        return view('usuario.formulario');
+        return view('auth/register');
     }
 
     public function muda($id) {
@@ -39,12 +39,15 @@ class UsuarioController extends Controller {
         return view('usuario.form_alterar')->with('u', $usuario);
     }
 
-    public function adiciona(UsuariosRequest $request) {
+    public function adiciona(Request $request) {
 
-        Usuario::create($request->all());
-        return redirect()
-                        ->action('UsuarioController@lista')
-                        ->withInput(Request::only('apelido'));
+        Usuario::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'departamento_id' => '1',
+        ]);
+        return redirect()->action('UsuarioController@lista');
     }
 
     public function alterar(UsuariosRequest $request) {

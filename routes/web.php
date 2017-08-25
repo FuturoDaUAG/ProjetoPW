@@ -80,4 +80,4 @@ Route::get('/setor/listar', 'SetorController@listar');
 
 Auth::routes();
 
-Route::get('/index', 'HomeController@index')->name('home');
+Route::get('/index', 'HomeController@index')->name('index');

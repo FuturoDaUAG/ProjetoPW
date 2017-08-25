@@ -45,8 +45,8 @@
                                     <li class="dropdown1 col-sm-3">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{action('UsuarioController@novo')}}">Novo</a></li>
-                                            <li><a href="{{action('UsuarioController@lista')}}">Todos</a></li>
+                                            <li><a href="{{action('UsuarioController@novo')}}" class="glyphicon glyphicon-user">Novo</a></li>
+                                            <li><a href="{{action('UsuarioController@lista')}}" class="glyphicon glyphicon-list">Todos</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="#">link</a></li>
                                         </ul>
@@ -202,7 +202,7 @@
                             <!-- Authentication Links -->
                             @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            
                             @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

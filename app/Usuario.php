@@ -1,11 +1,13 @@
 <?php
 namespace web;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
-
+    use Notifiable;
+    
     public function servidor()
     {
         return $this->hasOne('web\Servidor');
@@ -14,8 +16,11 @@ class Usuario extends Model
 
     protected $table ='usuarios';
     
-    protected $fillable = ['apelido','email','senha'];
-
+    protected $fillable = ['name','email','password','departamento_id'];
+    
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
 
     public function departamento() {
         return $this->belongsTo('web\Departamento');

@@ -15,18 +15,18 @@
                         <h2 class="dark-grey">Registrar</h2>
 
                         <div class="form-group col-lg-12">
-                            <label>@lang('messages.apelido')</label>
-                            <input type="text" name="apelido" class="form-control" id="" value="{{ old('apelido') }}">
+                            <label>@lang('messages.nome')</label>
+                            <input type="text" name="name" class="form-control" id="" value="{{ old('apelido') }}">
                         </div>
 
                         <div class="form-group col-lg-6">
                             <label>@lang('messages.senha')</label>
-                            <input type="password" name="senha" class="form-control" id=""  value="{{ old('apelido') }}">
+                            <input type="password" name="password" class="form-control" id=""  value="{{ old('apelido') }}">
                         </div>
 
                         <div class="form-group col-lg-6">
                             <label>Repita @lang('messages.senha')</label>
-                            <input type="password" name="" class="form-control" id="" value= value="{{ old('apelido') }}">
+                            <input type="password" name="" class="form-control" id="" value= "{{ old('apelido') }}">
                         </div>
 
                         <div class="form-group col-lg-6">
