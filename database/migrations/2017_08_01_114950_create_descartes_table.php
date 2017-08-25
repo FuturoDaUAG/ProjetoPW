@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubgruposTable extends Migration
+class CreateDescartesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateSubgruposTable extends Migration
      */
     public function up()
     {
-        Schema::create('subgrupos', function (Blueprint $table) {
+        Schema::create('descartes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('grupo_id')->unsigned();
-            $table->String('descricao');
-            $table->foreign('grupo_id')->references('id')->on('grupos');
+            $table->string('motivo');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -28,6 +27,6 @@ class CreateSubgruposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subgrupos');
+        Schema::dropIfExists('descartes');
     }
 }

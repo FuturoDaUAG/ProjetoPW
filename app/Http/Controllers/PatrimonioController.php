@@ -4,6 +4,9 @@ namespace web\Http\Controllers;
 
 use web\Patrimonio;
 use web\Marca;
+use web\Grupo;
+use web\Subgrupo;
+use web\Status;
 use web\Http\Requests\PatrimonioRequest;
 
 class PatrimonioController extends Controller {
@@ -14,17 +17,24 @@ class PatrimonioController extends Controller {
     
     public function listar() {
         $patrimonio = Patrimonio::paginate(10);
-        
         return view('patrimonio.listagem')->withPatrimonio($patrimonio);
     }
 
     public function prepararAdicionar() {
-        $marca = Marca::all();
-        return view('patrimonio.adicionar')->with('m', $marca);
+        return view('patrimonio.adicionar');
+    }
+   
+    
+    public function pesquisar(PatrimonioRequest $request){
+        $patrimonio = Patrimonio::where($request->filtro, 'like', "%".$request-> texto."%")->orderBy('id')->paginate(10);
+        return view('patrimonio.listagem')->withPatrimonio($patrimonio);
     }
 
     public function adicionar(PatrimonioRequest $request) {
         $patrimonio = new Patrimonio();
+        $marca = Marca::where('descricao', 'like', strtolower($request->marca))->first();
+        $subgrupo = Subgrupo::where('descricao', 'like', strtolower($request->subgrupo))->first();
+        $grupo = Grupo::where('descricao', 'like', strtolower($request->grupo))->first();
         $patrimonio->descricao = $request-> descricao;
         $patrimonio->valor = $request->valor;
         $patrimonio->numeroempenho = $request->numeroempenho;
@@ -32,8 +42,34 @@ class PatrimonioController extends Controller {
         $patrimonio->numeropregao = $request->numeropregao;
         $patrimonio->numeropantigo = $request->numeropantigo;
         $patrimonio->numeronotafiscal = $request->numeronotafiscal;
-        $patrimonio->marca_id = $request->marca_id;
+        $patrimonio->dataaquisicao = $request->dataaquisicao;
+        
+        if($marca == null){
+            $marca = new Marca();
+            $marca -> descricao = $request -> marca;
+            $marca->save();
+        }
+        if($grupo == null){
+            $grupo = new Grupo();
+            $subgrupo = new Subgrupo();
+            $grupo->descricao = $request->grupo;
+            $grupo->save();
+            $subgrupo -> descricao = $request->subgrupo;
+            $subgrupo->grupo_id = $grupo->id;
+            $subgrupo->save();
+        }
+        if($grupo!=null){
+            if($subgrupo == null){
+                $subgrupo = new Subgrupo();
+                $subgrupo->descricao = $request->subgrupo;
+                $subgrupo->grupo_id = $grupo->id;
+                $subgrupo->save();
+            }
+        }
+        $patrimonio->marca_id = $marca->id;
+        $patrimonio->subgrupo_id = $subgrupo -> id;
         $patrimonio->save();
+        $patrimonio->status()->attach(3,['data' => $request->dataaquisicao]);
         return redirect("patrimonio/");
     }
     
@@ -60,13 +96,34 @@ class PatrimonioController extends Controller {
     public function visualizar($id)
     {
         $patrimonio = Patrimonio::find($id);
-        return view('patrimonio.visualizar')->with('patrimonio', $patrimonio);
+        $teste = $patrimonio->status->last();
+        return view('patrimonio.visualizar')->with('patrimonio', $patrimonio)->with('teste',$teste);
     }
     
-//    public function remover($id){
-//        $patrimonio = patrimonio::find($id);
-//        $patrimonio->delete();
-//        return redirect()->action('PatrimonioController@listar');
-//    }
+    public function prepararTransferir(PatrimonioRequest $request){
+        $patrimonio = Patrimonio::find($request -> id);
+        return view('patrimonio.transferir')->with('p', $patrimonio)->with('s', $setor)->with('st', $status);
+    }
+    
+    public function transferir(PatrimonioRequest $request){
+        $patrimonio = Patrimonio::find($request -> id);
+        $patrimonio->setor()->attach($request -> setor_id, array('dataaquisicao' => $request->dataaquisicao));
+        $patrimonio->status()->attach(2, ['data' => $request->dataaquisicao]);
+        return redirect("patrimonio/");
+    }
+    
+    public function ordemAlfabetica() {
+        $patrimonio = Patrimonio::orderBy('descricao')->paginate(10);
+        return view('patrimonio.listagem')->withPatrimonio($patrimonio);
+    }
 
+    public function ordemNumeroPatrimonio() {
+        $patrimonio = Patrimonio::orderBy('numeropatrimonio')->paginate(10);
+        return view('patrimonio.listagem')->withPatrimonio($patrimonio);
+    }
+    
+    public function ordemNumeroEmpenho() {
+        $patrimonio = Patrimonio::orderBy('numeroempenho')->paginate(10);
+        return view('patrimonio.listagem')->withPatrimonio($patrimonio);
+    }
 }

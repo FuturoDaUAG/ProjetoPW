@@ -11,31 +11,31 @@
                     <input type="hidden" name="id"  value="{{$p->id}}"/>
                     <br>
                     <div class="form-group col-lg-6">
-                        Descrição: <input name="descricao" type="text" value="{{$p->descricao}}"/>
+                        Descrição: <input name="descricao" class="form-control" type="text" value="{{$p->descricao}}"/>
                     </div>
 
                     <div class="form-group col-lg-6"> 
-                        Valor: <input name='valor' type="text" value="{{$p->valor}}"/>
+                        Valor: <input name='valor' class="form-control" type="text" value="{{$p->valor}}"/>
                     </div>  
                     
                     <div class="form-group col-lg-6">
-                        Número Patrimônio: <input name="numeropatrimonio" type="text" value="{{$p->numeropatrimonio}}"/>
+                        Número Patrimônio: <input name="numeropatrimonio" class="form-control" type="text" value="{{$p->numeropatrimonio}}"/>
                     </div>
                     
                     <div class="form-group col-lg-6">
-                        Número Patrimônio Antigo: <input name="numeropantigo" type="text" value="{{$p->numeropantigo}}"/>
+                        Número Patrimônio Antigo: <input name="numeropantigo" class="form-control" type="text" value="{{$p->numeropantigo}}"/>
                     </div>
 
                     <div class="form-group col-lg-6">
-                        Número Empenho: <input name="numeroempenho" type="text"value="{{$p->numeroempenho}}"/>
+                        Número Empenho: <input name="numeroempenho" class="form-control" type="text"value="{{$p->numeroempenho}}"/>
                     </div>
 
                     <div class="form-group col-lg-6">
-                        Número Pregão: <input name="numeropregao" type="text"value="{{$p->numeropregao}}"/>
+                        Número Pregão: <input name="numeropregao" class="form-control" type="text"value="{{$p->numeropregao}}"/>
                     </div>
 
                     <div class="form-group col-lg-6">
-                        Número Nota Fiscal <input name="numeronotafiscal" type="text" value="{{$p-> numeronotafiscal}}"/>
+                        Número Nota Fiscal <input name="numeronotafiscal" class="form-control" type="text" value="{{$p-> numeronotafiscal}}"/>
                     </div>
                     <div>
                         Marca: <br/>

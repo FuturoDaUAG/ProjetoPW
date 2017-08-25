@@ -37,31 +37,32 @@
                         <div class="form-group col-lg-6">
                             Número Nota Fiscal <input name="numeronotafiscal" class="form-control" type="text" />
                         </div>
-                        
+
                         <div class="form-group col-lg-6">
                             Data Aquisição: <input name="dataaquisicao"  class="form-control" type="date" />
                         </div>
 
                         <div class="form-group col-lg-6">
-                            Marca: <br/>
+                            Marca: <input type="text" class="form-control" name="marca" /> <br/>
+                        </div>
 
-                            <select name="marca_id">
-                                @foreach ($m as $marca)
-                                <option value="{{$marca -> id}}"> {{$marca -> descricao}}</option>
-                                @endforeach
-                            </select>
-                            <a href="/marca/adicionar"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
+                        <div class="form-group col-lg-6">
+                            Grupo: <input type="text" class="form-control" name="grupo" />
+                        </div>
+
+                        <div class="form-group col-lg-6" >
+                            Subgrupo: <input type="text" class="form-control" name="subgrupo"/>
                         </div>
 
                         <div class="col-md-12">
                             <input type="submit" value="Cadastrar"/>
                         </div>
-
                     </div>
                 </div>
             </section>  
         </div>
     </fieldset>
 </form>
+
 @stop
 

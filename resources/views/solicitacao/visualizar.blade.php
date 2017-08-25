@@ -1,3 +1,22 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Marketplace
+Explore
+ @Joao-Bosco-Jr
+ Sign out
+ Watch 1
+  Star 0
+ Fork 0 FuturoDaUAG/ProjetoPW
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Settings Insights 
+Branch: joao Find file Copy pathProjetoPW/resources/views/solicitacao/visualizar.blade.php
+7c9de73  an hour ago
+@Joao-Bosco-Jr Joao-Bosco-Jr Gera PDF
+1 contributor
+RawBlameHistory    
+96 lines (78 sloc)  3.47 KB
 @extends('layout.principal')
 @section('conteudo')
 <div id="content">
@@ -46,12 +65,9 @@
 <script>
     function demoFromHTML() {
         var pdf = new jsPDF('p', 'pt', 'letter');
-
         // source can be HTML-formatted string, or a reference
         // to an actual DOM element from which the text will be scraped.
         source = $('#content')[0];
-
-
         // we support special element handlers. Register them with jQuery-style 
         // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
         // There is no support for any other type of selectors 
@@ -69,7 +85,6 @@
             left: 60,
             width: 500
         };
-
         // all coords and widths are in jsPDF instance's declared units
         // 'inches' in this case
         pdf.fromHTML(
@@ -81,7 +96,6 @@
                'width': margins.width, // max width of content on PDF
                 'elementHandlers': specialElementHandlers
             },
-
             function (dispose) {
                 // dispose: object with X, Y of the last line add to the PDF 
                 //          this allow the insertion of new lines after html
@@ -89,8 +103,18 @@
             }, margins
         );
     }
-
-
 </script>
 
 @stop
+© 2017 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+API
+Training
+Shop
+Blog
+About

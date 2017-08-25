@@ -16,9 +16,8 @@ class CreatePatrimonioSetorTable extends Migration
         Schema::create('patrimonio_setor', function (Blueprint $table) {
             $table->increments('id');
             $table->date('dataAquisicao');
-            $table->date('dataDevolucao')->nullalbe();
             $table->integer('patrimonio_id')->unsigned();
-            $table->integer('setor_id')->nullable()->unsigned();
+            $table->integer('setor_id')->unsigned();
             $table->foreign('patrimonio_id')->references('id')->on('patrimonios');
             $table->foreign('setor_id')->references('id')->on('setors');
             $table->timestamps();
