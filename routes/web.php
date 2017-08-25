@@ -29,6 +29,15 @@ Route::get('/usuario/remove/{id}','UsuarioController@remove');
 Route::get('/usuario/muda/{id}','UsuarioController@muda')->where('id', '[0-9]+');
 Route::post('/usuario/muda/alterar', 'UsuarioController@alterar');
 
+/*------------------------------ Departamento ---------------------------------------------------*/
+
+Route::get('/departamento', 'DepartamentoController@lista');
+Route::get('/departamento/novo', 'DepartamentoController@novo');
+Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
+Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
+Route::get('/departamento/detalhes/{id}','DepartamentoController@mostra')->where('id', '[0-9]+');
+Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
+
 /*------------------------------ Patrimônio ---------------------------------------------------*/
 Route::get('/patrimonio', 'PatrimonioController@listar');
 Route::get('/patrimonio/orderAlfa', 'PatrimonioController@ordemAlfabetica');
@@ -43,6 +52,7 @@ Route::get('/patrimonio/visualizar/{id}', 'PatrimonioController@visualizar');
 Route::get('/patrimonio/remover/{id}', 'PatrimonioController@remover');
 Route::get('/patrimonio/transferir/{id}', 'PatrimonioController@prepararTransferir');
 Route::post('/patrimonio/transferir', 'PatrimonioController@transferir');
+Route::get('/patrimonio/historico/{id}', 'PatrimonioController@historico');
 
 /*------------------------------ Marca --------------------------------------------------------*/
 Route::get('/marca', 'MarcaController@listar');
@@ -86,10 +96,4 @@ Route::get('/setor/listar', 'SetorController@listar');
 
 Auth::routes();
 
-Route::get('/index', 'HomeController@index')->name('home');
-
-Route::get('/departamento', 'DepartamentoController@lista');
-Route::get('/departamento/novo', 'DepartamentoController@novo');
-Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
-Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
-Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
+Route::get('/index', 'HomeController@index')->name('index');

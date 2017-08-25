@@ -7,16 +7,24 @@
             <section class="container">
                 <div class="container-page">        
                     <div class="col-md-6">
-                        <h2 class="dark-grey">Transferência de Bem Permanente</h2> <br/>
+                        <h2 class="dark-grey">Emprestimo de Bem Permanente</h2> <br/>
                         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                         <input type="hidden" name="id"  value="{{$p->id}}"/>
 
                         <div class="form-group col-lg-6">
-                            Descrição: <input name="descricao" disabled="true" type="text" value="{{$p->descricao}}"/>
+                            Descrição: <input name="descricao" disabled="true" class="form-control" type="text" value="{{$p->descricao}}"/>
                         </div>
                         
                         <div class="form-group col-lg-6">
-                            Data Transferência: <input name="dataaquisicao" class="form-control" type="date" />
+                            Marca: <input name="marca" disabled="true" class="form-control" type="text" value="{{$p->marca->descricao}}"/>
+                        </div>
+                        
+                        <div class="form-group col-lg-6">
+                            Número Patrimônio: <input name="patrimonio" disabled="true" class="form-control" type="text" value="{{$p->numeropatrimonio}}"/>
+                        </div>
+                        
+                        <div class="form-group col-lg-6">
+                            Data do Emprestimo: <input name="dataaquisicao" class="form-control" type="date" />
                         </div>
                         
                         <div class="form-group col-lg-6">

@@ -6,7 +6,6 @@ use web\Patrimonio;
 use web\Marca;
 use web\Grupo;
 use web\Subgrupo;
-use web\Status;
 use web\Http\Requests\PatrimonioRequest;
 
 class PatrimonioController extends Controller {
@@ -102,13 +101,15 @@ class PatrimonioController extends Controller {
     
     public function prepararTransferir(PatrimonioRequest $request){
         $patrimonio = Patrimonio::find($request -> id);
+        $setor = \web\Setor::all();
+        $status = \web\Status::all();
         return view('patrimonio.transferir')->with('p', $patrimonio)->with('s', $setor)->with('st', $status);
     }
     
     public function transferir(PatrimonioRequest $request){
         $patrimonio = Patrimonio::find($request -> id);
         $patrimonio->setor()->attach($request -> setor_id, array('dataaquisicao' => $request->dataaquisicao));
-        $patrimonio->status()->attach(2, ['data' => $request->dataaquisicao]);
+        $patrimonio->status()->attach($request->status_id, ['data' => $request->dataaquisicao]);
         return redirect("patrimonio/");
     }
     
@@ -125,5 +126,15 @@ class PatrimonioController extends Controller {
     public function ordemNumeroEmpenho() {
         $patrimonio = Patrimonio::orderBy('numeroempenho')->paginate(10);
         return view('patrimonio.listagem')->withPatrimonio($patrimonio);
+    }
+    
+    public function historico($id)
+    {
+        $patrimonio = Patrimonio::find($id);
+        $status = $patrimonio->status;
+        $setor = $patrimonio->setor;
+        return view('patrimonio.historico')->with('status', $status)
+                ->with('setor', $setor)
+                ->with('patrimonio', $patrimonio);
     }
 }

@@ -1,5 +1,6 @@
 @extends('layout.principal')
 @section('conteudo')
+<br>
 <h2>Detalhamento de Bem Permanente</h2>
 <br><br>
 
@@ -35,5 +36,7 @@
         <h4><b> Status: </b> {{$teste->descricao}}</h4>
     </li>
 </ul>
+
+<a href="historico/{{$patrimonio->id}}" target="_blank">Histórico</a>
 
 @stop

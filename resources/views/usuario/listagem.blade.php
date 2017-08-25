@@ -13,7 +13,7 @@
 
 <table class="tini table table table-hover table-striped table-bordered" id="usuario-table"  >
   <thead>
-   <td>@lang('messages.apelido')</td>
+   <td>@lang('messages.nome')</td>
    <td>@lang('messages.email')</td>
    <td></td>
   <td></td>
@@ -25,8 +25,7 @@
 @foreach ($usuarios as $u)
 <tbody>
   <tr >
-    <td>{{$u->apelido}} </td>
-    
+    <td>{{$u->name}} </td>
     <td> {{$u->email}}  </td>
 
     <td>

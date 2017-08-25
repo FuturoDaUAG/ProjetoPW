@@ -1,11 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateUsuariosTable extends Migration {
-
     /**
      * Run the migrations.
      *
@@ -13,7 +11,6 @@ class CreateUsuariosTable extends Migration {
      */
     public function up() {
         Schema::create('usuarios', function (Blueprint $table) {
-
             $table->increments('id');
             $table->string('apelido');
             $table->string('email');
@@ -23,7 +20,6 @@ class CreateUsuariosTable extends Migration {
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -32,5 +28,4 @@ class CreateUsuariosTable extends Migration {
     public function down() {
         Schema::dropIfExists('usuarios');
     }
-
 }
