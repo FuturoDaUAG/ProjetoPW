@@ -15,10 +15,12 @@ class CreateSubgruposTable extends Migration
     {
         Schema::create('subgrupos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('grupo_id')->unsigned();
+            $table->String('descricao');
+            $table->foreign('grupo_id')->references('id')->on('grupos');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

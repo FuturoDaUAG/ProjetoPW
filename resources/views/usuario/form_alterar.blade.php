@@ -28,27 +28,27 @@
       <div class="col-md-6">
          <div class="form-group col-lg-12">
           <label>@lang('messages.apelido')</label>
-          <input type="text" name="apelido" class="form-control" id="" value="{{$u->apelido}}">
+          <input type="text" name="apelido" class="form-control"  value="{{$u->apelido}}">
         </div>
         
         <div class="form-group col-lg-6">
           <label>@lang('messages.senha')</label>
-          <input type="password" name="senha" class="form-control" id=""  value="">
+          <input type="password" name="senha" class="form-control"value="">
         </div>
         
         <div class="form-group col-lg-6">
           <label>Repita @lang('messages.senha')</label>
-          <input type="password" name="" class="form-control" id="" value="">
+          <input type="password" name="" class="form-control" value="">
         </div>
                 
         <div class="form-group col-lg-6">
           <label>@lang('messages.email')</label>
-          <input type="email" name="email" class="form-control" id="" value="{{$u->email}}">
+          <input type="email" name="email" class="form-control"value="{{$u->email}}">
         </div>
         
         <div class="form-group col-lg-6">
           <label>Repita @lang('messages.email')</label>
-          <input type="email" name="email" class="form-control" id="" value="{{$u->email}}">
+          <input type="email" name="email" class="form-control"value="{{$u->email}}">
         </div>
          <div class="col-md-12">
         

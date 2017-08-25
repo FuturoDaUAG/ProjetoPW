@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/joao/ProjetoPW/app/Patrimonio.php</file>
+            <file>file:/home/joao/ProjetoPW/database/migrations/2017_08_01_115105_create_patrimonios_table.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Usuario.php</file>
+            <file>file:/home/joao/ProjetoPW/database/migrations/2017_08_01_113354_create_usuarios_table.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Requests/SalaRequest.php</file>
+            <file>file:/home/joao/ProjetoPW/resources/views/solicitacao/adicionar.blade.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/SetorController.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/MarcaController.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Requests/UsuarioRequest.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Setor.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Requests/SetorRequest.php</file>
+            <file>file:/home/joao/ProjetoPW/database/seeds/CursoSeeder.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/PatrimonioController.php</file>
+            <file>file:/home/joao/ProjetoPW/database/seeds/MarcaSeeder.php</file>
+            <file>file:/home/joao/ProjetoPW/routes/web.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/UsuarioController.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/DepartamentoController.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Departamento.php</file>
+            <file>file:/home/joao/ProjetoPW/resources/lang/en/messages.php</file>
+            <file>file:/home/joao/ProjetoPW/resources/lang/pt-br/messages.php</file>
+            <file>file:/home/joao/ProjetoPW/database/seeds/DatabaseSeeder.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/SolicitacaoController.php</file>
+            <file>file:/home/joao/ProjetoPW/database/seeds/SalaSeeder.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Requests/ServidorRequest.php</file>
+            <file>file:/home/joao/ProjetoPW/database/seeds/DepartamentoSeeder.php</file>
+            <file>file:/home/joao/ProjetoPW/database/seeds/PredioSeeder.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Requests/PredioRequest.php</file>
+            <file>file:/home/joao/ProjetoPW/database/migrations/2017_08_17_191816_create_solicitacaos_table.php</file>
+            <file>file:/home/joao/ProjetoPW/database/seeds/SetorSeeder.php</file>
+            <file>file:/home/joao/ProjetoPW/database/seeds/ServidorSeeder.php</file>
+            <file>file:/home/joao/ProjetoPW/app/Http/Controllers/PredioController.php</file>
+            <file>file:/home/joao/ProjetoPW/database/seeds/PatrimonioSeeder.php</file>
+        </group>
+    </open-files>
+</project-private>
