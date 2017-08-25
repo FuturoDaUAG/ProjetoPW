@@ -24,7 +24,18 @@ class SolicitacaoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+              //'data'=>'required|max:10',
+        ];
+        
+        
+    }
+    
+    public function messages()
+    {
+        return [
+            //'matricula.required' => 'O campo :attribute não pode ficar vazio.',
         ];
     }
+    
+    
 }

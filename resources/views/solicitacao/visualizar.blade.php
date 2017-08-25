@@ -1,22 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Explore
- @Joao-Bosco-Jr
- Sign out
- Watch 1
-  Star 0
- Fork 0 FuturoDaUAG/ProjetoPW
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Settings Insights 
-Branch: joao Find file Copy pathProjetoPW/resources/views/solicitacao/visualizar.blade.php
-7c9de73  an hour ago
-@Joao-Bosco-Jr Joao-Bosco-Jr Gera PDF
-1 contributor
-RawBlameHistory    
-96 lines (78 sloc)  3.47 KB
 @extends('layout.principal')
 @section('conteudo')
 <div id="content">
@@ -60,8 +41,9 @@ RawBlameHistory
         <h6><b>PARA USO DA DIREÇÃO ADMINISTRATIVA</b></h6>
         <p><b>__________________________________</br> Assinatura e carimbo</b></p> 
     </div>
-    <button type="button" onclick="demoFromHTML()" >Exportar PDF</button>
+      
 </div>
+<button type="button" onclick="demoFromHTML()" >Exportar PDF</button>
 <script>
     function demoFromHTML() {
         var pdf = new jsPDF('p', 'pt', 'letter');
@@ -91,7 +73,6 @@ RawBlameHistory
             source, // HTML string or DOM elem ref.
             margins.left, // x coord
            margins.top,
-           margins.
                { // y coord
                'width': margins.width, // max width of content on PDF
                 'elementHandlers': specialElementHandlers
@@ -106,15 +87,3 @@ RawBlameHistory
 </script>
 
 @stop
-© 2017 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About

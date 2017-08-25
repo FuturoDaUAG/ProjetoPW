@@ -42,7 +42,7 @@ class SolicitacaoController extends Controller
         $solicitacao->descricao = $request-> descricao;
         $solicitacao->setor_id = $request->setor_id;
         $solicitacao->save();
-        return redirect("solicitacao/adicionar");
+        return redirect("solicitacao/listar");
 }
     public function listar() {
         $solicitacao = Solicitacao::paginate(5);

@@ -6,7 +6,7 @@
         </div>
     @else
         <h1>Solicitações cadastradas</h1>
-     
+        <a href="adicionar" class="btn-sm btn-success  glyphicon glyphicon-plus" > Solicitação <br/></a>
         <table class="tini table table table-hover table-striped table-bordered" id="solicitacao-table"  >
 
             <thead>

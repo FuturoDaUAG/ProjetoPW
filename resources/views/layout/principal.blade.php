@@ -73,10 +73,10 @@
                                 </ul>		
                             </li>
                             <li class="dropdown1 col-sm-3">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solicitações</a>
                                 <ul class="dropdown-menu ">
 
-                                    <li ><a href="#" >novo</a></li>
+                                    <li ><a href="{{action('SolicitacaoController@listar')}}" >Bem Permanente</a></li>
 
                                 </ul>		
                             </li>
@@ -152,8 +152,8 @@
     <style type="text/css">
         body,html {
             font-family: 'Open Sans', 'sans-serif';
-            height: 100%;
-            background-repeat: no-repeat;
+            //height: 100%;
+            background-repeat: repeat-y;
             background-image: linear-gradient(rgb(217, 227, 231), rgb(217, 227, 231));
         }
         .mega-dropdown {
