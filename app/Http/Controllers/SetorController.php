@@ -30,30 +30,7 @@ class SetorController extends Controller
     public function salvar(SetorRequest $request)
     {
         $setor = new Setor();
-        $setor->descricao = $request->descricao;
-        $setor->curso_id = $request->curso_id;
-        //$setor->create($request->all());
-        $servidor = Servidor::where('nome', 'like', strtolower($request->servidor))->first();
-        $sala = Sala::where('nome', 'like', strtolower($request->sala))->first();
-
-        if($servidor == null){
-            $servidor = new Servidor();
-            $servidor->nome = $request->nome;
-            $servidor->save();
-        }
-
-        if($sala == null) {
-            $sala = new Sala();
-            $sala->descricao = $request->desc_sala;
-            $sala->ramal = $request->ramal;
-            $sala->predio_id = $request->predio_id;
-            $sala->save();
-        }
-        $setor->servidor_id = $servidor->id;
-        $setor->sala_id = $sala->id;
-
-        $setor->save();
-
+        $setor->create($request->all());
         return redirect()
             ->action('SetorController@listar')
             ->withInput(Request::only('descricao'));
@@ -97,8 +74,23 @@ class SetorController extends Controller
 
     public function listar()
     {
-        $setores = Setor::paginate(5);
+        $setores = Setor::paginate(10);
         return view('setor.listar', ['setores' => $setores]);
+    }
+
+    public function ordemAlfabetica() {
+        $setores = Setor::orderBy('descricao')->paginate(10);
+        return view('setor.listar')->withSetores($setores);
+    }
+
+    public function ordemResponsavel() {
+        $setores = Setor::orderBy('servidor_id')->paginate(10);
+        return view('setor.listar')->withSetores($setores);
+    }
+
+    public function ordemCurso() {
+        $setores = Setor::orderBy('curso_id')->paginate(10);
+        return view('setor.listar')->withSetores($setores);
     }
 
 }

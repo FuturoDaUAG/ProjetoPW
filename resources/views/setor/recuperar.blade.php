@@ -38,7 +38,7 @@
                                 <select class="selectpicker" name="sala_id">
                                     @foreach($salas as $sala)
                                         @if($setor->sala->id == $sala->id)
-                                            <option value="{{ $sala->id }}" selected>{{ $sala->descricao }}</option>
+                                            <option value="{{ $sala->id }}" selected>{{ $sala->predio->descricao }} - {{ $sala->descricao }}</option>
                                         @else
                                             <option value="{{ $sala->id }}">{{ $sala->descricao }}</option>
                                         @endif

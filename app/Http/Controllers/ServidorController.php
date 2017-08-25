@@ -57,13 +57,28 @@ class ServidorController extends Controller
     }
 
     public function pesquisar(PatrimonioRequest $request){
-        $servidores = Servidor::where('nome', 'like', "%".$request->nome."%")->paginate(10);
+        $servidores = Servidor::where($request->filtro, 'like', "%".$request->nome."%")->paginate(10);
         return view('servidor/listar', ['servidores' => $servidores]);
     }
 
     public function listar()
     {
-        $servidores = Servidor::paginate(5);
+        $servidores = Servidor::paginate(10);
         return view('servidor/listar', ['servidores' => $servidores]);
+    }
+
+    public function ordemAlfabetica() {
+        $servidores = Servidor::orderBy('nome')->paginate(10);
+        return view('servidor.listar')->withServidores($servidores);
+    }
+
+    public function ordemMatricula() {
+        $servidores = Servidor::orderBy('matricula')->paginate(10);
+        return view('servidor.listar')->withServidores($servidores);
+    }
+
+    public function ordemCargo() {
+        $servidores = Servidor::orderBy('cargo')->paginate(10);
+        return view('servidor.listar')->withServidores($servidores);
     }
 }

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <title>{{ config('principal.title', 'Modulo Patrimonio') }}</title>
+    <title>{{ config('principal.title', 'Módulo Patrimônio') }}</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/prim.css') }}" rel="stylesheet">
@@ -40,162 +39,40 @@
                 <ul class="nav navbar-nav">
 
                     @if (!Auth::guest())
-                        <li class="dropdown mega-dropdown">
+                        <li class="dropdown1 col-sm-3">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pessoas </a>
-                            <ul class="dropdown-menu mega-dropdown-menu">
-                                <li class="dropdown1 col-sm-3">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{action('UsuarioController@novo')}}">Novo</a></li>
-                                        <li><a href="{{action('UsuarioController@lista')}}">Todos</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">link</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown1 col-sm-3">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servidor</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="{{action('ServidorController@novo')}}" class="glyphicon glyphicon-user">
-                                                Novo
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{action('ServidorController@listar')}}" class="glyphicon glyphicon-list">
-                                                Todos
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{action('UsuarioController@lista')}}">Usuarios</a></li>
+                                <li role="separator" class="divider"></li>
 
-                                <li class="col-sm-3">Administrador</li>
-
+                                <li><a href="{{action('ServidorController@listar')}}">Servidor</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown mega-dropdown">
+                        <li class="dropdown1 col-sm-3">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locais</a>
-                            <ul class="dropdown-menu mega-dropdown-menu">
+                            <ul class="dropdown-menu ">
 
-                                <li class="dropdown1 col-sm-3">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Setor</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="{{action('SetorController@novo')}}" class="glyphicon glyphicon-hdd">
-                                                Novo
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{action('SetorController@listar')}}" class="glyphicon glyphicon-list">
-                                                Todos
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{action('SetorController@listar')}}" >Setor</a></li>
+                                <li role="separator" class="divider"></li>
 
-                                <li class="dropdown1 col-sm-3">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departamento</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#" class="#">
-                                                Novo
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="#">
-                                                Todos
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{action('DepartamentoController@lista')}}" >Departamento</a></li>
+                                <li role="separator" class="divider"></li>
 
-                                <li class="dropdown1 col-sm-3">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sala</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="{{action('SalaController@novo')}}" class="glyphicon glyphicon-hdd">
-                                                Novo
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{action('SalaController@listar')}}" class="glyphicon glyphicon-list">
-                                                Todos
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{action('SalaController@listar')}}">Sala</a></li>
+                                <li role="separator" class="divider"></li>
 
-                                <li class="dropdown1 col-sm-3">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prédio</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="{{action('PredioController@novo')}}" class="glyphicon glyphicon-hdd">
-                                                Novo
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{action('PredioController@listar')}}" class="glyphicon glyphicon-list">
-                                                Todos
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{action('PredioController@listar')}}" >Prédio</a> </li>
                             </ul>
                         </li>
-                        <li class="dropdown mega-dropdown">
+                        <li class="dropdown1 col-sm-3">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventário</a>
-                            <ul class="dropdown-menu mega-dropdown-menu">
-                                <li class="dropdown1 col-sm-3">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bens Móveis</a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="{{action('PatrimonioController@adicionar')}}" class="glyphicon glyphicon-hdd">
-                                                Novo
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{action('PatrimonioController@listar')}}" class="glyphicon glyphicon-list">
-                                                Todos
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">link
+                            <ul class="dropdown-menu ">
 
-                                </li>
-                                <li class="col-sm-3">link
+                                <li><a href="{{action('PatrimonioController@listar')}}" >Bens Móveis</a></li>
 
-                                </li>
-                                <li class="col-sm-3">link
-
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown mega-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
-                            <ul class="dropdown-menu mega-dropdown-menu">
-                                <li class="dropdown1 col-sm-3">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown Installers</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">link</a></li>
-                                        <li><a href="#">link</a></li>
-                                        <li><a href="#">link</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">linkk</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-sm-3">Felink
-
-                                </li>
-                                <li class="col-sm-3">link
-
-                                </li>
-                                <li class="col-sm-3">link
-
-                                </li>
                             </ul>
                         </li>
                     @endif
-
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -203,19 +80,20 @@
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
+
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" >Configuraçao</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        Logout
+                                            document.getElementById('logout-form').submit();">
+                                        Sair
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

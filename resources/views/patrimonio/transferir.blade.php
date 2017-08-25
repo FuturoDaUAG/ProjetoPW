@@ -16,7 +16,7 @@
                         </div>
                         
                         <div class="form-group col-lg-6">
-                            Data Transferência: <input name="dataaquisicao"  class="form-control" type="date" />
+                            Data Transferência: <input name="dataaquisicao" class="form-control" type="date" />
                         </div>
                         
                         <div class="form-group col-lg-6">
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group col-lg-6">
-                            Status: <br/>
+                            Status do Bem: <br/>
 
                             <select name="status_id">
                                 @foreach ($st as $status)

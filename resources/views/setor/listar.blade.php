@@ -9,19 +9,29 @@
         <h1>Setores cadastrados</h1>
         <form method="get" action="/setor/pesquisar">
             <div class="form-group col-lg-3">
-                <input type="text" name="nome" class="form-control" placeholder="Descrição..." />
+                <input type="text" name="nome" class="form-control" placeholder="Nome..." />
             </div>
             <button type="submit">
                 <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
             </button>
-            <a href="novo" class="btn-sm btn-success  glyphicon glyphicon-plus" ><br/></a>
+            <a href="{{action('SetorController@novo')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Setor<br/></a>
         </form>
+
+        <div class="dropdown col-md-4 col-md-offset-10">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ordenar por
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu col-md-2 col-md-offset-2">
+                <li><a href="{{action('SetorController@ordemAlfabetica')}}">Nome</a></li>
+                <li><a href="{{action('SetorController@ordemCurso')}}">Curso</a></li>
+                <li><a href="{{action('SetorController@ordemResponsavel')}}">Responsável</a></li>
+            </ul>
+        </div>
 
 
         <table class="tini table table table-hover table-striped table-bordered" id="servidor-table"  >
 
             <thead>
-            <td>@lang('messages.descricao')</td>
+            <td>@lang('messages.nome')</td>
             <td>@lang('messages.sala')</td>
             <td>@lang('messages.servidor')</td>
             <td>@lang('messages.curso')</td>
