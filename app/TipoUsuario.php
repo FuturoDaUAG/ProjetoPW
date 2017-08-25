@@ -7,12 +7,12 @@ class TipoUsuario extends Model
 {
     //
     
-    protected $table ='tipousuarios';
+    protected $table ='tiposusuarios';
     
-    protected $fillable = ['tipousuario','modulo_id'];
+    protected $fillable = ['tipousuario'];
     
     public function usuarios(){
-        return $this->belongsToMany('web\Usuario');
+        return $this->hasMany('web\Usuario');
     }
     public function permissoes(){
         return $this->belongsToMany('web\Permissao');

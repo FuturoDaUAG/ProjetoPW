@@ -10,7 +10,7 @@ class Usuario extends Authenticatable
     
     protected $table ='usuarios';
     
-    protected $fillable = ['name','email','password','departamento_id'];
+    protected $fillable = ['name','email','password','departamento_id','tipousuario_id'];
     
     protected $hidden = [
         'password', 'remember_token',
@@ -24,8 +24,8 @@ class Usuario extends Authenticatable
     public function departamento() {
         return $this->belongsTo('web\Departamento');
     }
-    public function tiposUsuarios(){
-        return $this->belongsToMany('web\TipoUsuario');
+    public function tipoUsuario(){
+        return $this->belongsTo('web\TipoUsuario','tipousuario_id');
     }
      
 }

@@ -5,6 +5,7 @@ namespace web\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use web\Usuario;
+use web\TipoUsuario;
 
 
 class UsuarioController extends Controller {
@@ -31,8 +32,11 @@ class UsuarioController extends Controller {
 }
 
     public function novo() {
-
-        return view('auth/register');
+        $tipousuario = TipoUsuario::all();
+        if (empty($tipousuario)) {
+            return view('auth/register')->with('tiposusuarios',null);
+        }
+        return view('auth/register')->with('tiposusuarios',$tipousuario);
     }
 
     public function muda($id) {
@@ -44,12 +48,13 @@ class UsuarioController extends Controller {
     }
 
     public function adiciona(Request $request) {
-
+        $tipousuario = TipoUsuario::where("tipousuario",$request->tipousuario)->first();
         Usuario::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'departamento_id' => '1',
+            'tipousuario_id' => $tipousuario->id,
         ]);
         return redirect()->action('UsuarioController@lista');
     }
