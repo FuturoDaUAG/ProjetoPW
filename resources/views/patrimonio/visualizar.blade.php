@@ -37,6 +37,6 @@
     </li>
 </ul>
 
-<a href="historico/{{$patrimonio->id}}" target="_blank">Histórico</a>
+<a href="/patrimonio/historico/{{$patrimonio->id}}" target="_blank">Histórico</a>
 
 @stop

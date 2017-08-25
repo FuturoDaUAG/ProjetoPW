@@ -11,23 +11,21 @@
 
 <table class="tini table table table-hover table-striped table-bordered" id="patrimonio-table"  >
     <thead>
-    <td class="col-lg-1 text-center">@lang('ID')</td>
-    <td class="col-lg-1 text-center">@lang('Setor')</td>
-    <td class="col-lg-1 text-center">@lang('Data')</td>
-    <td class="col-lg-1 text-center">@lang('Status')</td>
+    <td class="col-lg-1 text-center"><b>@lang('Setor')</b></td>
+    <td class="col-lg-1 text-center"><b>@lang('Data')</b></td>
+    <td class="col-lg-1 text-center"><b>@lang('Status')</b></td>
 </thead>
 <tbody>
-    @foreach($setor as $s)
+    @foreach($patrimonio as $s)
     <tr>
-        <td></td>
-        <td>{{$s->descricao}}</td>
-        <td></td>
-        <td></td>
+        <td class="text-center">{{$s->nomesetor}}</td>
+        <td class="text-center">{{$s->data}}</td>
+        <td class="text-center">{{$s->descricao}}</td>
     </tr>
     @endforeach
-
 </tbody>
 </table>
+
 @endif
 
 @stop
