@@ -15,7 +15,7 @@
     <div class="form-group col-lg-3">
         <input type="text" name="nome" class="form-control" placeholder="Pesquisar..." />
     </div>
-    <button type="submit"
+    <button type="submit">
         <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
     </button>
 </form>

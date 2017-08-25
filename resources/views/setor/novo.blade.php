@@ -20,7 +20,7 @@
                                 <label>@lang('messages.sala')</label>
                                 <select class="selectpicker" name="sala_id">
                                     @foreach($salas as $sala)
-                                        <option value="{{ $sala->id }}">{{ $sala->descricao }}</option>
+                                        <option value="{{ $sala->id }}">{{ $sala->predio->descricao }} - {{ $sala->descricao }}</option>
                                     @endforeach
                                 </select>
                             </div>

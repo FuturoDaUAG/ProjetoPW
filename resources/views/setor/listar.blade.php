@@ -7,7 +7,16 @@
         </div>
     @else
         <h1>Setores cadastrados</h1>
-        <a href="novo" class="btn-sm btn-success  glyphicon glyphicon-plus" > Setor <br/></a>
+        <form method="get" action="/setor/pesquisar">
+            <div class="form-group col-lg-3">
+                <input type="text" name="nome" class="form-control" placeholder="Descrição..." />
+            </div>
+            <button type="submit">
+                <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
+            </button>
+            <a href="novo" class="btn-sm btn-success  glyphicon glyphicon-plus" ><br/></a>
+        </form>
+
 
         <table class="tini table table table-hover table-striped table-bordered" id="servidor-table"  >
 

@@ -7,7 +7,17 @@
         </div>
     @else
         <h1>Servidores cadastrados</h1>
-        <a href="novo" class="btn-sm btn-success  glyphicon glyphicon-plus" > Servidor <br/></a>
+
+
+        <form method="get" action="/servidor/pesquisar">
+            <div class="form-group col-lg-3">
+                <input type="text" name="nome" class="form-control" placeholder="Nome..." />
+            </div>
+            <button type="submit">
+                <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
+            </button>
+            <a href="novo" class="btn-sm btn-success  glyphicon glyphicon-plus" ><br/></a>
+        </form>
 
         <table class="tini table table table-hover table-striped table-bordered" id="servidor-table"  >
 

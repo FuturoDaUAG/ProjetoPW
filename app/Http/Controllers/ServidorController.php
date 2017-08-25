@@ -3,6 +3,7 @@
 namespace web\Http\Controllers;
 
 use web\Http\Requests\ServidorRequest;
+use web\Http\Requests\PatrimonioRequest;
 //use web\Http\Requests\Request;
 use web\Servidor;
 use Request;
@@ -53,6 +54,11 @@ class ServidorController extends Controller
     {
         $servidor = Servidor::find($id);
         return view('servidor.visualizar')->with('servidor', $servidor);
+    }
+
+    public function pesquisar(PatrimonioRequest $request){
+        $servidores = Servidor::where('nome', 'like', "%".$request->nome."%")->paginate(10);
+        return view('servidor/listar', ['servidores' => $servidores]);
     }
 
     public function listar()

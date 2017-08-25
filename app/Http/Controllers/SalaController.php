@@ -11,18 +11,14 @@ use web\Http\Requests\SalaRequest;
 
 class SalaController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
-    
-      public function listar()
+    public function listar()
     {
-       $salas= Sala::paginate(5);
+        $salas= Sala::paginate(5);
         return view('sala.listagem')->withSalas($salas);
     }
- 
-       
-   
+
+
+
 
     public function mostra($id)
     {
@@ -36,8 +32,8 @@ class SalaController extends Controller
 
 
     public function novo(){
-        $predios = Predio::all();
-        return view('sala.formulario')->with('predios',$predios);
+
+        return view('sala.formulario');
 
     }
 
@@ -51,7 +47,7 @@ class SalaController extends Controller
 
     }
 
-    
+
 
     public function adicionar(SalaRequest $request){
         Sala::create($request->all());
@@ -59,22 +55,22 @@ class SalaController extends Controller
             ->action('SalaController@listar')
             ->withInput(Request::only('descricao'));
 
-        
+
 
     }
 
     public function atualizar(SalaRequest $request){
         Sala::find($request->input('id'))->update($request->all());
         return redirect()
-        ->action('SalaController@listar')
-        ->withInput(Request::only('sala'));
+            ->action('SalaController@listar')
+            ->withInput(Request::only('sala'));
 
     }
 
 
     public function remover($id){
-            $sala = Sala::find($id);
-            $sala->delete();
-            return redirect()->action('SalaController@listar');
-        }
+        $sala = Sala::find($id);
+        $sala->delete();
+        return redirect()->action('SalaController@listar');
     }
+}
