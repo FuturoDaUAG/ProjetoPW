@@ -8,12 +8,6 @@ class Usuario extends Authenticatable
 {
     use Notifiable;
     
-    public function servidor()
-    {
-        return $this->hasOne('web\Servidor');
-    }
-
-
     protected $table ='usuarios';
     
     protected $fillable = ['name','email','password','departamento_id'];
@@ -21,9 +15,17 @@ class Usuario extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function servidores()
+    {
+        return $this->hasMany('web\Servidor');
+    }
 
     public function departamento() {
         return $this->belongsTo('web\Departamento');
+    }
+    public function tiposUsuarios(){
+        return $this->belongsToMany('web\TipoUsuario');
     }
      
 }

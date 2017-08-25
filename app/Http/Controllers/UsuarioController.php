@@ -18,13 +18,17 @@ class UsuarioController extends Controller {
         return view('usuario.listagem')->withUsuarios($usuarios);
     }
 
-    public function mostra($id) {
-        $usuario = Usuario::find($id);
-        if (empty($usuario)) {
-            return "Esse Usuario não existe";
-        }
-        return view('usuario.detalhes')->with('u', $usuario);
+
+
+ public function mostra($id)
+ {
+
+    $usuario = Usuario::find($id);
+    if(empty($usuario)) {
+        return "Esse Usuario não existe";
     }
+    return view('usuario.detalhes')->with('u', $usuario);
+}
 
     public function novo() {
 

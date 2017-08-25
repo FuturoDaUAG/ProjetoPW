@@ -23,16 +23,7 @@ class DepartamentoController extends Controller
        
    
 
-    public function mostra($id)
-    {
-
-        $departamento = Departamento::find($id);
-        if(empty($departamento)) {
-            return "Esse Departamento não existe";
-        }
-        return view('departamento.detalhes')->with('d', $departamento);
-    }
-
+    
 
     public function novo(){
 
@@ -52,18 +43,17 @@ class DepartamentoController extends Controller
 
     
 
-    public function adiciona(DepartamentosRequest $request){
+    public function adiciona(DepartamentoRequest $request){
 
         Departamento::create($request->all());
-        return redirect()
-            ->action('DepartamentoController@lista')
-            ->withInput(Request::only('apelido'));
+       
+       return redirect('/usuario/novo');
 
         
 
     }
 
-    public function alterar(DepartamentosRequest $request){
+    public function alterar(DepartamentoRequest $request){
         
         Departamento::find($request->input('id'))->update($request->all());
         return redirect()
@@ -73,9 +63,4 @@ class DepartamentoController extends Controller
     }
 
 
-public function remove($id){
-        $departamento = Departamento::find($id);
-        $departamento->delete();
-        return redirect()->action('DepartamentoController@lista');
-    }
 }

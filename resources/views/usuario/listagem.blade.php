@@ -9,6 +9,7 @@
 
 <h1>Usuários Cadastrados</h1>
 
+<a href="{{action('UsuarioController@novo')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Usuario<br/></a>
 
 <table class="tini table table table-hover table-striped table-bordered" id="usuario-table"  >
   <thead>
