@@ -13,12 +13,32 @@
 
 <form method="get" action="/patrimonio/pesquisar">
     <div class="form-group col-lg-3">
-        <input type="text" name="nome" class="form-control" placeholder="Pesquisar..." />
+        <input type="text" name="texto" class="form-control" placeholder="Pesquisar..." />
     </div>
+    <select name="filtro" class="col-lg-pull-3">
+        <option value="descricao">Nome</option>
+        <option value="numeropatrimonio">Número Patrimônio</option>
+        <option value="marca">Marca</option>
+        <option value="numeronotafiscal">Nota Fiscal</option>
+        <option value="numeropantigo">Número Patrimônio Antigo</option>
+        <option value="numeropregao">Número Pregão</option>
+    </select>
     <button type="submit"
         <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
     </button>
 </form>
+
+<div class="container">                                     
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+        </ul>
+    </div>
+</div>
 
 <table class="tini table table table-hover table-striped table-bordered" id="patrimonio-table"  >
     <thead>
@@ -40,7 +60,7 @@
         <td> {{$p -> marca -> descricao}}</td>
         <td> <a href="{{action('PatrimonioController@visualizar', $p->id)}}"><span class="glyphicon glyphicon-list-alt"></span></a> </td>
         <td> <a href="{{action('PatrimonioController@editar', $p->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
-        <td> <a href="{{action('PatrimonioController@remover', $p->id)}}"><span class="glyphicon glyphicon-time"></span></a> </td>
+        <td> <a href="{{action('PatrimonioController@prepararTransferir', $p->id)}}"><span class="glyphicon glyphicon-transfer"></span></a> </td>
     </tr>
     @endforeach
 </tbody>

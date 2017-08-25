@@ -16,4 +16,8 @@ class Patrimonio extends Model
     public function setor(){
         return $this->belongsToMany('\web\Setor');
     }
+    
+    public function subgrupo(){
+        return $this->belongsTo('\web\Subgrupo');
+    }
 }

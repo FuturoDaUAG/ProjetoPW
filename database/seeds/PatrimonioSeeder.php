@@ -22,7 +22,8 @@ class PatrimonioSeeder extends Seeder {
                 'numeropregao' => '4242',
                 'numeronotafiscal' => "3333." . $i,
                 'marca_id' => rand(1, 7),
-                'dataaquisicao' => $date[rand(0, 3)]]);
+                'dataaquisicao' => $date[rand(0, 3)],
+                'subgrupo_id'=>rand(1,3)]);
         }
     }
 

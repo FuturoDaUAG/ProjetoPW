@@ -20,16 +20,20 @@ class PatrimonioController extends Controller {
 
     public function prepararAdicionar() {
         $marca = Marca::all();
+        
         return view('patrimonio.adicionar')->with('m', $marca);
     }
+   
     
     public function pesquisar(PatrimonioRequest $request){
-        $patrimonio = Patrimonio::where('descricao', 'like', $request-> nome."%")->paginate(10);
+        $patrimonio = Patrimonio::where($request->filtro, 'like', "%".$request-> texto."%")->paginate(10);
         return view('patrimonio.listagem')->withPatrimonio($patrimonio);
     }
 
     public function adicionar(PatrimonioRequest $request) {
         $patrimonio = new Patrimonio();
+//        $nomemarca = $request->marca;
+        $marca = Marca::where('descricao', 'like', strtolower($request->marca))->first();
         $patrimonio->descricao = $request-> descricao;
         $patrimonio->valor = $request->valor;
         $patrimonio->numeroempenho = $request->numeroempenho;
@@ -38,7 +42,14 @@ class PatrimonioController extends Controller {
         $patrimonio->numeropantigo = $request->numeropantigo;
         $patrimonio->numeronotafiscal = $request->numeronotafiscal;
         $patrimonio->dataaquisicao = $request->dataaquisicao;
-        $patrimonio->marca_id = $request->marca_id;
+        
+        if($marca == null){
+            $marca = new Marca();
+            $marca -> descricao = $request -> marca;
+            $marca->save();
+        }
+        $patrimonio->marca_id = $marca->id;
+        
         $patrimonio->save();
         return redirect("patrimonio/");
     }

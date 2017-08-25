@@ -91,3 +91,8 @@ Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
 Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
 Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
 
+Route::get('/ajax-subgrupo?', function (){
+   $grupo = Input::get('grupo_id');
+   $subgrupo = Subgrupo::where('grupo_id', '=', $grupo)->get();
+   return Reponse::json($subgrupo);
+});
