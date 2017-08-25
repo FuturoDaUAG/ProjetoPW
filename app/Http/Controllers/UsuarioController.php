@@ -55,11 +55,12 @@ public function muda($id){
 
 
 public function adiciona(UsuariosRequest $request){
+   
     $usuario= new Usuario();
-  $usuario->apelido = $request->apelido;
-  $usuario->email = $request->email;
-      $usuario->senha = $request->senha;  
-      $usuario->departamento_id = $request->departamento_id;  
+    $usuario->apelido = $request->apelido;
+    $usuario->email = $request->email;
+    $usuario->senha = $request->senha;  
+    $usuario->departamento_id = $request->departamento_id;  
       
 
       $usuario->save();           

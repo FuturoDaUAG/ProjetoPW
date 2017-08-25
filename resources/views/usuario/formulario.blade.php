@@ -16,6 +16,17 @@
           <div class="col-md-6">
             <h2 class="dark-grey">Registrar</h2>
             
+              <div class="form-group col-lg-6">
+              Departamento: <br/>
+              
+              <select name="departamento_id">
+                @foreach ($d as $departamento)
+                <option value="{{$departamento->id}}"> {{$departamento->departamento}}</option>
+                @endforeach
+              </select>
+              <a href="{{action('DepartamentoController@novo')}}"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
+            </div>
+            
             <div class="form-group col-lg-12">
               <label>@lang('messages.apelido')</label>
               <input type="text" name="apelido" class="form-control" id="apelido" value="{{ old('apelido') }}">
@@ -41,16 +52,7 @@
               <label>Repita @lang('messages.email')</label>
               <input type="email" name="" class="form-control" id="email2" value="{{ old('email') }}">
             </div>
-            <div class="form-group col-lg-6">
-              Departamento: <br/>
-              
-              <select name="departamento_id">
-                @foreach ($d as $departamento)
-                <option value="{{$departamento->id}}"> {{$departamento->departamento}}</option>
-                @endforeach
-              </select>
-              <a href="{{action('DepartamentoController@novo')}}"class="btn-sm btn-success  glyphicon glyphicon-plus" > <br/></a>
-            </div>
+          
 
             <div class="col-md-12">
               
