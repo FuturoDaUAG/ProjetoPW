@@ -1,54 +1,57 @@
 <?php
 namespace web\Http\Controllers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Request;
 use web\Usuario;
-use web\Departamento;
-use web\Http\Requests\UsuariosRequest;
-class UsuarioController extends Controller
-{
-    public function lista()
-    {
-        $usuarios = Usuario::paginate(3);
+use web\TipoUsuario;
+class UsuarioController extends Controller {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    public function lista() {
+        $usuarios = Usuario::paginate(5);
         return view('usuario.listagem')->withUsuarios($usuarios);
     }
-    public function mostra($id)
-    {
-        $usuario = Usuario::find($id);
-        if(empty($usuario)) {
-            return "Esse Usuario não existe";
+ public function mostra($id)
+ {
+    $usuario = Usuario::find($id);
+    if(empty($usuario)) {
+        return "Esse Usuario não existe";
+    }
+    return view('usuario.detalhes')->with('u', $usuario);
+}
+    public function novo() {
+        $tipousuario = TipoUsuario::all();
+        if (empty($tipousuario)) {
+            return view('auth/register')->with('tiposusuarios',null);
         }
-        return view('usuario.detalhes')->with('u', $usuario);
+        return view('auth/register')->with('tiposusuarios',$tipousuario);
     }
-    public function novo(){
-        $departamento = Departamento::all();
-        return view('usuario.formulario')->with('d', $departamento);
-    }
-    public function muda($id){
+    public function muda($id) {
         $usuario = Usuario::find($id);
-        if(empty($usuario)) {
+        if (empty($usuario)) {
             return "Esse Usuario não existe";
         }
         return view('usuario.form_alterar')->with('u', $usuario);
     }
-    public function adiciona(UsuariosRequest $request){
-        $usuario= new Usuario();
-        $usuario->apelido = $request->apelido;
-        $usuario->email = $request->email;
-        $usuario->senha = $request->senha;
-        $usuario->departamento_id = $request->departamento_id;
-        $usuario->save();
-        return redirect()
-            ->action('UsuarioController@lista')
-            ->withInput(Request::only('apelido'));
+    public function adiciona(Request $request) {
+        $tipousuario = TipoUsuario::where("tipousuario",$request->tipousuario)->first();
+        Usuario::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'departamento_id' => '1',
+            'tipousuario_id' => $tipousuario->id,
+        ]);
+        return redirect()->action('UsuarioController@lista');
     }
-    public function alterar(UsuariosRequest $request){
+    public function alterar(UsuariosRequest $request) {
         Usuario::find($request->input('id'))->update($request->all());
         return redirect()
-            ->action('UsuarioController@lista')
-            ->withInput(Request::only('apelido'));
+                        ->action('UsuarioController@lista')
+                        ->withInput(Request::only('apelido'));
     }
-    public function remove($id){
+    public function remove($id) {
         $usuario = usuario::find($id);
         $usuario->delete();
         return redirect()->action('UsuarioController@lista');
