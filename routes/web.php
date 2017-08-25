@@ -80,6 +80,9 @@ Route::get('/setor/listar', 'SetorController@listar');
 /*------------------------------ Solicitação---------------------------------------------------*/
 Route::get('/solicitacao/adicionar', 'SolicitacaoController@prepararAdicionar');
 Route::post('/solicitacao/adicionar', 'SolicitacaoController@adicionar');
+Route::get('/solicitacao/listar', 'SolicitacaoController@listar');
+Route::get('/solicitacao/remover/{id}', 'SolicitacaoController@remover');
+Route::get('/solicitacao/visualizar/{id}', 'SolicitacaoController@visualizar');
 
 Auth::routes();
 
@@ -90,3 +93,4 @@ Route::get('/departamento/novo', 'DepartamentoController@novo');
 Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
 Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
 Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
+

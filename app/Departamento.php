@@ -1,22 +1,17 @@
 <?php
 
-
 namespace web;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Departamento extends Model
-{
-    protected $table ='departamentos';
-    
+class Departamento extends Model {
+
+    protected $table = 'departamentos';
     protected $fillable = ['departamento'];
 
-public function usuarios() {
 
-      return $this->hasMany('web\Usuario');
-}
-public function usuario(){
+    public function usuarios() {
+        return $this->belongsTo('web\Usuario');
+    }
 
-    return $this->belongsTo('web\Usuario');   
-   }
-   
 }

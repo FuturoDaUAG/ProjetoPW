@@ -1,17 +1,32 @@
 <?php
-
 namespace web\Http\Controllers;
 
  use web\Http\Requests\SolicitacaoRequest;
  use web\Solicitacao;
  use web\Setor;
+ use \web\Sala;
+ use web\Predio;
+ use web\Servidor;
+ use \web\Curso;
+use Illuminate\Support\Facades\Auth; 
 
 class SolicitacaoController extends Controller
  
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     public function prepararAdicionar(SolicitacaoRequest $request){
          $setor = Setor::all();
-	return view('solicitacao.adicionar')->with('setors', $setor);
+         $salas = Sala::all();
+         $predio = Predio::all();
+         $servidor = Servidor::all();
+         $curso = Curso::all();
+         $user = Auth::user();
+          
+         //return Auth::user()->nome;
+	return view('solicitacao.adicionar', ['setors' => $setor, 'salas' => $salas, 'predios'=>$predio, 'servidors'=>$servidor,'cursos'=>$curso, 'user'=>$user]); //->with('setors', $setor);
     
     }
     public function adicionar(SolicitacaoRequest $request) {
@@ -27,6 +42,22 @@ class SolicitacaoController extends Controller
         $solicitacao->descricao = $request-> descricao;
         $solicitacao->setor_id = $request->setor_id;
         $solicitacao->save();
-         return redirect("solicitacao/");
+        return redirect("solicitacao/adicionar");
 }
+    public function listar() {
+        $solicitacao = Solicitacao::paginate(5);
+        
+       return view('solicitacao.listar')->withSolicitacao($solicitacao);
+    }
+     public function remover($id)
+    {
+        $solicitacao = Solicitacao::find($id);
+        $solicitacao->delete();
+        return redirect("solicitacao/listar");
+    }
+     public function visualizar($id)
+    {
+        $solicitacao = Solicitacao::find($id);
+        return view('solicitacao.visualizar')->with('solicitacao', $solicitacao);
+    }
 }
