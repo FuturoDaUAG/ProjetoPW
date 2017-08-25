@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt">
     <head>
-        <title>{{ config('principal.title', 'Modulo Patrimonio') }}</title>
+
+        <title>{{ config('principal.title', 'Módulo Patrimônio') }}</title>
+
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link href="/ProjetoPW/public/css/prim.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/ProjetoPW/public/css/pad.css">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -70,18 +78,9 @@
 
                                     <li><a href="{{action('PatrimonioController@listar')}}" >Bens Móveis</a></li>
 
-                                </ul>		
-                            </li>
-                            <li class="dropdown1 col-sm-3">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
-                                <ul class="dropdown-menu ">
-
-                                    <li ><a href="#" >novo</a></li>
-
-                                </ul>		
+                                </ul>
                             </li>
                             @endif
-
                         </ul>
 
                         <!-- Right Side Of Navbar -->
@@ -195,7 +194,7 @@
             right: 30px;
             left: inherit;
         }
-        .carousel-control .glyphicon-chevron-left, 
+        .carousel-control .glyphicon-chevron-left,
         .carousel-control .glyphicon-chevron-right {
             font-size: 12px;
             background-color: #fff;

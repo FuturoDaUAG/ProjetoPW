@@ -29,13 +29,12 @@
     <td> {{$u->email}}  </td>
 
     <td>
-     <a href="{{action('UsuarioController@mostra', $u->id)}}"><span class="glyphicon glyphicon-search"></span></a>
+     <a href="{{action('UsuarioController@mostra', $u->id)}}"><button class="btn btn-default btn-mini"><span class="glyphicon glyphicon-search"></span></button></a>
 
    </td>
-   <td> <a href="{{action('UsuarioController@remove', $u->id)}}"><span class="glyphicon glyphicon-trash"></span></a>
-
-   </td>
-   <td>  <a href="{{action('UsuarioController@muda', $u->id)}}"><span class="glyphicon glyphicon-pencil"></span></a>
+   <td> <button type="button" class="btn btn-default btn-mini"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button>
+</td>
+   <td>  <a href="{{action('UsuarioController@muda', $u->id)}}"><button class="btn btn-default btn-mini"><span class="glyphicon glyphicon-pencil"></span></button></a>
    </td>
 
  </tr>
@@ -57,6 +56,30 @@
 </div>
 @endif
 
+<!-- Trigger the modal with a button -->
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Atenção</h4>
+      </div>
+      <div class="modal-body">
+        <p>você realmente deseja exluir ?</p>
+      </div>
+       
+      <div class="modal-footer">
+         <a href="{{action('UsuarioController@remove', $u->id)}}">  <button type="button" class="btn btn-default">sim</button></a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">não</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 @stop
+

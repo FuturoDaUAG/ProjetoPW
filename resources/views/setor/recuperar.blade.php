@@ -37,7 +37,11 @@
                                 <label>@lang('messages.sala')</label>
                                 <select class="selectpicker" name="sala_id">
                                     @foreach($salas as $sala)
-                                        <option value="{{ $sala->id }}">{{ $sala->descricao }}</option>
+                                        @if($setor->sala->id == $sala->id)
+                                            <option value="{{ $sala->id }}" selected>{{ $sala->predio->descricao }} - {{ $sala->descricao }}</option>
+                                        @else
+                                            <option value="{{ $sala->id }}">{{ $sala->descricao }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -46,7 +50,11 @@
                                 <label>@lang('messages.responsavel')</label>
                                 <select class="selectpicker" name="servidor_id">
                                     @foreach($servidores as $servidor)
-                                        <option value="{{ $servidor->id }}">{{ $servidor->nome }} - {{ $servidor->cargo }}</option>
+                                        @if($setor->servidor->id == $servidor->id)
+                                            <option value="{{ $servidor->id }}" selected>{{ $servidor->nome }} - {{ $servidor->cargo }}</option>
+                                        @else
+                                            <option value="{{ $servidor->id }}">{{ $servidor->nome }} - {{ $servidor->cargo }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -55,7 +63,11 @@
                                 <label>@lang('messages.curso')</label>
                                 <select class="selectpicker" name="curso_id" selected>
                                     @foreach($cursos as $curso)
-                                        <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
+                                        @if($setor->curso->id == $curso->id)
+                                            <option value="{{ $curso->id }}" selected>{{ $curso->nome }}</option>
+                                        @else
+                                            <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

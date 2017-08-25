@@ -75,8 +75,7 @@ class PatrimonioController extends Controller {
     
     public function editar(PatrimonioRequest $request){
         $patrimonio = Patrimonio::find($request-> id);
-        $marca = Marca::all();
-        return view ('patrimonio.editar')->with('p', $patrimonio)->with('m', $marca);
+        return view ('patrimonio.editar')->with('p', $patrimonio);
     }
     
     public function atualizar(PatrimonioRequest $request){

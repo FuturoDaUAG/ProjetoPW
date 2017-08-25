@@ -67,6 +67,11 @@ Route::post('/servidor/recuperar/alterar/', 'ServidorController@alterar');
 Route::get('/servidor/remover/{id}', 'ServidorController@remover');
 Route::get('/servidor/visualizar/{id}', 'ServidorController@visualizar');
 Route::get('/servidor/listar', 'ServidorController@listar');
+Route::get('/servidor/pesquisar', 'ServidorController@pesquisar');
+Route::get('/servidor/ordemAlfa', 'ServidorController@ordemAlfabetica');
+Route::get('/servidor/ordemCargo', 'ServidorController@ordemCargo');
+Route::get('/servidor/ordemMatricula', 'ServidorController@ordemMatricula');
+
 /*------------------------------ Sala ---------------------------------------------------*/
 Route::get('/sala', 'SalaController@listar');
 Route::get('/sala/novo', 'SalaController@novo');
@@ -92,8 +97,22 @@ Route::post('/setor/recuperar/alterar/', 'SetorController@alterar');
 Route::get('/setor/remover/{id}', 'SetorController@remover');
 Route::get('/setor/visualizar/{id}', 'SetorController@visualizar');
 Route::get('/setor/listar', 'SetorController@listar');
+Route::get('/setor/pesquisar', 'SetorController@pesquisar');
+Route::get('/setor/ordemAlfa', 'SetorController@ordemAlfabetica');
+Route::get('/setor/ordemCurso', 'SetorController@ordemCurso');
+Route::get('/setor/ordemResponsavel', 'SetorController@ordemResponsavel');
+
 
 
 Auth::routes();
 
 Route::get('/index', 'HomeController@index')->name('index');
+
+Route::get('/index', 'HomeController@index')->name('home');
+Route::get('/departamento', 'DepartamentoController@lista');
+Route::get('/departamento/novo', 'DepartamentoController@novo');
+Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
+Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
+Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
+
+

@@ -4,6 +4,8 @@ namespace web\Http\Controllers;
 
 use web\Curso;
 use web\Http\Requests\SetorRequest;
+use web\Http\Requests\PatrimonioRequest;
+use web\Predio;
 use web\Sala;
 use web\Servidor;
 use web\Setor;
@@ -21,7 +23,8 @@ class SetorController extends Controller
         $salas = Sala::all();
         $servidores = Servidor::all();
         $cursos = Curso::all();
-        return view('setor.novo', ['salas' => $salas, 'servidores' => $servidores, 'cursos' => $cursos]);
+        $predios = Predio::all();
+        return view('setor.novo', ['salas' => $salas, 'servidores' => $servidores, 'cursos' => $cursos, 'predios' => $predios]);
     }
 
     public function salvar(SetorRequest $request)
@@ -64,9 +67,30 @@ class SetorController extends Controller
         return view('setor.visualizar')->with('setor', $setor);
     }
 
-    public function listar()
-    {
-        $setores = Setor::paginate(5);
+    public function pesquisar(PatrimonioRequest $request){
+        $setores = Setor::where('descricao', 'like', "%".$request->nome."%")->paginate(10);
         return view('setor.listar', ['setores' => $setores]);
     }
+
+    public function listar()
+    {
+        $setores = Setor::paginate(10);
+        return view('setor.listar', ['setores' => $setores]);
+    }
+
+    public function ordemAlfabetica() {
+        $setores = Setor::orderBy('descricao')->paginate(10);
+        return view('setor.listar')->withSetores($setores);
+    }
+
+    public function ordemResponsavel() {
+        $setores = Setor::orderBy('servidor_id')->paginate(10);
+        return view('setor.listar')->withSetores($setores);
+    }
+
+    public function ordemCurso() {
+        $setores = Setor::orderBy('curso_id')->paginate(10);
+        return view('setor.listar')->withSetores($setores);
+    }
+
 }

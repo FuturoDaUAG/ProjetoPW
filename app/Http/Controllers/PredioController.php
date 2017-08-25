@@ -10,18 +10,14 @@ use web\Http\Requests\PredioRequest;
 
 class PredioController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
-    
-      public function listar()
+    public function listar()
     {
-       $predios= Predio::paginate(5);
+        $predios= Predio::paginate(5);
         return view('predio.listagem')->withPredios($predios);
     }
- 
-       
-   
+
+
+
 
     public function mostra($id)
     {
@@ -50,7 +46,7 @@ class PredioController extends Controller
 
     }
 
-    
+
 
     public function adicionar(PredioRequest $request){
 
@@ -59,20 +55,20 @@ class PredioController extends Controller
             ->action('PredioController@listar')
             ->withInput(Request::only('descricao'));
 
-        
+
 
     }
 
     public function atualizar(PredioRequest $request){
         Predio::find($request->input('id'))->update($request->all());
         return redirect()
-        ->action('PredioController@listar')
-        ->withInput(Request::only('descricao'));
+            ->action('PredioController@listar')
+            ->withInput(Request::only('descricao'));
 
     }
 
 
-public function remover($id){
+    public function remover($id){
         $predio = Predio::find($id);
         $predio->delete();
         return redirect()->action('PredioController@listar');
