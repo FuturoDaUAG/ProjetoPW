@@ -17,10 +17,11 @@
                 <option value="matricula">Matrícula</option>
                 <option value="cargo">Cargo</option>
             </select>
-            <button type="submit">
+            <button type="submit"
                 <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
             </button>
             <a href="{{action('ServidorController@novo')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Servidor<br/></a>
+
         </form>
 
         <div class="dropdown col-md-4 col-md-offset-10">

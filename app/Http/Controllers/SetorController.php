@@ -4,7 +4,7 @@ namespace web\Http\Controllers;
 
 use web\Curso;
 use web\Http\Requests\SetorRequest;
-use web\Http\Requests\PatrimonioRequest;
+use web\Http\Requests\PesquisarRequest;
 use web\Predio;
 use web\Sala;
 use web\Servidor;
@@ -14,7 +14,8 @@ use Request;
 class SetorController extends Controller
 {
     
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -59,7 +60,7 @@ class SetorController extends Controller
         if($sala == null)
         {
             $sala = new Sala();
-            $sala->descricao = $request->descricao;
+            $sala->descricao = $request->sala;
             $sala->predio_id = $predio->id;
             $sala->save();
         }
@@ -107,7 +108,8 @@ class SetorController extends Controller
         return view('setor.visualizar')->with('setor', $setor);
     }
 
-    public function pesquisar(PatrimonioRequest $request){
+    public function pesquisar(PesquisarRequest $request)
+    {
         $setores = Setor::where('descricao', 'like', "%".$request->nome."%")->paginate(10);
         return view('setor.listar', ['setores' => $setores]);
     }
