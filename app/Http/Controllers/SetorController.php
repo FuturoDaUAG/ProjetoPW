@@ -30,7 +30,47 @@ class SetorController extends Controller
     public function salvar(SetorRequest $request)
     {
         $setor = new Setor();
-        $setor->create($request->all());
+        $setor->descricao = $request->descricao;
+        $setor->curso_id = $request->curso_id;
+        $setor->servidor_id = $request->servidor_id;
+
+        $sala = Sala::where('descricao', 'like', strtolower($request->sala))->first();
+        $predio = Predio::where('descricao', 'like', strtolower($request->predio))->first();
+
+        //Uma sala de um predio diferente;
+        $salaTemp = null;
+
+        if($predio == null)
+        {
+            $predio = new Predio();
+            $predio->descricao = $request->predio;
+            $predio->save();
+
+            if($sala != null)
+            {
+                //Cadastrando uma sala de um predio diferente.
+                $salaTemp = new Sala();
+                $salaTemp->descricao = $sala->descricao ;
+                $salaTemp->predio_id = $predio->id;
+                $salaTemp->save();
+            }
+        }
+
+        if($sala == null)
+        {
+            $sala = new Sala();
+            $sala->descricao = $request->descricao;
+            $sala->predio_id = $predio->id;
+            $sala->save();
+        }
+
+        if($salaTemp != null)
+            $setor->sala_id = $salaTemp->id;
+        else
+            $setor->sala_id = $sala->id;
+
+        $setor->save();
+
         return redirect()
             ->action('SetorController@listar')
             ->withInput(Request::only('descricao'));

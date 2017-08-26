@@ -1,3 +1,4 @@
+Setores listar:
 @extends('layout.principal')
 @section('conteudo')
 
@@ -9,7 +10,7 @@
         <h1>Setores cadastrados</h1>
         <form method="get" action="/setor/pesquisar">
             <div class="form-group col-lg-3">
-                <input type="text" name="nome" class="form-control" placeholder="Nome..." />
+                <input type="text" name="nome" class="form-control" placeholder="Pesquisar..." />
             </div>
             <button type="submit">
                 <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
@@ -49,18 +50,57 @@
                     <td>{{$setor->curso->nome}}</td>
 
                     <td>
-                        <a href="{{action('SetorController@visualizar', $setor->id)}}"><span class="glyphicon glyphicon-search"></span></a>
+                        <a href="{{action('SetorController@visualizar', $setor->id)}}">
+                            <button class="btn btn-default btn-mini">
+                                <span class="glyphicon glyphicon-search"/>
+                            </button>
+                        </a>
                     </td>
                     <td>
-                        <a href="{{action('SetorController@remover', $setor->id)}}"><span class="glyphicon glyphicon-trash"></span></a>
+                    <td>
+                        <button type="button" class="btn btn-default btn-mini" data-toggle="modal"
+                                data-target="#myModal">
+                            <span class="glyphicon glyphicon-trash"/>
+                        </button>
+
                     </td>
                     <td>
-                        <a href="{{action('SetorController@recuperar', $setor->id)}}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="{{action('SetorController@recuperar', $setor->id)}}">
+                            <button class="btn btn-default btn-mini">
+                                <span class="glyphicon glyphicon-pencil"/>
+                            </button>
+                        </a>
                     </td>
                 </tr>
                 </tbody>
-            @endforeach
 
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Atenção</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Você realmente deseja excluir ?</p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <a href="{{action('SetorController@remover', $setor->id)}}">
+                                    <button type="button" class="btn btn-danger">Sim</button>
+                                </a>
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Não</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+
+            @endforeach
         </table>
     @endif
 
@@ -71,9 +111,10 @@
             <strong>O Setor {{ old('descricao')}} foi adicionado com sucesso !</strong>.
         </div>
     @elseif(old('curso_id')) <!-- curso_id usado apenas como condição de controle -->
-        <div class="alert alert-success">
-            <strong>Setor atualizado com sucesso !</strong>.
-        </div>
+    <div class="alert alert-success">
+        <strong>Setor atualizado com sucesso !</strong>.
+    </div>
     @endif
+
 @stop
 
