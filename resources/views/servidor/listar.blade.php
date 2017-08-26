@@ -21,6 +21,7 @@
                 <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
             </button>
             <a href="{{action('ServidorController@novo')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Servidor<br/></a>
+            <a href="{{action('SetorController@listar')}}" class="btn-sm btn-success  glyphicon glyphicon-list" > Setores<br/></a>
 
         </form>
 

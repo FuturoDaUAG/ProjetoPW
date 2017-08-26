@@ -4,7 +4,7 @@ namespace web\Http\Controllers;
 
 use web\Http\Requests\ServidorRequest;
 use web\Http\Requests\PesquisarRequest;
-//use web\Http\Requests\Request;
+use \Illuminate\Database\QueryException;
 use web\Servidor;
 use Request;
 
@@ -47,7 +47,12 @@ class ServidorController extends Controller
     public function remover($id)
     {
         $servidor = Servidor::find($id);
-        $servidor->delete();
+        try {
+            $servidor->delete();
+        } catch (QueryException $e) {
+            return view('servidor.mensagem_exclusao');
+        }
+
         return redirect("/servidor/listar");
     }
 
