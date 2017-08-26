@@ -80,8 +80,8 @@ class SetorController extends Controller
     public function recuperar($id)
     {
         $setor = Setor::find($id);
-        $salas = Sala::all();
-        $servidores = Servidor::all();
+        $salas = Sala::orderBy('descricao')->get();
+        $servidores = Servidor::orderBy('nome')->get();
         $cursos = Curso::all();
         return view('setor.recuperar', ['setor' => $setor, 'salas' => $salas, 'servidores' => $servidores, 'cursos' => $cursos]);
     }
@@ -116,7 +116,7 @@ class SetorController extends Controller
 
     public function listar()
     {
-        $setores = Setor::paginate(10);
+        $setores = Setor::orderBy('descricao')->paginate(10);
         return view('setor.listar', ['setores' => $setores]);
     }
 
