@@ -9,7 +9,8 @@
                 <section class="container">
                     <div class="container-page">
                         <div class="col-md-6">
-                            <h2 class="dark-grey">Cadastrar novo setor</h2>
+
+                            <h1 class="dark-grey">Cadastrar novo setor</h1><br/>
 
                             <div class="form-group col-lg-12">
                                 <label>@lang('messages.descricao')</label>

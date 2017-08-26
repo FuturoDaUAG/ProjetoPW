@@ -1,8 +1,6 @@
 @extends('layout.principal')
 @section('conteudo')
 
-    <h1>Editar Servidor</h1>
-
     @if(count($errors)>0)
         <div class="alert alert-danger">
             <ul>
@@ -27,6 +25,8 @@
                 <section class="container">
                     <div class="container-page">
                         <div class="col-md-6">
+
+                            <h1>Editar Servidor</h1><br/>
 
                             <div class="form-group col-lg-6">
                                 <label>@lang('messages.matricula')</label>

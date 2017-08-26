@@ -89,7 +89,52 @@ class SetorController extends Controller
     public function alterar(SetorRequest $request)
     {
         $setor = Setor::find($request->id);
-        $setor->update($request->all());
+        $setor->descricao = $request->descricao;
+        $setor->curso_id = $request->curso_id;
+        $setor->servidor_id = $request->servidor_id;
+
+        $sala = Sala::where('descricao', 'like', strtolower($request->sala))->first();
+        $predio = Predio::where('descricao', 'like', strtolower($request->predio))->first();
+
+        if($sala != null && $predio != null)
+        {
+            $sala->predio_id = $predio->id;
+            $sala->update();
+        }
+
+        //Uma sala de um predio diferente;
+        $salaTemp = null;
+
+        if($predio == null)
+        {
+            $predio = new Predio();
+            $predio->descricao = $request->predio;
+            $predio->save();
+
+            if($sala != null)
+            {
+                //Cadastrando uma sala de um predio diferente.
+                $salaTemp = new Sala();
+                $salaTemp->descricao = $sala->descricao ;
+                $salaTemp->predio_id = $predio->id;
+                $salaTemp->save();
+            }
+        }
+
+        if($sala == null)
+        {
+            $sala = new Sala();
+            $sala->descricao = $request->sala;
+            $sala->predio_id = $predio->id;
+            $sala->save();
+        }
+
+        if($salaTemp != null)
+            $setor->sala_id = $salaTemp->id;
+        else
+            $setor->sala_id = $sala->id;
+
+        $setor->update();
         return redirect()
             ->action('SetorController@listar')
             ->withInput($request->only('curso_id'));
@@ -122,11 +167,6 @@ class SetorController extends Controller
 
     public function ordemAlfabetica() {
         $setores = Setor::orderBy('descricao')->paginate(10);
-        return view('setor.listar')->withSetores($setores);
-    }
-
-    public function ordemResponsavel() {
-        $setores = Setor::orderBy('servidor_id')->paginate(10);
         return view('setor.listar')->withSetores($setores);
     }
 

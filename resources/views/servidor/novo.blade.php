@@ -9,7 +9,7 @@
                 <section class="container">
                     <div class="container-page">
                         <div class="col-md-6">
-                            <h2 class="dark-grey">Cadastrar novo servidor</h2>
+                            <h1 class="dark-grey">Cadastrar novo servidor</h1><br/>
 
                             <div class="form-group col-lg-12">
                                 <label>@lang('messages.nome')</label>

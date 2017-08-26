@@ -23,7 +23,6 @@
             <ul class="dropdown-menu col-md-2 col-md-offset-2">
                 <li><a href="{{action('SetorController@ordemAlfabetica')}}">Nome</a></li>
                 <li><a href="{{action('SetorController@ordemCurso')}}">Curso</a></li>
-                <li><a href="{{action('SetorController@ordemResponsavel')}}">Responsável</a></li>
             </ul>
         </div>
 
