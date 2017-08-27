@@ -1,7 +1,7 @@
 @extends('layout.principal')
 @section('conteudo')
 
-    <h1>Editar Servidor - {{ $servidor->id }}</h1>
+    <h1>Editar Servidor</h1>
 
     @if(count($errors)>0)
         <div class="alert alert-danger">

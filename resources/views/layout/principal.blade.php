@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt">
     <head>
-        <title>{{ config('principal.title', 'Modulo Patrimonio') }}</title>
+
+        <title>{{ config('principal.title', 'Módulo Patrimônio') }}</title>
+
+
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link href="/ProjetoPW/public/css/prim.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/ProjetoPW/public/css/pad.css">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
         <!-- Styles -->
         <link href="{{ asset('css/prim.css') }}" rel="stylesheet">
@@ -70,18 +79,17 @@
 
                                     <li><a href="{{action('PatrimonioController@listar')}}" >Bens Móveis</a></li>
 
-                                </ul>		
+                                </ul>
                             </li>
                             <li class="dropdown1 col-sm-3">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">link</a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solicitações</a>
                                 <ul class="dropdown-menu ">
 
-                                    <li ><a href="#" >novo</a></li>
+                                    <li ><a href="{{action('SolicitacaoController@listar')}}" >Bem Permanente</a></li>
 
                                 </ul>		
                             </li>
                             @endif
-
                         </ul>
 
                         <!-- Right Side Of Navbar -->
@@ -89,7 +97,6 @@
                             <!-- Authentication Links -->
                             @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
-
                             @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -101,7 +108,7 @@
                                     <li>
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+    document.getElementById('logout-form').submit();">
                                             Sair
                                         </a>
 
@@ -152,7 +159,7 @@
         body,html {
             font-family: 'Open Sans', 'sans-serif';
             height: 100%;
-            background-repeat: no-repeat;
+            background-repeat: repeat-y;
             background-image: linear-gradient(rgb(217, 227, 231), rgb(217, 227, 231));
         }
         .mega-dropdown {
@@ -186,18 +193,16 @@
             padding: 5px 60px 5px 5px;
             line-height: 30px;
         }
-
         .carousel-control {
             width: 30px;
             height: 30px;
             top: -35px;
-
         }
         .left.carousel-control {
             right: 30px;
             left: inherit;
         }
-        .carousel-control .glyphicon-chevron-left, 
+        .carousel-control .glyphicon-chevron-left,
         .carousel-control .glyphicon-chevron-right {
             font-size: 12px;
             background-color: #fff;
@@ -206,18 +211,15 @@
             color: #333;
             border: 1px solid #ddd;
         }
-
         .nav .open > a, .nav .open > a:focus, .nav  .open  > a:hover {
             background-color: #fff;
             border-color: #337ab7;
         }
         /*Login Screen Style*/
-
         .card-container.card {
             max-width: 350px;
             padding: 40px 40px;
         }
-
         .btn {
             font-weight: 700;
             height: 36px;
@@ -226,7 +228,6 @@
             user-select: none;
             cursor: default;
         }
-
         /*
          * Card component
          */
@@ -244,7 +245,6 @@
             -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
         }
-
         .profile-img-card {
             width: 96px;
             height: 96px;
@@ -254,7 +254,6 @@
             -webkit-border-radius: 50%;
             border-radius: 50%;
         }
-
         /*
          * Form styles
          */
@@ -265,7 +264,6 @@
             margin: 10px 0 0;
             min-height: 1em;
         }
-
         .reauth-email {
             display: block;
             color: #404040;
@@ -280,14 +278,12 @@
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
         }
-
         .form-signin #inputEmail,
         .form-signin #inputPassword {
             direction: ltr;
             height: 44px;
             font-size: 16px;
         }
-
         .form-signin input[type=email],
         .form-signin input[type=password],
         .form-signin input[type=text],
@@ -301,14 +297,12 @@
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
         }
-
         .form-signin .form-control:focus {
             border-color: rgb(104, 145, 162);
             outline: 0;
             -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px ;
             /* box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px ;*/
         }
-
         .btn.btn-signin {
             /*background-color: #4d90fe; */
             /* background-color: rgb(104, 145, 162);*/
@@ -326,23 +320,19 @@
             -webkit-transition: all 0.218s;
             transition: all 0.218s;
         }
-
         .btn.btn-signin:hover,
         .btn.btn-signin:active,
         .btn.btn-signin:focus {
             background-color: rgb(97, 133, 150);
         }
-
         .forgot-password {
             color: rgb(104, 145, 162);
         }
-
         .forgot-password:hover,
         .forgot-password:active,
         .forgot-password:focus{
             color: rgb(12, 97, 33);
         }
-
         footer.footer {
             background-color: #000000;
             border-color: #2e6da4;
@@ -353,7 +343,6 @@
         footer.footer p {
             padding: 10px;
         }
-
         /*Login screen End*/</style>
 
 </html>

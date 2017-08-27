@@ -23,11 +23,11 @@ Route::get('/index', function () {
 //Usuário
 Route::get('/usuario', 'UsuarioController@lista')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/usuario/detalhes/{id}', 'UsuarioController@mostra')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
-Route::get('/usuario/novo', 'UsuarioController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::post('/usuario/adiciona', 'UsuarioController@adiciona')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::get('/usuario/remove/{id}','UsuarioController@remove')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::get('/usuario/muda/{id}','UsuarioController@muda')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::post('/usuario/muda/alterar', 'UsuarioController@alterar')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::get('/usuario/novo', 'UsuarioController@novo')->middleware('auth.TipoUsuario:Administrador');
+Route::post('/usuario/adiciona', 'UsuarioController@adiciona')->middleware('auth.TipoUsuario:Administrador');
+Route::get('/usuario/remove/{id}','UsuarioController@remove')->middleware('auth.TipoUsuario:Administrador');
+Route::get('/usuario/muda/{id}','UsuarioController@muda')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador');
+Route::post('/usuario/muda/alterar', 'UsuarioController@alterar')->middleware('auth.TipoUsuario:Administrador');
 
 /*------------------------------ Departamento ---------------------------------------------------*/
 
@@ -37,14 +37,24 @@ Route::post('/departamento/adiciona', 'DepartamentoController@adiciona')->middle
 Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/departamento/detalhes/{id}','DepartamentoController@mostra')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::post('/departamento/remove/{id}', 'DepartamentoController@remove')->middleware('auth.TipoUsuario:Administrador,Operador');
+
 /*------------------------------ Patrimônio ---------------------------------------------------*/
 Route::get('/patrimonio', 'PatrimonioController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
-Route::get('/patrimonio/adicionar', 'PatrimonioController@prepararAdicionar')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::post('/patrimonio/adicionar', 'PatrimonioController@adicionar')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::get('/patrimonio/editar/{id}','PatrimonioController@editar')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::post('/patrimonio/atualizar', 'PatrimonioController@atualizar')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::get('/patrimonio/orderAlfa', 'PatrimonioController@ordemAlfabetica')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::get('/patrimonio/orderEmpenho', 'PatrimonioController@ordemNumeroEmpenho')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/orderPatrimonio', 'PatrimonioController@ordemNumeroPatrimonio')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/pesquisar', 'PatrimonioController@pesquisar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/adicionar', 'PatrimonioController@prepararAdicionar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/patrimonio/adicionar', 'PatrimonioController@adicionar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/editar/{id}','PatrimonioController@editar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/patrimonio/atualizar', 'PatrimonioController@atualizar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/patrimonio/visualizar/{id}', 'PatrimonioController@visualizar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
-Route::get('/patrimonio/remover/{id}', 'PatrimonioController@remover')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::get('/patrimonio/remover/{id}', 'PatrimonioController@remover')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/transferir/{id}', 'PatrimonioController@prepararTransferir')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/patrimonio/transferir', 'PatrimonioController@transferir')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/historico/{id}', 'PatrimonioController@historico')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+
 
 /*------------------------------ Marca --------------------------------------------------------*/
 Route::get('/marca', 'MarcaController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
@@ -52,13 +62,19 @@ Route::get('/marca/adicionar','MarcaController@prepararAdicionar')->middleware('
 Route::post('/marca/adicionar', 'MarcaController@adicionar')->middleware('auth.TipoUsuario:Administrador,Operador');
 
 //Servidor
-Route::get('/servidor/novo', 'ServidorController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::post('/servidor/salvar', 'ServidorController@salvar')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::get('/servidor/recuperar/{id}', 'ServidorController@recuperar')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::post('/servidor/recuperar/alterar/', 'ServidorController@alterar')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::get('/servidor/remover/{id}', 'ServidorController@remover')->middleware('auth.TipoUsuario:Administrador,Operador');
+
+Route::get('/servidor/novo', 'ServidorController@novo')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/servidor/salvar', 'ServidorController@salvar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/servidor/recuperar/{id}', 'ServidorController@recuperar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/servidor/recuperar/alterar/', 'ServidorController@alterar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/servidor/remover/{id}', 'ServidorController@remover')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/servidor/visualizar/{id}', 'ServidorController@visualizar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/servidor/listar', 'ServidorController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/servidor/pesquisar', 'ServidorController@pesquisar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/servidor/ordemAlfa', 'ServidorController@ordemAlfabetica')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/servidor/ordemCargo', 'ServidorController@ordemCargo')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/servidor/ordemMatricula', 'ServidorController@ordemMatricula')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+
 /*------------------------------ Sala ---------------------------------------------------*/
 Route::get('/sala', 'SalaController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/sala/novo', 'SalaController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
@@ -77,6 +93,26 @@ Route::get('/predio/remover/{id}','PredioController@remover')->middleware('auth.
 Route::post('/predio/muda/atualizar', 'PredioController@atualizar')->middleware('auth.TipoUsuario:Administrador,Operador');
 
 //Setor
+Route::get('/setor/novo', 'SetorController@novo')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/setor/salvar', 'SetorController@salvar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/setor/recuperar/{id}', 'SetorController@recuperar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/setor/recuperar/alterar/', 'SetorController@alterar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/setor/remover/{id}', 'SetorController@remover')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/setor/visualizar/{id}', 'SetorController@visualizar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/setor/listar', 'SetorController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/setor/pesquisar', 'SetorController@pesquisar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/setor/ordemAlfa', 'SetorController@ordemAlfabetica')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/setor/ordemCurso', 'SetorController@ordemCurso')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/setor/ordemResponsavel', 'SetorController@ordemResponsavel')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+
+
+/*------------------------------ Solicitação---------------------------------------------------*/
+Route::get('/solicitacao/adicionar', 'SolicitacaoController@prepararAdicionar')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::post('/solicitacao/adicionar', 'SolicitacaoController@adicionar')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::get('/solicitacao/listar', 'SolicitacaoController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/solicitacao/remover/{id}', 'SolicitacaoController@remover')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::get('/solicitacao/visualizar/{id}', 'SolicitacaoController@visualizar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+
 Route::get('/setor/novo', 'SetorController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::post('/setor/salvar', 'SetorController@salvar')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/setor/recuperar/{id}', 'SetorController@recuperar')->middleware('auth.TipoUsuario:Administrador,Operador');
@@ -85,7 +121,10 @@ Route::get('/setor/remover/{id}', 'SetorController@remover')->middleware('auth.T
 Route::get('/setor/visualizar/{id}', 'SetorController@visualizar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/setor/listar', 'SetorController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 
-
 Auth::routes();
 
 Route::get('/index', 'HomeController@index')->name('index');
+
+
+
+

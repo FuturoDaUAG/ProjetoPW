@@ -1,9 +1,9 @@
 @extends('layout.principal')
 @section('conteudo')
-  <h1>Detalhes do Usuario: {{ $u->apelido }}</h1>
+  <h1>Detalhes do Predio: {{ $d->descricao }}</h1>
 				<ul>
 					<li>
-						<b>Email:</b> {{ $u->email }}
+						<b>Nome:</b> {{ $d->descricao }}
 						</li>
 					<li>
 						

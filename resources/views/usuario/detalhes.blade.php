@@ -7,8 +7,8 @@
 						</li>
 					<li>
 						
-						<b>colocar detalhes de relacionamentos Ex:</b>
+						<b>Usuario id</b>
 		
-						<b>Usuario com patrimonio tall data tal </b>
+						<b>{{$u->id}}</b>
 				</ul>
 @stop
