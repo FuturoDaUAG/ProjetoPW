@@ -44,9 +44,9 @@
 
 @endif
 
-@if(old('apelido'))
+@if(old('name'))
 <div class="alert alert-success">
-    <strong>Sucesso !</strong>O {{ old('apelido')}} foi adicionado.
+    <strong>Sucesso !</strong>O {{ old('name')}} foi adicionado.
 </div>
 @endif
 

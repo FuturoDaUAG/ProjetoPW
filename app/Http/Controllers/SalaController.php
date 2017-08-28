@@ -74,6 +74,7 @@ class SalaController extends Controller
 
     public function remover($id){
             $sala = Sala::find($id);
+            $sala->setores()->delete();
             $sala->delete();
             return redirect()->action('SalaController@listar');
         }

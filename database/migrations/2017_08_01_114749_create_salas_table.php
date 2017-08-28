@@ -19,6 +19,7 @@ class CreateSalasTable extends Migration
             $table->string('ramal');
             $table->integer('predio_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('predio_id')->references('id')->on('predios')->onDelete('cascade');
         });
     }

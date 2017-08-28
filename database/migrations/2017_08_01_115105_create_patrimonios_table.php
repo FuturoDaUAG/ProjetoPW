@@ -25,6 +25,7 @@ class CreatePatrimoniosTable extends Migration
             $table->integer('numeronotafiscal');
             $table->foreign('marca_id')->references('id')->on('marcas');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

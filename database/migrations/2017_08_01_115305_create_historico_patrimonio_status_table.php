@@ -16,6 +16,7 @@ class CreateHistoricoPatrimonioStatusTable extends Migration
         Schema::create('historicopatrimoniostatus', function (Blueprint $table) {
 		$table->increments('id');
 		$table->timestamps();
+                $table->softDeletes();
 	});
     }
 

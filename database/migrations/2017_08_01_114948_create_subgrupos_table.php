@@ -16,6 +16,7 @@ class CreateSubgruposTable extends Migration
         Schema::create('subgrupos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

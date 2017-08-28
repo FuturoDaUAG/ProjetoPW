@@ -19,6 +19,7 @@ class CreatePermissoesTable extends Migration
                 $table->integer('modulo_id')->unsigned();
                 $table->foreign('modulo_id')->references('id')->on('modulos');
 		$table->timestamps();
+                $table->softDeletes();
 	});
     }
 

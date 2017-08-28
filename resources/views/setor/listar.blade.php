@@ -89,7 +89,7 @@
             </div>
 
             <div class="modal-footer">
-                <a href="{{action('SetorController@remover', $setor->id)}}">  <button type="button" class="btn btn-default">sim</button></a>
+                <a href="">  <button type="button" class="btn btn-default">sim</button></a>
                 <button type="button" class="btn btn-default" data-dismiss="modal">não</button>
             </div>
         </div>

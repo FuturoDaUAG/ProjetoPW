@@ -17,6 +17,8 @@ class CreateCursosTable extends Migration
             $table->increments('id');
             $table->text('nome');
             $table->timestamps();
+            $table->softDeletes();
+            
         });
     }
 

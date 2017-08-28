@@ -46,16 +46,6 @@
 
 {!!$predios->links()!!}
 
-
-
-@endif
-
-@if(old('ramal'))
-<div class="alert alert-success">
-    <strong>Sucesso !</strong>O {{ old('ramal')}} foi adicionado.
-</div>
-@endif
-
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -78,5 +68,15 @@
 
     </div>
 </div>
+
+@endif
+
+@if(old('ramal'))
+<div class="alert alert-success">
+    <strong>Sucesso !</strong>O {{ old('ramal')}} foi adicionado.
+</div>
+@endif
+
+
 
 @stop

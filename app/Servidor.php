@@ -2,9 +2,12 @@
 
 namespace web;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Servidor extends Model
 {
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'nome','cargo','matricula', 'usuario_id'

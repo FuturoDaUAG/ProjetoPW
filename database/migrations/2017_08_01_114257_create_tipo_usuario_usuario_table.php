@@ -20,6 +20,7 @@ class CreateTipoUsuarioUsuarioTable extends Migration
                 $table->foreign('tipousuario_id')->references('id')->on('tiposusuarios');
                 $table->foreign('usuario_id')->references('id')->on('usuarios');
 		$table->timestamps();
+                $table->softDeletes();
 	});
     }
 

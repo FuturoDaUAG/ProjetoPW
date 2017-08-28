@@ -16,6 +16,7 @@ class CreateSolicitacoesTable extends Migration
         Schema::create('solicitacoes', function (Blueprint $table) {
 		$table->increments('id');
 		$table->timestamps();
+                $table->softDeletes();
 	});
     }
 
