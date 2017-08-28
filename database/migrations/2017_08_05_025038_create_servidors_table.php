@@ -15,10 +15,10 @@ class CreateServidorsTable extends Migration
     {
         Schema::create('servidors', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('usuario_id')->unsigned();
             $table->string('nome');
             $table->string('cargo');
             $table->string('matricula');
-            $table->integer('usuario_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('usuario_id')->references('id')->on('usuarios');

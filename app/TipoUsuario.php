@@ -10,6 +10,7 @@ class TipoUsuario extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     
+
     protected $table ='tiposusuarios';
     
     protected $fillable = ['tipousuario'];
@@ -23,4 +24,5 @@ class TipoUsuario extends Model
     public function modulo(){
         return $this->belongsTo('web\Modulo');
     }
+
 }

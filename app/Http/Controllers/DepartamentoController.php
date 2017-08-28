@@ -1,14 +1,11 @@
 <?php
-
 namespace web\Http\Controllers;
-
 use Illuminate\Support\Facades\DB;
 use Request;
 use web\Departamento;
 use web\Http\Requests\DepartamentoRequest;
-
-class DepartamentoController extends Controller {
-
+class DepartamentoController extends Controller
+{
     public function __construct() {
         $this->middleware('auth');
     }

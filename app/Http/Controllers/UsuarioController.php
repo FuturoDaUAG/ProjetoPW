@@ -1,7 +1,5 @@
 <?php
-
 namespace web\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use web\Usuario;

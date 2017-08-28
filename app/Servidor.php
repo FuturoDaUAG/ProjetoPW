@@ -25,5 +25,4 @@ class Servidor extends Model
     {
         return $this->hasMany('web\Setor');
     }
-
 }

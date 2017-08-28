@@ -1,12 +1,9 @@
 <?php
-
 namespace web\Http\Controllers\Auth;
-
-use web\Usuario;
+use web\User;
 use web\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
 class RegisterController extends Controller
 {
     /*
@@ -19,16 +16,13 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = 'usuario';
-
+    protected $redirectTo = '/index';
     /**
      * Create a new controller instance.
      *
@@ -36,9 +30,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        
+        $this->middleware('guest');
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -64,7 +57,6 @@ class RegisterController extends Controller
          */
         return Validator::make($data,$regras);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -73,11 +65,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Usuario::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'departamento_id' => '1',
         ]);
     }
 }
