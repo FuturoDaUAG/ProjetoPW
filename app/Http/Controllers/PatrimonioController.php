@@ -8,13 +8,14 @@ use web\Grupo;
 use web\Subgrupo;
 use web\Http\Requests\PatrimonioRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class PatrimonioController extends Controller {
 
-//    public function __construct() {
-//        $this->middleware('auth');
-//    }
-    
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function listar() {
         $patrimonio = Patrimonio::paginate(10);
         return view('patrimonio.listagem')->withPatrimonio($patrimonio);
@@ -23,10 +24,9 @@ class PatrimonioController extends Controller {
     public function prepararAdicionar() {
         return view('patrimonio.adicionar');
     }
-   
-    
-    public function pesquisar(PatrimonioRequest $request){
-        $patrimonio = Patrimonio::where($request->filtro, 'like', "%".$request-> texto."%")->orderBy('id')->paginate(10);
+
+    public function pesquisar(PatrimonioRequest $request) {
+        $patrimonio = Patrimonio::where($request->filtro, 'like', "%" . $request->texto . "%")->orderBy('id')->paginate(10);
         return view('patrimonio.listagem')->withPatrimonio($patrimonio);
     }
 
@@ -35,7 +35,7 @@ class PatrimonioController extends Controller {
         $marca = Marca::where('descricao', 'like', strtolower($request->marca))->first();
         $subgrupo = Subgrupo::where('descricao', 'like', strtolower($request->subgrupo))->first();
         $grupo = Grupo::where('descricao', 'like', strtolower($request->grupo))->first();
-        $patrimonio->descricao = $request-> descricao;
+        $patrimonio->descricao = $request->descricao;
         $patrimonio->valor = $request->valor;
         $patrimonio->numeroempenho = $request->numeroempenho;
         $patrimonio->numeropatrimonio = $request->numeropatrimonio;
@@ -43,23 +43,23 @@ class PatrimonioController extends Controller {
         $patrimonio->numeropantigo = $request->numeropantigo;
         $patrimonio->numeronotafiscal = $request->numeronotafiscal;
         $patrimonio->dataaquisicao = $request->dataaquisicao;
-        
-        if($marca == null){
+
+        if ($marca == null) {
             $marca = new Marca();
-            $marca -> descricao = $request -> marca;
+            $marca->descricao = $request->marca;
             $marca->save();
         }
-        if($grupo == null){
+        if ($grupo == null) {
             $grupo = new Grupo();
             $subgrupo = new Subgrupo();
             $grupo->descricao = $request->grupo;
             $grupo->save();
-            $subgrupo -> descricao = $request->subgrupo;
+            $subgrupo->descricao = $request->subgrupo;
             $subgrupo->grupo_id = $grupo->id;
             $subgrupo->save();
         }
-        if($grupo!=null){
-            if($subgrupo == null){
+        if ($grupo != null) {
+            if ($subgrupo == null) {
                 $subgrupo = new Subgrupo();
                 $subgrupo->descricao = $request->subgrupo;
                 $subgrupo->grupo_id = $grupo->id;
@@ -67,20 +67,20 @@ class PatrimonioController extends Controller {
             }
         }
         $patrimonio->marca_id = $marca->id;
-        $patrimonio->subgrupo_id = $subgrupo -> id;
+        $patrimonio->subgrupo_id = $subgrupo->id;
         $patrimonio->save();
-        $patrimonio->status()->attach(3,['data' => $request->dataaquisicao]);
+        $patrimonio->status()->attach(3, ['data' => $request->dataaquisicao]);
         return redirect("patrimonio/");
     }
-    
-    public function editar(PatrimonioRequest $request){
-        $patrimonio = Patrimonio::find($request-> id);
-        return view ('patrimonio.editar')->with('p', $patrimonio);
+
+    public function editar(PatrimonioRequest $request) {
+        $patrimonio = Patrimonio::find($request->id);
+        return view('patrimonio.editar')->with('p', $patrimonio);
     }
-    
-    public function atualizar(PatrimonioRequest $request){
-        $patrimonio = Patrimonio::find($request -> id);
-        $patrimonio->descricao = $request-> descricao;
+
+    public function atualizar(PatrimonioRequest $request) {
+        $patrimonio = Patrimonio::find($request->id);
+        $patrimonio->descricao = $request->descricao;
         $patrimonio->valor = $request->valor;
         $patrimonio->numeroempenho = $request->numeroempenho;
         $patrimonio->numeropatrimonio = $request->numeropatrimonio;
@@ -91,28 +91,27 @@ class PatrimonioController extends Controller {
         $patrimonio->update();
         return redirect("patrimonio/");
     }
-    
-    public function visualizar($id)
-    {
+
+    public function visualizar($id) {
         $patrimonio = Patrimonio::find($id);
         $teste = $patrimonio->status->last();
-        return view('patrimonio.visualizar')->with('patrimonio', $patrimonio)->with('teste',$teste);
+        return view('patrimonio.visualizar')->with('patrimonio', $patrimonio)->with('teste', $teste);
     }
-    
-    public function prepararTransferir(PatrimonioRequest $request){
-        $patrimonio = Patrimonio::find($request -> id);
+
+    public function prepararTransferir(PatrimonioRequest $request) {
+        $patrimonio = Patrimonio::find($request->id);
         $setor = \web\Setor::all();
         $status = \web\Status::all();
         return view('patrimonio.transferir')->with('p', $patrimonio)->with('s', $setor)->with('st', $status);
     }
-    
-    public function transferir(PatrimonioRequest $request){
-        $patrimonio = Patrimonio::find($request -> id);
-        $patrimonio->setor()->attach($request -> setor_id, array('dataaquisicao' => $request->dataaquisicao));
+
+    public function transferir(PatrimonioRequest $request) {
+        $patrimonio = Patrimonio::find($request->id);
+        $patrimonio->setor()->attach($request->setor_id, array('dataaquisicao' => $request->dataaquisicao));
         $patrimonio->status()->attach($request->status_id, ['data' => $request->dataaquisicao]);
         return redirect("patrimonio/");
     }
-    
+
     public function ordemAlfabetica() {
         $patrimonio = Patrimonio::orderBy('descricao')->paginate(10);
         return view('patrimonio.listagem')->withPatrimonio($patrimonio);
@@ -122,17 +121,46 @@ class PatrimonioController extends Controller {
         $patrimonio = Patrimonio::orderBy('numeropatrimonio')->paginate(10);
         return view('patrimonio.listagem')->withPatrimonio($patrimonio);
     }
-    
+
     public function ordemNumeroEmpenho() {
         $patrimonio = Patrimonio::orderBy('numeroempenho')->paginate(10);
         return view('patrimonio.listagem')->withPatrimonio($patrimonio);
     }
-    
-    public function historico($id)
-    {
+
+    public function historico($id) {
         $patrimonio = DB::select(DB::raw("SELECT patrimonios.descricao as nomep, setors.descricao as nomesetor, statuses.descricao, patrimonio_status.data "
-                . "FROM setors, patrimonios, patrimonio_setor, statuses, patrimonio_status "
-                . "WHERE patrimonio_status.patrimonio_id = patrimonios.id and patrimonio_status.status_id = statuses.id and patrimonios.id =".$id." and patrimonio_setor.patrimonio_id = patrimonios.id and setors.id = patrimonio_setor.setor_id"));
+                                . "FROM setors, patrimonios, patrimonio_setor, statuses, patrimonio_status "
+                                . "WHERE patrimonio_status.patrimonio_id = patrimonios.id and patrimonio_status.status_id = statuses.id and patrimonios.id =" . $id . " and patrimonio_setor.patrimonio_id = patrimonios.id and setors.id = patrimonio_setor.setor_id"));
         return view('patrimonio.historico')->with('patrimonio', $patrimonio);
     }
+
+    public function relatorioTodos() {
+        $patrimonio = Patrimonio::paginate(30);
+        return view('relatorio.relatorioTodos')->with('patrimonio', $patrimonio);
+    }
+
+    public function relatorioSetor($setor) {
+        $patrimonio = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, setors.descricao FROM projetoweb.patrimonios, projetoweb.patrimonio_setor, projetoweb.setors "
+                        . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and setors.descricao = " . "'$setor'" . "");
+        return view('relatorio.relatorioSetor')->with('patrimonio', $patrimonio);
+    }
+
+    public function relatorioSala($sala) {
+        $patrimonio = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, setors.descricao FROM projetoweb.patrimonios, projetoweb.patrimonio_setor, projetoweb.setors, projetoweb.salas "
+                        . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and salas.descricao = " . "'$sala'" . " and salas.id = setors.sala_id");
+        
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $col = new \Illuminate\Database\Eloquent\Collection($patrimonio);
+        $perPage = 5;
+        $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $p = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
+        return view('relatorio.relatorioSala')->with('entries', $p);
+//        return view('relatorio.relatorioSala')->with('patrimonio', $patrimonio);
+    }
+
+    public function relatorioNotaFiscal($numero) {
+        $patrimonio = Patrimonio::where('numeronotafiscal', '=', $numero)->paginate(20);
+        return view('relatorio.relatorioNotaFiscal')->with('patrimonio', $patrimonio);
+    }
+
 }

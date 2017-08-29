@@ -131,4 +131,7 @@ Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
 Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
 Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
 
-
+Route::get('/patrimonio/relatorio', 'PatrimonioController@relatorioTodos');
+Route::get('/patrimonio/relatorio/setor={setor}', 'PatrimonioController@relatorioSetor');
+Route::get('/patrimonio/relatorio/sala={sala}', 'PatrimonioController@relatorioSala');
+Route::get('/patrimonio/relatorio/notafiscal={numero}', 'PatrimonioController@relatorioNotaFiscal');
