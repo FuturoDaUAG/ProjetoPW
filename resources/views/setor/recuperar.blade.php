@@ -1,7 +1,7 @@
 @extends('layout.principal')
 @section('conteudo')
 
-    <h1>Editar Setor - {{ $setor->id }}</h1>
+
 
     @if(count($errors)>0)
         <div class="alert alert-danger">
@@ -28,22 +28,21 @@
                     <div class="container-page">
                         <div class="col-md-6">
 
+                            <h1>Editar Setor</h1><br/>
+
                             <div class="form-group col-lg-12">
                                 <label>@lang('messages.descricao')</label>
                                 <input type="text" name="descricao" class="form-control" id="" value="{{ $setor->descricao }}">
                             </div>
 
-                            <div class="form-group col-lg-7">
+                            <div class="form-group col-lg-6">
                                 <label>@lang('messages.sala')</label>
-                                <select class="selectpicker" name="sala_id">
-                                    @foreach($salas as $sala)
-                                        @if($setor->sala->id == $sala->id)
-                                            <option value="{{ $sala->id }}" selected>{{ $sala->predio->descricao }} - {{ $sala->descricao }}</option>
-                                        @else
-                                            <option value="{{ $sala->id }}">{{ $sala->descricao }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                                <input type="text" name="sala" class="form-control" id="" value="{{ $setor->sala->descricao }}">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>@lang('messages.predio')</label>
+                                <input type="text" name="predio" class="form-control" id="" value="{{ $setor->sala->predio->descricao  }}">
                             </div>
 
                             <div class="form-group col-lg-6">

@@ -9,10 +9,10 @@
         <h1>Setores cadastrados</h1>
         <form method="get" action="/setor/pesquisar">
             <div class="form-group col-lg-3">
-                <input type="text" name="nome" class="form-control" placeholder="Nome..." />
+                <input type="text" name="nome" class="form-control" placeholder="Pesquisar..." />
             </div>
-            <button type="submit">
-                <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
+            <button type="submit"
+            <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
             </button>
             <a href="{{action('SetorController@novo')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Setor<br/></a>
         </form>
@@ -23,7 +23,6 @@
             <ul class="dropdown-menu col-md-2 col-md-offset-2">
                 <li><a href="{{action('SetorController@ordemAlfabetica')}}">Nome</a></li>
                 <li><a href="{{action('SetorController@ordemCurso')}}">Curso</a></li>
-                <li><a href="{{action('SetorController@ordemResponsavel')}}">Responsável</a></li>
             </ul>
         </div>
 

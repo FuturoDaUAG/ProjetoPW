@@ -8,11 +8,10 @@
             <div class="container-fluid">
                 <section class="container">
                     <div class="container-page">
-                        <div class="col-md-6">
-                           <h1 class="dark-grey">UFRPE-UAG</h1>
-                           <h2>Patrimonio</h2>
-
-
+                        <div class="col-md-6 col-lg-offset-3">
+                            <a herf="#">
+                                <img src="http://www.ufrpe.br/sites/www.ufrpe.br/themes/corporateRural/logo.png" class="img-responsive">
+                            </a>
                         </div>
                     </div>
                 </section>

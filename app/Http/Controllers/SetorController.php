@@ -4,7 +4,7 @@ namespace web\Http\Controllers;
 
 use web\Curso;
 use web\Http\Requests\SetorRequest;
-use web\Http\Requests\PatrimonioRequest;
+use web\Http\Requests\PesquisarRequest;
 use web\Predio;
 use web\Sala;
 use web\Servidor;
@@ -14,7 +14,8 @@ use Request;
 class SetorController extends Controller
 {
     
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -30,7 +31,47 @@ class SetorController extends Controller
     public function salvar(SetorRequest $request)
     {
         $setor = new Setor();
-        $setor->create($request->all());
+        $setor->descricao = $request->descricao;
+        $setor->curso_id = $request->curso_id;
+        $setor->servidor_id = $request->servidor_id;
+
+        $sala = Sala::where('descricao', 'like', strtolower($request->sala))->first();
+        $predio = Predio::where('descricao', 'like', strtolower($request->predio))->first();
+
+        //Uma sala de um predio diferente;
+        $salaTemp = null;
+
+        if($predio == null)
+        {
+            $predio = new Predio();
+            $predio->descricao = $request->predio;
+            $predio->save();
+
+            if($sala != null)
+            {
+                //Cadastrando uma sala de um predio diferente.
+                $salaTemp = new Sala();
+                $salaTemp->descricao = $sala->descricao ;
+                $salaTemp->predio_id = $predio->id;
+                $salaTemp->save();
+            }
+        }
+
+        if($sala == null)
+        {
+            $sala = new Sala();
+            $sala->descricao = $request->sala;
+            $sala->predio_id = $predio->id;
+            $sala->save();
+        }
+
+        if($salaTemp != null)
+            $setor->sala_id = $salaTemp->id;
+        else
+            $setor->sala_id = $sala->id;
+
+        $setor->save();
+
         return redirect()
             ->action('SetorController@listar')
             ->withInput(Request::only('descricao'));
@@ -39,8 +80,8 @@ class SetorController extends Controller
     public function recuperar($id)
     {
         $setor = Setor::find($id);
-        $salas = Sala::all();
-        $servidores = Servidor::all();
+        $salas = Sala::orderBy('descricao')->get();
+        $servidores = Servidor::orderBy('nome')->get();
         $cursos = Curso::all();
         return view('setor.recuperar', ['setor' => $setor, 'salas' => $salas, 'servidores' => $servidores, 'cursos' => $cursos]);
     }
@@ -48,7 +89,52 @@ class SetorController extends Controller
     public function alterar(SetorRequest $request)
     {
         $setor = Setor::find($request->id);
-        $setor->update($request->all());
+        $setor->descricao = $request->descricao;
+        $setor->curso_id = $request->curso_id;
+        $setor->servidor_id = $request->servidor_id;
+
+        $sala = Sala::where('descricao', 'like', strtolower($request->sala))->first();
+        $predio = Predio::where('descricao', 'like', strtolower($request->predio))->first();
+
+        if($sala != null && $predio != null)
+        {
+            $sala->predio_id = $predio->id;
+            $sala->update();
+        }
+
+        //Uma sala de um predio diferente;
+        $salaTemp = null;
+
+        if($predio == null)
+        {
+            $predio = new Predio();
+            $predio->descricao = $request->predio;
+            $predio->save();
+
+            if($sala != null)
+            {
+                //Cadastrando uma sala de um predio diferente.
+                $salaTemp = new Sala();
+                $salaTemp->descricao = $sala->descricao ;
+                $salaTemp->predio_id = $predio->id;
+                $salaTemp->save();
+            }
+        }
+
+        if($sala == null)
+        {
+            $sala = new Sala();
+            $sala->descricao = $request->sala;
+            $sala->predio_id = $predio->id;
+            $sala->save();
+        }
+
+        if($salaTemp != null)
+            $setor->sala_id = $salaTemp->id;
+        else
+            $setor->sala_id = $sala->id;
+
+        $setor->update();
         return redirect()
             ->action('SetorController@listar')
             ->withInput($request->only('curso_id'));
@@ -67,24 +153,20 @@ class SetorController extends Controller
         return view('setor.visualizar')->with('setor', $setor);
     }
 
-    public function pesquisar(PatrimonioRequest $request){
+    public function pesquisar(PesquisarRequest $request)
+    {
         $setores = Setor::where('descricao', 'like', "%".$request->nome."%")->paginate(10);
         return view('setor.listar', ['setores' => $setores]);
     }
 
     public function listar()
     {
-        $setores = Setor::paginate(10);
+        $setores = Setor::orderBy('descricao')->paginate(10);
         return view('setor.listar', ['setores' => $setores]);
     }
 
     public function ordemAlfabetica() {
         $setores = Setor::orderBy('descricao')->paginate(10);
-        return view('setor.listar')->withSetores($setores);
-    }
-
-    public function ordemResponsavel() {
-        $setores = Setor::orderBy('servidor_id')->paginate(10);
         return view('setor.listar')->withSetores($setores);
     }
 
