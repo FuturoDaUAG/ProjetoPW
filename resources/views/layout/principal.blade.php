@@ -40,6 +40,9 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
+                        <a class="navbar-brand"  href="/index">
+                            <img width="30" height="30" class="img-responsive2" src="http://ww3.uag.ufrpe.br/sites/ww3.uag.ufrpe.br/files/logo_uag_0.png">
+                        </a>
                         <a class="navbar-brand" href="/index">{{ config('principal.name', 'Patrimonio') }}</a>
                     </div>
 
