@@ -2,6 +2,7 @@
 
 namespace web\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade as PDF;
 use web\Http\Requests\ServidorRequest;
 use web\Http\Requests\PesquisarRequest;
 use \Illuminate\Database\QueryException;
@@ -88,4 +89,5 @@ class ServidorController extends Controller
         $servidores = Servidor::orderBy('cargo')->paginate(10);
         return view('servidor.listar')->withServidores($servidores);
     }
+
 }

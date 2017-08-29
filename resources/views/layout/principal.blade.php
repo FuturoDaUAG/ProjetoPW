@@ -51,7 +51,7 @@
                         <ul class="nav navbar-nav">
 
                             @if (!Auth::guest())
-                            <li class="dropdown1 col-sm-3">
+                            <li class="dropdown1 col-sm-2">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pessoas </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{action('UsuarioController@lista')}}">Usuarios</a></li>
@@ -60,7 +60,7 @@
                                     <li><a href="{{action('ServidorController@listar')}}">Servidor</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown1 col-sm-3">
+                            <li class="dropdown1 col-sm-2">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locais</a>
                                 <ul class="dropdown-menu ">
 
@@ -76,7 +76,7 @@
                                     <li><a href="{{action('PredioController@listar')}}" >Prédio</a> </li>
                                 </ul>
                             </li>
-                            <li class="dropdown1 col-sm-3">
+                            <li class="dropdown1 col-sm-2">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventário</a>
                                 <ul class="dropdown-menu ">
 
@@ -84,7 +84,7 @@
 
                                 </ul>
                             </li>
-                            <li class="dropdown1 col-sm-3">
+                            <li class="dropdown1 col-sm-2">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Solicitações</a>
                                 <ul class="dropdown-menu ">
 
@@ -92,6 +92,10 @@
 
                                 </ul>		
                             </li>
+                            <li class="dropdown1 col-sm-2">
+                                <a href="{{action('PDFController@selecao')}}">Relatórios</a>
+                            </li>
+
                             @endif
                         </ul>
 

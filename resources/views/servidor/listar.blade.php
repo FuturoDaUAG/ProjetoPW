@@ -22,7 +22,6 @@
             </button>
             <a href="{{action('ServidorController@novo')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Servidor<br/></a>
             <a href="{{action('SetorController@listar')}}" class="btn-sm btn-success  glyphicon glyphicon-list" > Setores<br/></a>
-
         </form>
 
         <div class="dropdown col-md-4 col-md-offset-10">
