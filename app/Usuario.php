@@ -1,18 +1,28 @@
 <?php
-
 namespace web;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Usuario extends Model
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Usuario extends Authenticatable
 {
-
- protected $table ='usuarios';
+    use Notifiable;
     
-    protected $fillable = ['apelido','email','senha','departamento_id'];
-
-public function departamento() {
-        return $this->hasMany('web\Departamento');   
-   }
+    protected $table ='usuarios';
+    
+    protected $fillable = ['name','email','password','departamento_id','tipousuario_id'];
+    
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+    
+    public function servidores()
+    {
+        return $this->hasMany('web\Servidor');
+    }
+    public function departamento() {
+        return $this->belongsTo('web\Departamento');
+    }
+    public function tipoUsuario(){
+        return $this->belongsTo('web\TipoUsuario','tipousuario_id');
+    }
      
 }

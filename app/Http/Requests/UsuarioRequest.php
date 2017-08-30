@@ -1,10 +1,10 @@
 <?php
 
 namespace web\Http\Requests;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Foundation\Http\FormRequest;
 
-class UsuariosRequest extends FormRequest
+class UsuarioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -40,6 +40,5 @@ class UsuariosRequest extends FormRequest
                 'senha.required' => 'O :attribute  não pode ficar vazio.'
 
       ];
-    
     }
 }

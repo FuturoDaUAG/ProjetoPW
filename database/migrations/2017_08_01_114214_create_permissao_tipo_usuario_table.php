@@ -15,6 +15,10 @@ class CreatePermissaoTipoUsuarioTable extends Migration
     {
         Schema::create('permissaotipousuario', function (Blueprint $table) {
 		$table->increments('id');
+                $table->integer('tipousuario_id')->unsigned();
+                $table->integer('permissao_id')->unsigned();
+                $table->foreign('tipousuario_id')->references('id')->on('tiposusuarios');
+                $table->foreign('permissao_id')->references('id')->on('permissoes');
 		$table->timestamps();
 	});
     }

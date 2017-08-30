@@ -1,9 +1,9 @@
 @extends('layout.principal')
 @section('conteudo')
 
-@if(empty($departamento))
+@if(empty($departamentos))
 <div class="alert alert-danger">
-    Você não tem nenhum usuarios cadastrado.
+    Você não tem nenhum Departamento cadastrado.
 </div>
 @else
 
@@ -19,12 +19,12 @@
 
 </thead>
  
-@foreach ($departamento as $d)
+@foreach ($departamentos as $d)
 <tbody>
     <tr >
         <td> {{$d -> id}} </td>
         <td> {{$d-> departamento}}  </td>
-        <td> <a href="{{action('DepartamentoController@mostra', $m->id)}}"><span class="glyphicon glyphicon-search"></span></a> </td>
+        <td> <a href="{{action('DepartamentoController@mostra', $d->id)}}"><span class="glyphicon glyphicon-search"></span></a> </td>
             </tr>
     @endforeach
 </tbody>

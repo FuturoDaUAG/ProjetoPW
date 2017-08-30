@@ -13,7 +13,7 @@
 
 <table class="tini table table table-hover table-striped table-bordered" id="usuario-table"  >
   <thead>
-   <td>@lang('messages.apelido')</td>
+   <td>@lang('messages.nome')</td>
    <td>@lang('messages.email')</td>
    <td></td>
   <td></td>
@@ -25,17 +25,16 @@
 @foreach ($usuarios as $u)
 <tbody>
   <tr >
-    <td>{{$u->apelido}} </td>
-    
+    <td>{{$u->name}} </td>
     <td> {{$u->email}}  </td>
 
     <td>
-     <a href="{{action('UsuarioController@mostra', $u->id)}}"><button class="btn btn-default btn-mini"><span class="glyphicon glyphicon-search"></span></button></a>
+     <a href="{{action('UsuarioController@mostra', $u->id)}}"><span class="glyphicon glyphicon-search"></span></a>
 
    </td>
-   <td> <button type="button" class="btn btn-default btn-mini"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button>
+   <td> <a  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></a>
 </td>
-   <td>  <a href="{{action('UsuarioController@muda', $u->id)}}"><button class="btn btn-default btn-mini"><span class="glyphicon glyphicon-pencil"></span></button></a>
+   <td>  <a href="{{action('UsuarioController@muda', $u->id)}}"><span class="glyphicon glyphicon-pencil"></span></a>
    </td>
 
  </tr>
@@ -51,9 +50,9 @@
 
 @endif
 
-@if(old('apelido'))
+@if(old('name'))
 <div class="alert alert-success">
-  <strong>Sucesso !</strong>O {{ old('apelido')}} foi adicionado.
+  <strong>Sucesso !</strong>O {{ old('name')}} foi adicionado.
 </div>
 @endif
 

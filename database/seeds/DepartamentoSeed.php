@@ -11,6 +11,6 @@ class DepartamentoSeed extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('departamentos')->insert(['departamento' => 'Escolaridade']);
     }
 }

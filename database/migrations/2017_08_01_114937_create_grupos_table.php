@@ -11,14 +11,14 @@ class CreateGruposTable extends Migration
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
         Schema::create('grupos', function (Blueprint $table) {
             $table->increments('id');
+            $table->String('descricao');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

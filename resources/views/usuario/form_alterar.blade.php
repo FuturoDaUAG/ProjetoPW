@@ -17,7 +17,7 @@
 <!-- Form Name -->
 
  <input type="hidden"
-    name="_token" value="{{{ csrf_token() }}}" />
+    name="_token" value="{{ csrf_token() }}" />
 
      <input type="hidden"
     name="id" value="{{$u->id}}" />
@@ -27,8 +27,8 @@
     <div class="container-page">        
       <div class="col-md-6">
          <div class="form-group col-lg-12">
-          <label>@lang('messages.apelido')</label>
-          <input type="text" name="apelido" class="form-control"  value="{{$u->apelido}}">
+          <label>@lang('messages.nome')</label>
+          <input type="text" name="name" class="form-control"  value="{{$u->name}}">
         </div>
         
         <div class="form-group col-lg-6">
@@ -61,7 +61,7 @@
     </div>
   </section>
 </div>
-
+</fieldset>
 
 </form>
 
