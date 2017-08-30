@@ -16,6 +16,7 @@
     <select name="filtro" class="form-group">
         <option value="descricao">Nome</option>
         <option value="ramal">Ramal</option>
+        <option value="predio">Prédio</option>
         
     </select>
     <button type="submit"

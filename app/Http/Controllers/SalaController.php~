@@ -61,7 +61,7 @@ class SalaController extends Controller
         }
     public function pesquisar(SalaRequest $request) {
         $salas = Sala::where($request->filtro, 'like', "%" . $request->texto . "%")->orderBy('id')->paginate(10);
-        return view('sala.listagem')->withSalas($salas);
+        return view('patrimonio.listagem')->withSala($salas);
     }
         
   //ORDENAR--------------------------------------------------------

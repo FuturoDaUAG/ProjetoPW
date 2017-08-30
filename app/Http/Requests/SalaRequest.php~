@@ -20,9 +20,18 @@ class SalaRequest extends FormRequest
     public function rules()
     {
         return [
-              
+                'descricao' => 'required|max:100',
+                'ramal' => 'required|max:100',
+                'predio_id'=> 'required|max:100',
         
         ];
     }
-     
+     public function messages()
+    {
+      return [
+                'descricao.required' => 'O :attribute  não pode ficar vazio.', 
+                'ramal.required' => 'O :attribute  não pode ficar vazio.', 
+                'predio_id'=> 'O :attribute  não pode ficar vazio.', 
+      ];
+    }
 }

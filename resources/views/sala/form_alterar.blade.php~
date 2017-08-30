@@ -20,7 +20,7 @@
     name="_token" value="{{ csrf_token() }}" />
 
      <input type="hidden"
-    name="id" value="{{$sala->id}}" />
+    name="id" value="" />
 
 <div class="container-fluid">
     <section class="container">
@@ -28,12 +28,12 @@
       <div class="col-md-6">
         <div class="form-group col-lg-6">
           <label>@lang('Descricao')</label>
-          <input type="text" name="descricao" class="form-control" id=""  value="{{$sala->descricao}}">
+          <input type="text" name="descricao" class="form-control" id=""  value="">
         </div>
           
           <div class="form-group col-lg-12">
           <label>@lang('Ramal')</label>
-          <input type="text" name="ramal" class="form-control" id="" value="{{$sala->ramal}}">
+          <input type="text" name="ramal" class="form-control" id="" value="">
         </div>
         
         <div class="form-group col-lg-8">
