@@ -31,7 +31,7 @@
 
                             <div class="form-group col-lg-8">
                                 <label>@lang('Prédio')</label>
-                                <select class="selectpicker" name="curso_id">
+                                <select class="selectpicker" name="predio_id">
                                     @foreach($predios as $predio)
                                         <option value="{{ $predio->id }}">{{ $predio->descricao }}</option>
                                     @endforeach
