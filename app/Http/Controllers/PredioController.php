@@ -12,7 +12,7 @@ class PredioController extends Controller
 {
     public function listar()
     {
-        $predios= Predio::paginate(5);
+        $predios= Predio::paginate(10);
         return view('predio.listagem')->withPredios($predios);
     }
 
@@ -72,5 +72,15 @@ class PredioController extends Controller
         $predio = Predio::find($id);
         $predio->delete();
         return redirect()->action('PredioController@listar');
+    }
+public function pesquisar(PredioRequest $request) {
+        $predios = Predio::where($request->filtro, 'like', "%" . $request->texto . "%")->orderBy('id')->paginate(10);
+        return view('predio.listagem')->withPredios($predios);
+    }
+        
+  //ORDENAR--------------------------------------------------------
+  public function ordemAlfabetica() {
+        $predios = Predio::orderBy('descricao')->paginate(10);
+        return view('predio.listagem')->withPredios($predios);
     }
 }

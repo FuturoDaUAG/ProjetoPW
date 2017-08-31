@@ -33,7 +33,7 @@
     </ul>
 </div> 
 
-<a href={{action('SalaController@novo')}} class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
+<a href="sala/novo" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
 <table class="tini table table table-hover table-striped table-bordered" id="sala-table"  >
     <thead>
     <td class="">@lang('ID')</td> 
