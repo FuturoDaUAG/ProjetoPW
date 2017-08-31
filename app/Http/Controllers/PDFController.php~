@@ -91,7 +91,7 @@ class PDFController extends Controller
     
     private function predioPdfStream()
     {
-        $predios = Predio::orderBy('nome')->get();
+        $predios = Predio::orderBy('descricao')->get();
         $salas = Sala::all();
         $view = view('pdf.predios_pdf', ['predios' => $predios,'salas'=>$salas]);
         $pdf = \App::make('dompdf.wrapper');
@@ -101,7 +101,7 @@ class PDFController extends Controller
     }
      private function predioPdfDown()
     {
-        $predios = Predio::orderBy('nome')->get();
+        $predios = Predio::orderBy('descricao')->get();
         $salas = Sala::all();
         return PDF::loadView('pdf.predios_pdf', ['predios' => $predios,'salas'=>$salas]);
     }

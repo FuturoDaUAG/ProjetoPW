@@ -9,6 +9,8 @@ use web\Setor;
 use web\Patrimonio;
 use web\Predio;
 use web\Sala;
+use web\Departamento;
+use web\Usuario;
 
 class PDFController extends Controller
 {
@@ -26,6 +28,8 @@ class PDFController extends Controller
                 case 'Solitacoes':
                     break;
                 case 'Usuarios':
+                   $pdf = $this->usuarioPdfDown();
+                    return $pdf->download('Usuarios.pdf');
                     break;
                 case 'Servidores':
                     $pdf = $this->servidorPdfDown();
@@ -36,6 +40,8 @@ class PDFController extends Controller
                     return $pdf->download('Setores.pdf');
                     break;
                 case 'Departamentos':
+                    $pdf = $this->departamentoPdfDown();
+                    return $pdf->download('Departamentos.pdf');
                     break;
                 case 'Salas_Predios':
                 	  $pdf = $this->predioPdfDown();
@@ -55,6 +61,8 @@ class PDFController extends Controller
                 case 'Solitacoes':
                     break;
                 case 'Usuarios':
+                    $pdf = $this->usuarioPdfStream();
+                    return $pdf->stream('Usuarios');
                     break;
                 case 'Servidores':
                     $pdf = $this->servidorPdfStream();
@@ -65,6 +73,8 @@ class PDFController extends Controller
                     return $pdf->stream('Setores');
                     break;
                 case 'Departamentos':
+                    $pdf = $this->departamentoPdfStream();
+                    return $pdf->stream('Departamentos');
                     break;
                 case 'Salas_Predios':
                 	  $pdf = $this->predioPdfStream();
@@ -140,6 +150,38 @@ class PDFController extends Controller
     {
         $patrimonio = Patrimonio::orderBy('id')->get();
         return PDF::loadView('pdf.patrimonio_pdf', ['patrimonio' => $patrimonio]);
+    }
+    
+     private function usuarioPdfStream()
+    {
+        $usuarios = Usuario::orderBy('name')->get();
+        $view = view('pdf.usuarios_pdf', ['usuarios' => $usuarios]);
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHtml($view);
+        return $pdf;
+
+    }
+
+    private function usuarioPdfDown()
+    {
+       $usuarios = Usuario::orderBy('name')->get();
+        return PDF::loadView('pdf.usuarios_pdf', ['usuarios' => $usuarios]);
+    }
+
+    private function departamentoPdfStream()
+    {
+        $departamentos = Departamento::orderBy('departamento')->get();
+        $view = view('pdf.departamento_pdf', ['departamentos' => $departamentos]);
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHtml($view);
+        return $pdf;
+
+    }
+
+    private function departamentoPdfDown()
+    {
+       $Departamentos = Servidor::orderBy('departamento')->get();
+        return PDF::loadView('pdf.departamento_pdf', ['departamentos' => $departamentos]);
     }
 
 }
