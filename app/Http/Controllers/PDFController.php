@@ -44,7 +44,7 @@ class PDFController extends Controller {
                 	  $pdf = $this->predioPdfDown();
                     return $pdf->download('Predios_Salas.pdf');
                     break;
-                case 'Bens_Permanentes':
+                case 'Bens':
                     $pdf = $this->bensPdfDown();
                     return $pdf->download('BensPermanentes.pdf');
                     break;
@@ -73,7 +73,7 @@ class PDFController extends Controller {
                 	  $pdf = $this->predioPdfStream();
                     return $pdf->stream('Predios_Salas.pdf');
                     break;
-                case 'Bens_Permanentes':
+                case 'Bens':
                     $pdf = $this->bensPdfStream();
                     return $pdf->stream('BensPermanentes.pdf');
                     break;

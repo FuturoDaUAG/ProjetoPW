@@ -29,7 +29,7 @@
 
         <table class="tini table table table-hover table-striped table-bordered" id="servidor-table"  >
 
-            <thead class = "thead-inverse" >
+            <thead>
             <td>@lang('messages.nome')</td>
             <td>@lang('messages.sala')</td>
             <td>@lang('messages.servidor')</td>

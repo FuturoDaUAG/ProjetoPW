@@ -44,7 +44,7 @@ class PDFController extends Controller {
                 	  $pdf = $this->predioPdfDown();
                     return $pdf->download('Predios_Salas.pdf');
                     break;
-                case 'Bens_Permanentes':
+                case 'Bens':
                     $pdf = $this->bensPdfDown();
                     return $pdf->download('BensPermanentes.pdf');
                     break;
@@ -73,7 +73,7 @@ class PDFController extends Controller {
                 	  $pdf = $this->predioPdfStream();
                     return $pdf->stream('Predios_Salas.pdf');
                     break;
-                case 'Bens_Permanentes':
+                case 'Bens':
                     $pdf = $this->bensPdfStream();
                     return $pdf->stream('BensPermanentes.pdf');
                     break;
@@ -108,7 +108,7 @@ class PDFController extends Controller {
     }
 
     private function bensPdfStream() {
-        $patrimonio = Patrimonio::orderBy('id')->get();
+        $patrimonio = Patrimonio::orderBy('descricao')->get();
         $view = view('pdf.patrimonio_pdf', ['patrimonio' => $patrimonio]);
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHtml($view);
@@ -116,7 +116,7 @@ class PDFController extends Controller {
     }
 
     private function bensPdfDown() {
-        $patrimonio = Patrimonio::orderBy('id')->get();
+        $patrimonio = Patrimonio::orderBy('descricao')->get();
         return PDF::loadView('pdf.patrimonio_pdf', ['patrimonio' => $patrimonio]);
     }
 

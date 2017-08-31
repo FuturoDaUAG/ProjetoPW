@@ -2,15 +2,6 @@
 <html lang="pt">
     <head>
     <style>
-    .dropdown-submenu {
-    position: relative;
-	}
-
-.dropdown-submenu .dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -1px;
-	}
     </style>
 
         <title>{{ config('principal.title', 'Módulo Patrimônio') }}</title>
@@ -220,6 +211,19 @@
         .left.carousel-control {
             right: 30px;
             left: inherit;
+        }
+        .dropdown-submenu {
+    			position: relative;
+			}
+
+			.dropdown-submenu .dropdown-menu {
+  		   	 top: 0;
+   			 left: 100%;
+   			 margin-top: -1px;
+			}
+			.thead-inverse{
+            color: #fff;
+            background-color: #373a3c;
         }
         .carousel-control .glyphicon-chevron-left,
         .carousel-control .glyphicon-chevron-right {

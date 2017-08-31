@@ -21,6 +21,7 @@
     <button type="submit"
             <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
     </button>
+    <a href={{action('SalaController@novo')}} class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
 </form>
 
 
@@ -33,9 +34,8 @@
     </ul>
 </div> 
 
-<a href={{action('SalaController@novo')}} class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
 <table class="tini table table table-hover table-striped table-bordered" id="sala-table"  >
-    <thead>
+    <thead class = "thead-inverse" >
     <td class="">@lang('ID')</td> 
     <td>@lang('Nome')</td>
     <td>@lang('Ramal')</td>

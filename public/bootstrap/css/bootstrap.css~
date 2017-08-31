@@ -340,7 +340,10 @@ a:hover {
 .span1 {
   width: 60px;
 }
-
+.thead-inverse th {
+            color: #fff;
+            background-color: #373a3c;
+        }
 .offset12 {
   margin-left: 980px;
 }
@@ -424,7 +427,15 @@ a:hover {
 .row-fluid .controls-row [class*="span"] + [class*="span"] {
   margin-left: 2.127659574468085%;
 }
+.dropdown-submenu {
+    position: relative;
+	}
 
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+	}
 .row-fluid .span12 {
   width: 100%;
   *width: 99.94680851063829%;
