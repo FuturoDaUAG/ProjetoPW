@@ -1,5 +1,6 @@
 <?php
 namespace web\Http\Controllers;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use Request;
 use web\Departamento;

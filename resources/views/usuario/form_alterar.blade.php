@@ -3,14 +3,7 @@
 
 <h1>Editar</h1>
 
-@if(count($errors)>0)
-<div class="alert alert-danger">
-    <ul>@foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach</ul>
-        
-    </div>
-@endif
+
 <form  action="alterar" method="post">
 <fieldset>
 
@@ -33,7 +26,7 @@
         
         <div class="form-group col-lg-6">
           <label>@lang('messages.senha')</label>
-          <input type="password" name="senha" class="form-control"value="">
+          <input type="password" name="password" class="form-control"value="">
         </div>
         
         <div class="form-group col-lg-6">

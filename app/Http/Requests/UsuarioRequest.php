@@ -26,18 +26,18 @@ class UsuarioRequest extends FormRequest
     public function rules()
     {
         return [
-                'apelido' => 'required|max:100',
+                'name' => 'required|max:100',
                 'email' => 'required|max:255',
-                'senha' => 'required|max:255',
+                'password' => 'required|max:255',
         ];
     }
 
      public function messages()
     {
       return [
-                'apelido.required' => 'O :attribute  não pode ficar vazio.', 
+                'name.required' => 'O :attribute  não pode ficar vazio.', 
                 'email.required' => 'O :attribute  não pode ficar vazio.',
-                'senha.required' => 'O :attribute  não pode ficar vazio.'
+                'password.required' => 'O :attribute  não pode ficar vazia.'
 
       ];
     }

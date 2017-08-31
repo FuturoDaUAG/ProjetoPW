@@ -1,9 +1,13 @@
 <?php
 namespace web\Http\Controllers;
-use Illuminate\Http\Request;
+
+use Barryvdh\DomPDF\Facade as PDF;
+use Request;
 use Illuminate\Support\Facades\DB;
+use web\Http\Requests\UsuarioRequest;
 use web\Usuario;
 use web\TipoUsuario;
+
 class UsuarioController extends Controller {
     public function __construct() {
         $this->middleware('auth');
@@ -34,7 +38,7 @@ class UsuarioController extends Controller {
         }
         return view('usuario.form_alterar')->with('u', $usuario);
     }
-    public function adiciona(Request $request) {
+    public function adiciona(UsuarioRequest $request) {
         $tipousuario = TipoUsuario::where("tipousuario",$request->tipousuario)->first();
         Usuario::create([
             'name' => $request->name,
@@ -48,8 +52,8 @@ class UsuarioController extends Controller {
     public function alterar(UsuarioRequest $request) {
         Usuario::find($request->input('id'))->update($request->all());
         return redirect()
-                        ->action('UsuarioController@lista')
-                        ->withInput(Request::only('name'));
+                        ->action('UsuarioController@lista')->withInput(Request::only('name'));
+                        
     }
     public function remove($id) {
         $usuario = usuario::find($id);

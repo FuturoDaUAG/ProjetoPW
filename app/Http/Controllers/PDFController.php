@@ -125,7 +125,7 @@ class PDFController extends Controller
 
     private function departamentoPdfStream()
     {
-        $usuarios = Servidor::orderBy('nome')->get();
+        $Departamento= Departamento::orderBy('nome')->get();
         $view = view('pdf.departamento_pdf', ['departamentos' => $departamentos]);
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHtml($view);
@@ -135,7 +135,7 @@ class PDFController extends Controller
 
     private function departamentoPdfDown()
     {
-       $usuarios = Servidor::orderBy('departamento')->get();
+       $Departamentos = Servidor::orderBy('departamento')->get();
         return PDF::loadView('pdf.departamento_pdf', ['departamentos' => $departamentos]);
     }
 
