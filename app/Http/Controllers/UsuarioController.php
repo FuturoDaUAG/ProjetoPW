@@ -35,14 +35,13 @@ class UsuarioController extends Controller {
         return view('usuario.form_alterar')->with('u', $usuario);
     }
     public function adiciona(Request $request) {
-        $tipousuario = TipoUsuario::where("tipousuario",$request->tipousuario)->first();
-        Usuario::create([
+        $usuario = Usuario::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'departamento_id' => '1',
-            'tipousuario_id' => $tipousuario->id,
         ]);
+        $usuario->tiposUsuarios()->attach($request->tipousuario);
         return redirect()->action('UsuarioController@lista');
     }
     public function alterar(UsuariosRequest $request) {

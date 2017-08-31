@@ -10,8 +10,15 @@ class UsuarioSeed extends Seeder
      */
     public function run()
     {
-        DB::table('usuarios')->insert(['name' => 'SuperAdministrador', 'email' => 'admin@admin.com',
-                                            'password' => bcrypt('[admin]'), 'departamento_id' => '1', 'tipousuario_id' => '1']);
+        $usuario = \web\Usuario::create([
+            'name' => 'SuperAdministrador', 
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('[admin]'), 
+            'departamento_id' => '1'
+        
+        ]);
+        
+        $usuario->tiposUsuarios()->attach('1');
 
     }
 }

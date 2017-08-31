@@ -8,6 +8,7 @@ use web\Http\Requests\SalaRequest;
 class SalaController extends Controller
 {
     public function __construct() {
+        $this->middleware('auth');
         
     }
     

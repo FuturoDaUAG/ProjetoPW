@@ -36,18 +36,21 @@
         <li><a href="{{action('PatrimonioController@ordemNumeroPatrimonio')}}">Número Patrimônio</a></li>
     </ul>
 </div>
-
+@can('criar-global')
 <a href="{{action('PatrimonioController@prepararAdicionar')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
+@endcan
 <table class="tini table table table-hover table-striped table-bordered" id="patrimonio-table"  >
     <thead>
     <td><b>@lang('ID')</b></td>
     <td><b>@lang('Nome')</b></td>
     <td><b>@lang('Número Patrimônio')</b></td>
     <td><b>@lang('Marca')</b></td>
+    
     <td class="col-lg-1 text-center"><b>@lang('Detalhes')</b></td>
     <td class="col-lg-1 text-center"><b>@lang('Editar')</b></td>
     <td class="col-lg-1 text-center"><b>@lang('Empréstimo/Devolução')</b></td>
     <td class="col-lg-1 text-center"><b>@lang('Descarte')</b></td>
+
 </thead>
 
 @foreach ($patrimonio as $p)
@@ -57,14 +60,16 @@
         <td> {{$p -> descricao}}  </td>
         <td> {{$p -> numeropatrimonio}} </td>
         <td> {{$p -> marca -> descricao}}</td>
-        <td class="text-center"> <a href="{{action('PatrimonioController@visualizar', $p->id)}}"><span class="glyphicon glyphicon-list-alt"></span></a> </td>
-        <td class="text-center"> <a href="{{action('PatrimonioController@editar', $p->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+        
+        <td class="text-center"> @can('visualizar-global')<a href="{{action('PatrimonioController@visualizar', $p->id)}}"><span class="glyphicon glyphicon-list-alt"></span></a> @endcan</td> 
+        <td class="text-center"> @can('editar-global') <a href="{{action('PatrimonioController@editar', $p->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> @endcan </td>
         @if($p->status->last()['descricao'] == 'Indisponível' or $p->status->last()['descricao'] == 'Em Manutenção')        
         <td class="text-center"> <a href="{{action('PatrimonioController@prepararDevolucao', $p->id)}}"><span class="glyphicon glyphicon-transfer"></span></a> </td>
         @else
         <td class="text-center"> <a href="{{action('PatrimonioController@prepararTransferir', $p->id)}}"><span class="glyphicon glyphicon-transfer"></span></a> </td>
-        @endif
-        <td class="text-center"> <a onclick="return confirm('Você está prestes a descartar um Bem Permante. Deseja realmente fazer isto?')" href="{{action('PatrimonioController@prepararDescarte', $p->id)}}"> <span class="glyphicon glyphicon-trash"></span></a> </td>
+        @endif       
+        <td class="text-center"> @can('remover-global') <a onclick="return confirm('Você está prestes a descartar um Bem Permante. Deseja realmente fazer isto?')" href="{{action('PatrimonioController@prepararDescarte', $p->id)}}"> <span class="glyphicon glyphicon-trash"></span></a> @endcan</td>
+        
     </tr>
     @endforeach
 </tbody>
