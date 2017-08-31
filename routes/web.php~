@@ -80,8 +80,6 @@ Route::get('/servidor/ordemMatricula', 'ServidorController@ordemMatricula')->mid
 
 /*------------------------------ Sala ---------------------------------------------------*/
 Route::get('/sala', 'SalaController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
-Route::get('/sala/orderAlfa', 'SalaController@ordemAlfabetica')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::get('/sala/pesquisar', 'SalaController@pesquisar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/sala/novo', 'SalaController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/sala/muda/{id}', 'SalaController@muda')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/sala/detalhes/{id}', 'SalaController@mostra')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
@@ -90,8 +88,6 @@ Route::get('/sala/remover/{id}','SalaController@remover')->middleware('auth.Tipo
 Route::post('/sala/muda/atualizar/', 'SalaController@atualizar')->middleware('auth.TipoUsuario:Administrador,Operador');
 /*------------------------------ Predio ---------------------------------------------------*/
 Route::get('/predio', 'PredioController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
-Route::get('/predio/orderAlfa', 'PredioController@ordemAlfabetica')->middleware('auth.TipoUsuario:Administrador,Operador');
-Route::get('/predio/pesquisar', 'PredioController@pesquisar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/predio/novo', 'PredioController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/predio/muda/{id}', 'PredioController@muda')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/predio/detalhes/{id}', 'PredioController@mostra')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
