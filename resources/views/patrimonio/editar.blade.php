@@ -15,13 +15,13 @@
                     </div>
 
                     <div class="form-group col-lg-6"> 
-                        Valor: <input name='valor' class="form-control" type="text" value="{{$p->valor}}"/>
+                        Valor: <input name='valor' class="form-control" type="text" id="mask" value="{{$p->valor}}"/>
                     </div>  
-                    
+
                     <div class="form-group col-lg-6">
                         Número Patrimônio: <input name="numeropatrimonio" class="form-control" type="text" value="{{$p->numeropatrimonio}}"/>
                     </div>
-                    
+
                     <div class="form-group col-lg-6">
                         Número Patrimônio Antigo: <input name="numeropantigo" class="form-control" type="text" value="{{$p->numeropantigo}}"/>
                     </div>
@@ -37,15 +37,18 @@
                     <div class="form-group col-lg-6">
                         Número Nota Fiscal <input name="numeronotafiscal" class="form-control" type="text" value="{{$p-> numeronotafiscal}}"/>
                     </div>
-                    <div>
-                        Marca: <br/>
-                        <select name="marca_id">
-                            @foreach ($m as $marca)
-				<option value="{{$marca->id}}"> {{$marca -> descricao}}</option>
-                            @endforeach
-                        </select>
+                    <div class="form-group col-lg-6">
+                        Data Aquisição: <input name="dataaquisicao"  class="form-control" type="date" value="{{$p->dataaquisicao}}"/>
                     </div>
-
+                    <div class="form-group col-lg-6">
+                        Marca: <input name="marca" class="form-control" type="text" value="{{$p->marca->descricao}}"/>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        Grupo: <input type="text" class="form-control" name="grupo" value="{{ $p->subgrupo->grupo->descricao}}"/>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        Subgrupo: <input type="text" class="form-control" name="subgrupo" value="{{ $p->subgrupo->descricao}}"/>    
+                    </div>
                     <div class="col-md-12">
                         <input type="submit" value="Atualizar"/>
                     </div>
@@ -54,6 +57,11 @@
         </section>  
     </div>
 </form>
+<script>
+    $(document).ready(function ($) {
+        $('#mask').maskMoney({prefix: 'R$ ', allowNegative: true, thousands: '.', decimal: ',', affixesStay: false});
+    });
+</script>
 @stop
 
 

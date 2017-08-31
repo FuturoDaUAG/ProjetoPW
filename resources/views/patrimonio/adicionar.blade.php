@@ -15,7 +15,7 @@
                         </div>
 
                         <div class="form-group col-lg-6"> 
-                            Valor: <input name='valor' class="form-control" type="text"/>
+                            Valor: <input name='valor' class="form-control" type="text" id="mask"/>
                         </div>  
 
                         <div class="form-group col-lg-6">
@@ -63,6 +63,10 @@
         </div>
     </fieldset>
 </form>
-
+<script>
+    $(document).ready(function ($){
+        $('#mask').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+    });
+</script>
 @stop
 

@@ -19,7 +19,7 @@ class CreatePatrimoniosTable extends Migration
             $table->integer('descarte_id')->nullable()->unsigned();
             $table->string('descricao');
             $table->integer('subgrupo_id')->unsigned();
-            $table->integer('valor');
+            $table->string('valor');
             $table->integer('numeroempenho');
             $table->integer('numeropatrimonio');
             $table->integer('numeropregao')->nullable();
