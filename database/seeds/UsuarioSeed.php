@@ -21,8 +21,8 @@ class UsuarioSeed extends Seeder
                                         
                                       
         }
-			//DB::table('usuarios')->insert(['name' => 'SuperAdministrador', 'email' => 'admin@admin.com',
-          //                                  'password' => bcrypt('[admin]'), 'departamento_id' => '1', 'tipousuario_id' => '1']);
+			DB::table('usuarios')->insert(['name' => 'SuperAdministrador', 'email' => 'admin@admin.com',
+                                           'password' => bcrypt('[admin]'), 'departamento_id' => '1', 'tipousuario_id' => '1']);
 
     }
 }
