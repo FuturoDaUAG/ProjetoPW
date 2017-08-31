@@ -55,8 +55,8 @@ Route::post('/patrimonio/transferir', 'PatrimonioController@transferir')->middle
 Route::get('/patrimonio/historico/{id}', 'PatrimonioController@historico')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/patrimonio/devolucao/{id}','PatrimonioController@prepararDevolucao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::post('/patrimonio/devolucao/','PatrimonioController@devolucao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
-Route::get('/patrimonio/descarte/{id}', 'PatrimonioController@prepararDescarte');
-Route::post('/patrimonio/descarte', 'PatrimonioController@descarte');
+Route::get('/patrimonio/descarte/{id}', 'PatrimonioController@prepararDescarte')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/patrimonio/descarte', 'PatrimonioController@descarte')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 
 
 /*------------------------------ Marca --------------------------------------------------------*/
@@ -147,8 +147,8 @@ Route::get('/patrimonio/relatorio/empenho', 'PatrimonioController@relatorioEmpen
 /*------------------------------ PDF ---------------------------------------------------*/
 Route::get('pdf/selecao', 'PDFController@selecao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
 Route::get('pdf/gerarPdf', 'PDFController@gerarPdf')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
-Route::get('pdf/setor', 'PDFController@bensSetor');
-Route::get('pdf/sala', 'PDFController@bensSala');
-Route::get('pdf/nota', 'PDFController@bensNotaFiscal');
-Route::get('pdf/empenho', 'PDFController@bensEmpenho');
+Route::get('pdf/setor', 'PDFController@bensSetor')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('pdf/sala', 'PDFController@bensSala')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('pdf/nota', 'PDFController@bensNotaFiscal')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('pdf/empenho', 'PDFController@bensEmpenho')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 
