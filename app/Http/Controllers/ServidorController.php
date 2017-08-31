@@ -2,15 +2,17 @@
 
 namespace web\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade as PDF;
 use web\Http\Requests\ServidorRequest;
-use web\Http\Requests\PatrimonioRequest;
-//use web\Http\Requests\Request;
+use web\Http\Requests\PesquisarRequest;
+use \Illuminate\Database\QueryException;
 use web\Servidor;
 use Request;
 
 class ServidorController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -46,7 +48,12 @@ class ServidorController extends Controller
     public function remover($id)
     {
         $servidor = Servidor::find($id);
-        $servidor->delete();
+        try {
+            $servidor->delete();
+        } catch (QueryException $e) {
+            return view('servidor.mensagem_exclusao');
+        }
+
         return redirect("/servidor/listar");
     }
 
@@ -56,7 +63,8 @@ class ServidorController extends Controller
         return view('servidor.visualizar')->with('servidor', $servidor);
     }
 
-    public function pesquisar(PatrimonioRequest $request){
+    public function pesquisar(PesquisarRequest $request)
+    {
         $servidores = Servidor::where($request->filtro, 'like', "%".$request->nome."%")->paginate(10);
         return view('servidor/listar', ['servidores' => $servidores]);
     }
@@ -81,4 +89,5 @@ class ServidorController extends Controller
         $servidores = Servidor::orderBy('cargo')->paginate(10);
         return view('servidor.listar')->withServidores($servidores);
     }
+
 }

@@ -1,13 +1,13 @@
 @extends('layout.principal')
 @section('conteudo')
 
-<form action="/patrimonio/transferir" method='post'>
+<form action="/patrimonio/devolucao" method='post'>
     <fieldset>
         <div class="container-fluid">
             <section class="container">
                 <div class="container-page">        
                     <div class="col-md-6">
-                        <h2 class="dark-grey">Empréstimo de Bem Permanente</h2> <br/>
+                        <h2 class="dark-grey">Devolução de Bem Permanente</h2> <br/>
                         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                         <input type="hidden" name="id"  value="{{$p->id}}"/>
 
@@ -22,9 +22,11 @@
                         <div class="form-group col-lg-6">
                             Número Patrimônio: <input name="patrimonio" disabled="true" class="form-control" type="text" value="{{$p->numeropatrimonio}}"/>
                         </div>
-                        
                         <div class="form-group col-lg-6">
-                            Data do Emprestimo: <input name="dataaquisicao" class="form-control" type="date" />
+                            Data Emprestimo: <input name="dataaquisicao" disabled="true" class="form-control" type="text" value="{{$p->dataaquisicao}}"/>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            Data do Devolucao: <input name="datadevolucao" class="form-control" type="date" />
                         </div>
                         
                         <div class="form-group col-lg-6">
