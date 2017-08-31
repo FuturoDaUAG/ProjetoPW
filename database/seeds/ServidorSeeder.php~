@@ -12,7 +12,7 @@ class ServidorSeeder extends Seeder
     public function run()
     {
         $nome = array('Maria','Ana','Paula','Gabriela','Raquel','Carol');
-    	  $cargo = array('Assistente','Supervisor','Estágiario','Gerente');
+    		$cargo = array('Assistente','Supervisor','Estágiario','Gerente');
     for ($i = 1; $i <= 50; $i++){
         DB::table('servidors')->insert(['usuario_id' => 1,
         											 'nome' => $nome[rand(1,5)].' '.$nome[rand(1,5)],

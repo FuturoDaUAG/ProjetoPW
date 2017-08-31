@@ -108,7 +108,7 @@ class PDFController extends Controller {
     }
 
     private function bensPdfStream() {
-        $patrimonio = Patrimonio::orderBy('descricao')->get();
+        $patrimonio = Patrimonio::orderBy('id')->get();
         $view = view('pdf.patrimonio_pdf', ['patrimonio' => $patrimonio]);
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHtml($view);
@@ -116,7 +116,7 @@ class PDFController extends Controller {
     }
 
     private function bensPdfDown() {
-        $patrimonio = Patrimonio::orderBy('descricao')->get();
+        $patrimonio = Patrimonio::orderBy('id')->get();
         return PDF::loadView('pdf.patrimonio_pdf', ['patrimonio' => $patrimonio]);
     }
 
