@@ -9,7 +9,7 @@
         <a href="adicionar" class="btn-sm btn-success  glyphicon glyphicon-plus" > Solicitação <br/></a>
         <table class="tini table table table-hover table-striped table-bordered" id="solicitacao-table"  >
 
-            <thead>
+            <thead class = "thead-inverse" >
             <td>@lang('messages.nome')</td>
             <td>@lang('messages.cargo')</td>
              <td>@lang('messages.curso')</td>

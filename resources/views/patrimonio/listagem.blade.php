@@ -24,30 +24,31 @@
     <button type="submit"
             <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
     </button>
+    <a href="{{action('PatrimonioController@prepararAdicionar')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
+
 </form>
 
 
 
-<div class="dropdown col-md-4 col-md-offset-10">
+<div class="dropdown" style="margin-left: 86%">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Ordenar por
         <span class="caret"></span></button>
     <ul class="dropdown-menu col-md-2 col-md-offset-2">
         <li><a href="{{action('PatrimonioController@ordemAlfabetica')}}">Nome</a></li>
         <li><a href="{{action('PatrimonioController@ordemNumeroPatrimonio')}}">Número Patrimônio</a></li>
     </ul>
-</div> 
+</div>
 
-<a href="patrimonio/adicionar" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
 <table class="tini table table table-hover table-striped table-bordered" id="patrimonio-table"  >
-    <thead>
-    <td class="">@lang('ID')</td>
-    <td>@lang('Nome')</td>
-    <td>@lang('Número Patrimônio')</td>
-    <td>@lang('Marca')</td>
-    <td class="col-lg-1 text-center">@lang('Detalhes')</td>
-    <td class="col-lg-1 text-center">@lang('Editar')</td>
-    <td class="col-lg-1 text-center">@lang('Empréstimo')</td>
-    <td class="col-lg-1 text-center">@lang('Devolucão')</td>
+    <thead class="thead-inverse">
+    <td><b>@lang('ID')</b></td>
+    <td><b>@lang('Nome')</b></td>
+    <td><b>@lang('Número Patrimônio')</b></td>
+    <td><b>@lang('Marca')</b></td>
+    <td class="col-lg-1 text-center"><b>@lang('Detalhes')</b></td>
+    <td class="col-lg-1 text-center"><b>@lang('Editar')</b></td>
+    <td class="col-lg-1 text-center"><b>@lang('Empréstimo/Devolução')</b></td>
+    <td class="col-lg-1 text-center"><b>@lang('Descarte')</b></td>
 </thead>
 
 @foreach ($patrimonio as $p)
@@ -59,8 +60,12 @@
         <td> {{$p -> marca -> descricao}}</td>
         <td class="text-center"> <a href="{{action('PatrimonioController@visualizar', $p->id)}}"><span class="glyphicon glyphicon-list-alt"></span></a> </td>
         <td class="text-center"> <a href="{{action('PatrimonioController@editar', $p->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+        @if($p->status->last()['descricao'] == 'Indisponível' or $p->status->last()['descricao'] == 'Em Manutenção')        
+        <td class="text-center"> <a href="{{action('PatrimonioController@prepararDevolucao', $p->id)}}"><span class="glyphicon glyphicon-transfer"></span></a> </td>
+        @else
         <td class="text-center"> <a href="{{action('PatrimonioController@prepararTransferir', $p->id)}}"><span class="glyphicon glyphicon-transfer"></span></a> </td>
-        <td class="text-center"> <a href="{{action('PatrimonioController@prepararTransferir', $p->id)}}"><span class="glyphicon glyphicon-log-in"></span></a> </td>
+        @endif
+        <td class="text-center"> <a onclick="return confirm('Você está prestes a descartar um Bem Permante. Deseja realmente fazer isto?')" href="{{action('PatrimonioController@prepararDescarte', $p->id)}}"> <span class="glyphicon glyphicon-trash"></span></a> </td>
     </tr>
     @endforeach
 </tbody>
@@ -74,5 +79,25 @@
     <strong>Sucesso !</strong>O {{ old('descricao')}} foi adicionado.
 </div>
 @endif
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Atenção </h4>
+            </div>
+            <div class="modal-body">
+                <p><b>Você está prestes a descartar um Bem Permante. Deseja realmente fazer isto?</b></p>
+            </div>
+            <div class="modal-footer">
+                <a href="{{action('PatrimonioController@prepararDescarte', $p->id)}}">  <button type="button" class="btn btn-default">Sim</button></a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 @stop

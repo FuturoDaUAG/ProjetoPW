@@ -9,7 +9,7 @@
             <b>Matricula:</b> {{ $servidor->matricula }}
         </li>
         <li>
-            <b>Cadastrado por: </b> {{ $servidor->usuario->apelido}}
+            <b>Cadastrado por: </b> {{ $servidor->usuario->name}}
         </li>
     </ul>
 @stop

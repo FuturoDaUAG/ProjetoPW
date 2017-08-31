@@ -17,10 +17,11 @@
                 <option value="matricula">Matrícula</option>
                 <option value="cargo">Cargo</option>
             </select>
-            <button type="submit">
+            <button type="submit"
                 <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
             </button>
             <a href="{{action('ServidorController@novo')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Servidor<br/></a>
+            <a href="{{action('SetorController@listar')}}" class="btn-sm btn-success  glyphicon glyphicon-list" > Setores<br/></a>
         </form>
 
         <div class="dropdown col-md-4 col-md-offset-10">
@@ -35,7 +36,7 @@
 
         <table class="tini table table table-hover table-striped table-bordered" id="servidor-table"  >
 
-            <thead>
+            <thead class = "thead-inverse" >
                 <td>@lang('messages.matricula')</td>
                 <td>@lang('messages.nome')</td>
                 <td>@lang('messages.cargo')</td>

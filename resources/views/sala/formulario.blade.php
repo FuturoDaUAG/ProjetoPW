@@ -20,7 +20,7 @@
                             <h2 class="dark-grey">Registrar</h2>
 
                             <div class="form-group col-lg-12">
-                                <label>@lang('Descricao')</label>
+                                <label>@lang('Nome')</label>
                                 <input type="text" name="descricao" class="form-control" id="" value="{{ old('descricao') }}">
                             </div>
 
@@ -29,10 +29,13 @@
                                 <input type="text" name="ramal" class="form-control" id=""  value="{{ old('ramal') }}">
                             </div>
 
-
-                            <div class="form-group col-lg-6">
-                                <label>@lang('Predio')</label>
-                                <input type="text" name="predio_id" class="form-control" id="" value="{{ old('predio_id') }}">
+                            <div class="form-group col-lg-8">
+                                <label>@lang('Prédio')</label>
+                                <select class="selectpicker" name="predio_id">
+                                    @foreach($predios as $predio)
+                                        <option value="{{ $predio->id }}">{{ $predio->descricao }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
 

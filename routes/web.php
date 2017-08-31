@@ -53,6 +53,10 @@ Route::get('/patrimonio/remover/{id}', 'PatrimonioController@remover')->middlewa
 Route::get('/patrimonio/transferir/{id}', 'PatrimonioController@prepararTransferir')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::post('/patrimonio/transferir', 'PatrimonioController@transferir')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/patrimonio/historico/{id}', 'PatrimonioController@historico')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/devolucao/{id}','PatrimonioController@prepararDevolucao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/patrimonio/devolucao/','PatrimonioController@devolucao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/descarte/{id}', 'PatrimonioController@prepararDescarte')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/patrimonio/descarte', 'PatrimonioController@descarte')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 
 
 /*------------------------------ Marca --------------------------------------------------------*/
@@ -61,7 +65,6 @@ Route::get('/marca/adicionar','MarcaController@prepararAdicionar')->middleware('
 Route::post('/marca/adicionar', 'MarcaController@adicionar')->middleware('auth.TipoUsuario:Administrador,Operador');
 
 //Servidor
-
 Route::get('/servidor/novo', 'ServidorController@novo')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::post('/servidor/salvar', 'ServidorController@salvar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/servidor/recuperar/{id}', 'ServidorController@recuperar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
@@ -74,8 +77,11 @@ Route::get('/servidor/ordemAlfa', 'ServidorController@ordemAlfabetica')->middlew
 Route::get('/servidor/ordemCargo', 'ServidorController@ordemCargo')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/servidor/ordemMatricula', 'ServidorController@ordemMatricula')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 
+
 /*------------------------------ Sala ---------------------------------------------------*/
 Route::get('/sala', 'SalaController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/sala/orderAlfa', 'SalaController@ordemAlfabetica')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::get('/sala/pesquisar', 'SalaController@pesquisar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/sala/novo', 'SalaController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/sala/muda/{id}', 'SalaController@muda')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/sala/detalhes/{id}', 'SalaController@mostra')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
@@ -84,6 +90,8 @@ Route::get('/sala/remover/{id}','SalaController@remover')->middleware('auth.Tipo
 Route::post('/sala/muda/atualizar/', 'SalaController@atualizar')->middleware('auth.TipoUsuario:Administrador,Operador');
 /*------------------------------ Predio ---------------------------------------------------*/
 Route::get('/predio', 'PredioController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/predio/orderAlfa', 'PredioController@ordemAlfabetica')->middleware('auth.TipoUsuario:Administrador,Operador');
+Route::get('/predio/pesquisar', 'PredioController@pesquisar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/predio/novo', 'PredioController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/predio/muda/{id}', 'PredioController@muda')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/predio/detalhes/{id}', 'PredioController@mostra')->where('id', '[0-9]+')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
@@ -102,7 +110,6 @@ Route::get('/setor/listar', 'SetorController@listar')->middleware('auth.TipoUsua
 Route::get('/setor/pesquisar', 'SetorController@pesquisar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/setor/ordemAlfa', 'SetorController@ordemAlfabetica')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/setor/ordemCurso', 'SetorController@ordemCurso')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
-Route::get('/setor/ordemResponsavel', 'SetorController@ordemResponsavel')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 
 
 /*------------------------------ Solicitação---------------------------------------------------*/
@@ -112,6 +119,8 @@ Route::get('/solicitacao/listar', 'SolicitacaoController@listar');
 Route::get('/solicitacao/remover/{id}', 'SolicitacaoController@remover');
 Route::get('/solicitacao/visualizar/{id}', 'SolicitacaoController@visualizar');
 
+
+/*------------------------------ Setor---------------------------------------------------*/
 Route::get('/setor/novo', 'SetorController@novo')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::post('/setor/salvar', 'SetorController@salvar')->middleware('auth.TipoUsuario:Administrador,Operador');
 Route::get('/setor/recuperar/{id}', 'SetorController@recuperar')->middleware('auth.TipoUsuario:Administrador,Operador');
@@ -131,4 +140,19 @@ Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
 Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
 Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
 
+/*--------------------------- Patrimônio Relatórios ----------------------------------*/
+Route::get('/patrimonio/relatorio', 'PatrimonioController@relatorioTodos')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+Route::get('/patrimonio/relatorio/setor', 'PatrimonioController@relatorioSetor')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+Route::get('/patrimonio/relatorio/sala', 'PatrimonioController@relatorioSala')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+Route::get('/patrimonio/relatorio/notafiscal', 'PatrimonioController@relatorioNotaFiscal')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/relatorio/empenho', 'PatrimonioController@relatorioEmpenho')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+
+
+/*------------------------------ PDF ---------------------------------------------------*/
+Route::get('pdf/selecao', 'PDFController@selecao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+Route::get('pdf/gerarPdf', 'PDFController@gerarPdf')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+Route::get('pdf/setor', 'PDFController@bensSetor')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('pdf/sala', 'PDFController@bensSala')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('pdf/nota', 'PDFController@bensNotaFiscal')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('pdf/empenho', 'PDFController@bensEmpenho')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 

@@ -14,5 +14,6 @@ class StatusSeeder extends Seeder
         DB::table('statuses')->insert(['descricao' => 'Disponível']);
         DB::table('statuses')->insert(['descricao' => 'Indisponível']);
         DB::table('statuses')->insert(['descricao' => 'Em manutenção']);
+        DB::table('statuses')->insert(['descricao' => 'Descartado']);
     }
 }
