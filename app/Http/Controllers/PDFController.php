@@ -122,14 +122,15 @@ class PDFController extends Controller {
 
     public function bensSetor(Request $request) {
         $setor = $request->setor;
-        $patrimonio = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, setors.descricao FROM projetoweb.patrimonios, projetoweb.patrimonio_setor, projetoweb.setors "
-                        . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and setors.descricao = " . "'" . $request->setor . "'" . "");
+        $patrimonio = DB::select("SELECT DISTINCT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, statuses.descricao FROM patrimonios, patrimonio_setor, setors, statuses, patrimonio_status "
+                        . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and setors.descricao = " . "'" . $request->setor . "'" . ""
+                . "and patrimonio_status.patrimonio_id = patrimonios.id and patrimonio_status.status_id = statuses.id and (statuses.descricao = 'Indisponivel' or statuses.descricao = 'Em manutenção')");
         return PDF::loadView('pdf.bensSetor_pdf', ['patrimonio' => $patrimonio, 'setor' => $setor])->download('bensSetor.pdf');
     }
 
     public function bensSala(Request $request) {
         $sala = $request->sala;
-        $patrimonio = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, patrimonios.dataaquisicao FROM projetoweb.patrimonios, projetoweb.patrimonio_setor, projetoweb.setors, projetoweb.salas "
+        $patrimonio = DB::select("SELECT DISTINCT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, patrimonios.dataaquisicao FROM projetoweb.patrimonios, projetoweb.patrimonio_setor, projetoweb.setors, projetoweb.salas "
                         . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and salas.descricao = " . "'" . $request->sala . "'" . " and salas.id = setors.sala_id");
         return PDF::loadView('pdf.bensSala_pdf', ['patrimonio' => $patrimonio, 'sala' => $sala])->download('bensSala.pdf');
     }

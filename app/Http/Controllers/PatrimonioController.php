@@ -21,7 +21,7 @@ class PatrimonioController extends Controller {
     }
 
     public function listar() {
-        $patrimonio = Patrimonio::paginate(10);
+        $patrimonio = Patrimonio::where('descarte_id', null)->paginate(10);
         return view('patrimonio.listagem')->withPatrimonio($patrimonio);
     }
 
@@ -73,12 +73,12 @@ class PatrimonioController extends Controller {
         $patrimonio->marca_id = $marca->id;
         $patrimonio->subgrupo_id = $subgrupo->id;
         $patrimonio->save();
-        $patrimonio->status()->attach(3, ['data' => $request->dataaquisicao]);
+        $patrimonio->status()->attach(1, ['data' => $request->dataaquisicao]);
         return redirect("patrimonio/");
     }
 
-    public function editar(PatrimonioRequest $request) {
-        $patrimonio = Patrimonio::find($request->id);
+    public function editar(Request $request) {
+        $patrimonio = Patrimonio::find($request -> id);
         return view('patrimonio.editar')->with('p', $patrimonio);
     }
 
@@ -124,20 +124,20 @@ class PatrimonioController extends Controller {
         return redirect("patrimonio/");
     }
 
-    public function visualizar($id) {
-        $patrimonio = Patrimonio::find($id);
+    public function visualizar(Request $request) {
+        $patrimonio = Patrimonio::find($request -> id);
         $teste = $patrimonio->status->last();
         return view('patrimonio.visualizar')->with('patrimonio', $patrimonio)->with('teste', $teste);
     }
 
-    public function prepararTransferir(PatrimonioRequest $request) {
+    public function prepararTransferir(Request $request) {
         $patrimonio = Patrimonio::find($request->id);
         $setor = \web\Setor::all();
         $status = \web\Status::all();
         return view('patrimonio.transferir')->with('p', $patrimonio)->with('s', $setor)->with('st', $status);
     }
 
-    public function transferir(PatrimonioRequest $request) {
+    public function transferir(Request $request) {
         $patrimonio = Patrimonio::find($request->id);
         $patrimonio->setor()->attach($request->setor_id, array('dataaquisicao' => $request->dataaquisicao));
         $patrimonio->status()->attach($request->status_id, ['data' => $request->dataaquisicao]);
@@ -166,18 +166,22 @@ class PatrimonioController extends Controller {
         return view('patrimonio.historico')->with('patrimonio', $patrimonio);
     }
     
-    public function prepararDevolucao(PatrimonioRequest $request) {
+    public function prepararDevolucao(Request $request) {
         $patrimonio = Patrimonio::find($request->id);
         $setor = \web\Setor::all();
         $status = \web\Status::all();
-        return view('patrimonio.devolucao')->with('p', $patrimonio)->with('s', $setor)->with('st', $status);
+        $query = DB::select("SELECT p.patrimonio_id, p.status_id FROM patrimonio_status p, patrimonios "
+                . "WHERE patrimonios.id = p.patrimonio_id and patrimonios.id = 1 and p.id = (SELECT MAX(id) from projetoweb.patrimonio_status)");
+        return view('patrimonio.devolucao')->with('p', $patrimonio)->with('s', $setor)->with('st', $status)->with('q', $query);
     }
     
-    public function devolucao(PatrimonioRequest $request){
+    public function devolucao(Request $request){
         $patrimonio = Patrimonio::find($request->id);
         $patrimonio->setor()->attach($request->setor_id, ['dataAquisicao'=> $request->datadevolucao]);
+        $patrimonio->status()->detach();
         $patrimonio->status()->attach($request->status_id, ['data' => $request->datadevolucao]);
         return redirect("patrimonio/");
+//        return $request->status_id;
     }
     
     public function prepararDescarte($id){
@@ -202,7 +206,7 @@ class PatrimonioController extends Controller {
 
     public function relatorioSetor(Request $request) {
         $setor = Setor::all();
-        $query = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, setors.descricao FROM PATRIMONIO.patrimonios, PATRIMONIO.patrimonio_setor, PATRIMONIO.setors "
+        $query = DB::select("SELECT DISTINCT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, setors.descricao FROM patrimonios, patrimonio_setor, setors "
                         . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and setors.descricao = " . "'".$request -> setor."'"  ."");
        
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
@@ -216,7 +220,7 @@ class PatrimonioController extends Controller {
 
     public function relatorioSala(Request $request) {
         $sala = Sala::all();
-        $query = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, patrimonios.dataaquisicao FROM PATRIMONIO.patrimonios, PATRIMONIO.patrimonio_setor, PATRIMONIO.setors, PATRIMONIO.salas "
+        $query = DB::select("SELECT DISTINCT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, patrimonios.dataaquisicao FROM patrimonios, patrimonio_setor, setors, salas "
                         . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and salas.descricao = " . "'".$request -> sala."'". " and salas.id = setors.sala_id");   
         
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
@@ -237,4 +241,10 @@ class PatrimonioController extends Controller {
         $patrimonio = Patrimonio::where('numeroempenho', '=', $request -> numero)->paginate(15);
         return view('relatorio.relatorioEmpenho')->with('patrimonio', $patrimonio);
     }
+    
+    public function listarDescartados() {
+        $patrimonio = Patrimonio::where('descarte_id','!=', null)->paginate(10);
+        return view('patrimonio.listagemDescarte')->withPatrimonio($patrimonio);
+    }  
+    
 }

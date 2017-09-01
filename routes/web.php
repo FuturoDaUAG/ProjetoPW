@@ -57,7 +57,7 @@ Route::get('/patrimonio/devolucao/{id}','PatrimonioController@prepararDevolucao'
 Route::post('/patrimonio/devolucao/','PatrimonioController@devolucao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/patrimonio/descarte/{id}', 'PatrimonioController@prepararDescarte')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::post('/patrimonio/descarte', 'PatrimonioController@descarte')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
-
+Route::get('/patrimonio/descartes/', 'PatrimonioController@listarDescartados')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 
 /*------------------------------ Marca --------------------------------------------------------*/
 Route::get('/marca', 'MarcaController@listar')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
