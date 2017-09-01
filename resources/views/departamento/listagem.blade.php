@@ -13,7 +13,8 @@
     <thead class = "thead-inverse" >
     <td>ID</td>
     <td>Departamento</td>
-    <td class="text-center">  Editar</td>
+    <td class="col-lg-1 text-center">  Detalhes</td>
+    <td class="col-lg-1 text-center">  Editar</td>
 </thead>
 
 </thead>
@@ -23,8 +24,11 @@
     <tr >
         <td> {{$d -> id}} </td>
         <td> {{$d-> departamento}}  </td>
-        <td class="text-center"> <a href="{{action('DepartamentoController@muda', $d->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
-              </tr>
+        
+        <td class="text-center"> @can('visualizar-global')<a href="{{action('DepartamentoController@mostra', $d->id)}}"><span class="glyphicon glyphicon-list-alt"></span></a> @endcan</td>
+        <td class="text-center">@can('editar-global') <a href="{{action('DepartamentoController@muda', $d->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> @endcan</td>
+        
+    </tr>
     @endforeach
 </tbody>
 </table>

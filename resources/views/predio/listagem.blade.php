@@ -20,8 +20,9 @@
     <button type="submit"
             <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
     </button>
+    @can('criar-global')
     <a href="predio/novo" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
-
+    @endcan
 </form>
 
 
@@ -47,8 +48,8 @@
     <tr >
         <td> {{$predio -> id}} </td>
         <td> {{$predio -> descricao}}  </td>
-        <td class="text-center"> <a href="{{action('PredioController@muda', $predio->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
-        <td class="text-center"> <a href="{{action('PredioController@remover', $predio->id)}}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+        <td class="text-center"> @can('editar-global')<a href="{{action('PredioController@muda', $predio->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> @endcan</td>
+        <td class="text-center">@can('remover-global') <a href="{{action('PredioController@remover', $predio->id)}}" onclick="return confirm('Deseja realmente excluir este item?')"><span class="glyphicon glyphicon-trash"></span></a> @endcan</td>
          </tr>
     @endforeach
 </tbody>

@@ -21,7 +21,9 @@
     <button type="submit"
             <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
     </button>
-    <a href={{action('SalaController@novo')}} class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
+    @can('criar-global')
+    <a href="{{action('SalaController@novo')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
+    @endcan
 </form>
 
 
@@ -51,8 +53,8 @@
         <td> {{$sala -> descricao}}  </td>
         <td> {{$sala -> ramal}} </td>
         <td> {{$sala -> predio -> descricao}}</td>
-        <td class="text-center"> <a href="{{action('SalaController@muda', $sala->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
-        <td class="text-center"> <a href="{{action('SalaController@remover', $sala->id)}}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+        <td class="text-center"> @can('editar-global')<a href="{{action('SalaController@muda', $sala->id)}}"><span class="glyphicon glyphicon-pencil"></span></a>@endcan </td>
+        <td class="text-center">@can('remover-global') <a href="{{action('SalaController@remover', $sala->id)}}" onclick="return confirm('Deseja realmente excluir este item?')"><span class="glyphicon glyphicon-trash"></span></a>@endcan </td>
          </tr>
     @endforeach
 </tbody>

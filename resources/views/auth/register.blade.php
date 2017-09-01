@@ -65,7 +65,7 @@
                             <div class="col-md-6">
                                 <select name="tipousuario">
                                     @foreach ($tiposusuarios as $tipo)
-                                    <option value="{{$tipo->tipousuario}}">{{$tipo->tipousuario}}</option>
+                                    <option value="{{$tipo->id}}">{{$tipo->tipousuario}}</option>
                                     @endforeach
                                 </select>
                             </div>

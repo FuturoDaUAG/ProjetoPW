@@ -8,7 +8,13 @@ use web\Grupo;
 
 class SubgrupoController extends Controller
 {
-     public function prepararAdicionar(){
+     
+    public function __construct() {
+        $this->middleware('auth');
+        
+    }
+    
+    public function prepararAdicionar(){
         $grupo = Grupo::all();
         return view('subgrupo.adicionar') ->with('g',$grupo);
     }

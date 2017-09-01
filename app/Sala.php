@@ -18,4 +18,6 @@ class Sala extends Model
     {
         return $this->belongsTo('web\Predio');
     }
+    
+    
 }

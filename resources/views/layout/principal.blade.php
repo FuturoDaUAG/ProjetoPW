@@ -58,9 +58,10 @@
                             <li class="dropdown1 row-sm-3">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pessoas </a>
                                 <ul class="dropdown-menu">
+                                    @can('acessoRestrito-global')
                                     <li><a href="{{action('UsuarioController@lista')}}">Usuarios</a></li>
                                     <li role="separator" class="divider"></li>
-
+                                    @endcan
                                     <li><a href="{{action('ServidorController@listar')}}">Servidor</a></li>
                                 </ul>
                             </li>
@@ -117,7 +118,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @can('acessoRestrito-global')
                                     <li><a href="#" >Configuraçao</a></li>
+                                    @endcan
                                     <li>
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

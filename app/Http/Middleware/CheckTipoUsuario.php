@@ -15,6 +15,7 @@ class CheckTipoUsuario {
      * @return mixed
      */
     public function handle($request, Closure $next, ...$tipos) {
+        /**
         $validacao = false;
         foreach ($tipos as $t) {
             if (Auth::user()->tipoUsuario->tipousuario == $t) {
@@ -24,7 +25,7 @@ class CheckTipoUsuario {
         if(!$validacao){
             return redirect('/');
         }
-
+        */
         return $next($request);
     }
 
