@@ -20,6 +20,7 @@ class CreatePermissaoTipoUsuarioTable extends Migration
                 $table->foreign('tipousuario_id')->references('id')->on('tiposusuarios');
                 $table->foreign('permissao_id')->references('id')->on('permissoes');
 		$table->timestamps();
+                $table->softDeletes();
 	});
     }
 

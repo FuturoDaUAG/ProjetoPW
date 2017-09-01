@@ -30,6 +30,7 @@ class CreatePatrimoniosTable extends Migration
             $table->foreign('descarte_id')->references('id')->on('descartes');
             $table->foreign('subgrupo_id')->references('id')->on('subgrupos');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

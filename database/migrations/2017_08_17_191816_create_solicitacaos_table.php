@@ -26,6 +26,7 @@ class CreateSolicitacaosTable extends Migration {
             $table->text('descricao');
             $table->foreign('setor_id')->references('id')->on('setors')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -2,8 +2,8 @@
 <html lang="pt">
     <head>
 
-    <style>
-    </style>
+        <style>
+        </style>
 
 
         <title>{{ config('principal.title', 'Módulo Patrimônio') }}</title>
@@ -89,15 +89,15 @@
                                     <li ><a tabindex="-1" href="{{action('SolicitacaoController@listar')}}" >Solicitação</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-submenu">
-                                    <a class="test" tabindex="-1" href="#">Listar<span class="caret"></span></a>
-                                    <ul class="dropdown-menu ">
-                                    <li><a href="{{action('PatrimonioController@listar')}}" >Todos</a></li>
-                                    <li><a href="{{action('PatrimonioController@relatorioSetor')}}">Por Setor</a></li>
-                                    <li><a href="{{action('PatrimonioController@relatorioSala')}}">Por Sala</a></li>
-                                    <li><a href="{{action('PatrimonioController@relatorioNotaFiscal')}}">Por Nota Fiscal</a></li>
-                                    <li><a href="{{action('PatrimonioController@relatorioEmpenho')}}">Por Empenho</a></li>							
-                                    <li><a href="{{action('PatrimonioController@listarDescartados')}}">Descartados</a></li>
-                                    </ul>
+                                        <a class="test" tabindex="-1" href="#">Listar<span class="caret"></span></a>
+                                        <ul class="dropdown-menu ">
+                                            <li><a href="{{action('PatrimonioController@listar')}}" >Todos</a></li>
+                                            <li><a href="{{action('PatrimonioController@relatorioSetor')}}">Por Setor</a></li>
+                                            <li><a href="{{action('PatrimonioController@relatorioSala')}}">Por Sala</a></li>
+                                            <li><a href="{{action('PatrimonioController@relatorioNotaFiscal')}}">Por Nota Fiscal</a></li>
+                                            <li><a href="{{action('PatrimonioController@relatorioEmpenho')}}">Por Empenho</a></li>							
+                                            <li><a href="{{action('PatrimonioController@listarDescartados')}}">Descartados</a></li>
+                                        </ul>
                                     </li>
                                 </ul>  
                             </li>
@@ -171,15 +171,15 @@
             }
     );
 });
-	$(document).ready(function(){
-  		$('.dropdown-submenu a.test').on("click", function(e){
-    		$(this).next('ul').toggle();
-    			e.stopPropagation();
-    			e.preventDefault();
-  			});
-		});
+$(document).ready(function () {
+    $('.dropdown-submenu a.test').on("click", function (e) {
+        $(this).next('ul').toggle();
+        e.stopPropagation();
+        e.preventDefault();
+    });
+});
 
-</script>
+    </script>
 
 
     <style type="text/css">
@@ -230,15 +230,15 @@
             left: inherit;
         }
         .dropdown-submenu {
-    			position: relative;
-			}
+            position: relative;
+        }
 
-			.dropdown-submenu .dropdown-menu {
-  		   	 top: 0;
-   			 left: 100%;
-   			 margin-top: -1px;
-			}
-			.thead-inverse{
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+        .thead-inverse{
             color: #fff;
             background-color: #373a3c;
         }

@@ -17,6 +17,7 @@ class CreatePrediosTable extends Migration
             $table->increments('id');
             $table->string('descricao');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
