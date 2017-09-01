@@ -80,20 +80,6 @@
                                     <li><a href="{{action('PredioController@listar')}}" >Prédio</a> </li>
                                 </ul>
                             </li>
-<<<<<<< HEAD
-                            <li class="dropdown1 row-sm-4">
-                                <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Bens Permanentes</a>
-                                <ul class="dropdown-menu ">
-
-                                    <li><a href="{{action('PatrimonioController@listar')}}" >Inventário</a></li>
-                                     <li role="separator" class="divider"></li>
-                                    <li><a href="{{action('SolicitacaoController@listar')}}" >Solicitação</a></li>
-
-                                </ul>
-                            </li>
-                          
-                            <li class="dropdown1 col-sm-2">
-=======
                             <li class="dropdown1 row-sm-3">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bem Permanente</a>
                                 <ul class="dropdown-menu ">
@@ -113,7 +99,6 @@
                                 </ul>  
                             </li>
                             <li class="dropdown1 row-sm-3">
->>>>>>> 1e1b56daae79119753c63993e2546e09f73a6994
                                 <a href="{{action('PDFController@selecao')}}">Relatórios</a>
                             </li>
 
