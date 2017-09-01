@@ -8,7 +8,7 @@
 
         <br/>
         <br/>
-        <label class="radio-inline"><input type="radio" name="rb" value="Solitacoes" checked>Solicitações</label>
+        <label class="radio-inline"><input type="radio" name="rb" value="Solicitacoes" checked>Solicitações</label>
         <label class="radio-inline"><input type="radio" name="rb" value="Usuarios">Usuários</label>
         <label class="radio-inline"><input type="radio" name="rb" value="Servidores">Servidores</label>
         <label class="radio-inline"><input type="radio" name="rb" value="Setores">Setores</label>

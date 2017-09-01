@@ -11,6 +11,7 @@ use web\Departamento;
 use web\Usuario;
 use web\Predio;
 use web\Sala;
+use web\Solicitacao;
 use Illuminate\Support\Facades\DB;
 
 class PDFController extends Controller {
@@ -22,7 +23,9 @@ class PDFController extends Controller {
     public function gerarPdf(Request $request) {
         if ($request->download == 'download') {
             switch ($request->rb) {
-                case 'Solitacoes':
+                case 'Solicitacoes':
+                $pdf = $this->solicitacaoPdfDown();
+                    return $pdf->download('Solicitacoes.pdf');
                     break;
                 case 'Usuarios':
                    $pdf = $this->usuarioPdfDown();
@@ -51,7 +54,9 @@ class PDFController extends Controller {
             }
         } else {
             switch ($request->rb) {
-                case 'Solitacoes':
+                case 'Solicitacoes':
+                	  $pdf = $this->solicitacaoPdfStream();
+                    return $pdf->stream('Solicitacoes');
                     break;
                 case 'Usuarios':
                     $pdf = $this->usuarioPdfStream();
@@ -80,7 +85,24 @@ class PDFController extends Controller {
             }
         }
     }
+    
+    
+ 
+//--------------Solicitacao-------------------------------------------------------   
+     private function solicitacaoPdfStream() {
+        $solicitacao = Solicitacao::orderBy('id')->get();
+        $view = view('pdf.solicitacoes_pdf', ['servidores' => $solicitacao]);
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHtml($view);
+        return $pdf;
+    }
 
+    private function solicitacaoPdfDown() {
+        $solicitacao = Solicitacao::orderBy('id')->get();
+        return PDF::loadView('pdf.solicitacoes_pdf', ['servidores' => $solicitacao]);
+    }
+
+//--------------Servidor-------------------------------------------------------
     private function servidorPdfStream() {
         $servidores = Servidor::orderBy('nome')->get();
         $view = view('pdf.servidores_pdf', ['servidores' => $servidores]);
@@ -94,6 +116,7 @@ class PDFController extends Controller {
         return PDF::loadView('pdf.servidores_pdf', ['servidores' => $servidores]);
     }
 
+//--------------Setor-------------------------------------------------------
     private function setorPdfStream() {
         $setores = Setor::orderBy('descricao')->get();
         $view = view('pdf.setores_pdf', ['setores' => $setores]);
@@ -107,6 +130,7 @@ class PDFController extends Controller {
         return PDF::loadView('pdf.setores_pdf', ['setores' => $setores]);
     }
 
+//--------------Bens Permanentes-------------------------------------------------------
     private function bensPdfStream() {
         $patrimonio = Patrimonio::orderBy('descricao')->get();
         $view = view('pdf.patrimonio_pdf', ['patrimonio' => $patrimonio]);
@@ -146,6 +170,7 @@ class PDFController extends Controller {
         return PDF::loadView('pdf.bensEmpenho_pdf', ['patrimonio' => $patrimonio, 'numero' => $numero])->stream('bensEmpenho.pdf');
     }
 
+//--------------Usuario-------------------------------------------------------
     
      private function usuarioPdfStream()
     {
@@ -162,7 +187,8 @@ class PDFController extends Controller {
        $usuarios = Usuario::orderBy('name')->get();
         return PDF::loadView('pdf.usuarios_pdf', ['usuarios' => $usuarios]);
     }
-     
+
+//--------------Predio-------------------------------------------------------     
      private function predioPdfStream()
     {
         $predios = Predio::orderBy('descricao')->get();
@@ -180,7 +206,7 @@ class PDFController extends Controller {
         return PDF::loadView('pdf.predios_pdf', ['predios' => $predios,'salas'=>$salas]);
     }
 
-    
+//--------------Departamento-------------------------------------------------------
 
     private function departamentoPdfStream()
     {
