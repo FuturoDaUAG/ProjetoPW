@@ -245,6 +245,7 @@ class PatrimonioController extends Controller {
     public function listarDescartados() {
         $patrimonio = Patrimonio::where('descarte_id','!=', null)->paginate(10);
         return view('patrimonio.listagemDescarte')->withPatrimonio($patrimonio);
+        
     }  
     
 }
