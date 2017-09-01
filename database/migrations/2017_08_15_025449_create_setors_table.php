@@ -20,9 +20,9 @@ class CreateSetorsTable extends Migration
             $table->integer('curso_id')->unsigned();
             $table->integer('servidor_id')->unsigned();
             $table->timestamps();
-            $table->foreign('sala_id')->references('id')->on('salas');
-            $table->foreign('curso_id')->references('id')->on('cursos');
-            $table->foreign('servidor_id')->references('id')->on('servidors');
+            $table->foreign('sala_id')->references('id')->on('salas')->onDelete('cascade');
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
+            $table->foreign('servidor_id')->references('id')->on('servidors')->onDelete('cascade');
         });
     }
 
