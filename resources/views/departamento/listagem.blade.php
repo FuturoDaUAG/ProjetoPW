@@ -7,14 +7,13 @@
 </div>
 @else
 
-<h1>Marcas Cadastradas</h1>
+<h1>Departamentos Cadastrados</h1>
 
 <table class="tini table table table-hover table-striped table-bordered" id="marca-table"  >
-    <thead>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <thead class = "thead-inverse" >
+    <td>ID</td>
+    <td>Departamento</td>
+    <td class="text-center">  Editar</td>
 </thead>
 
 </thead>
@@ -24,8 +23,8 @@
     <tr >
         <td> {{$d -> id}} </td>
         <td> {{$d-> departamento}}  </td>
-        <td> <a href="{{action('DepartamentoController@mostra', $d->id)}}"><span class="glyphicon glyphicon-search"></span></a> </td>
-            </tr>
+        <td class="text-center"> <a href="{{action('DepartamentoController@muda', $d->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+              </tr>
     @endforeach
 </tbody>
 </table>

@@ -5,6 +5,10 @@ use Request;
 use web\Sala;
 use web\Predio;
 use web\Http\Requests\SalaRequest;
+<<<<<<< HEAD
+=======
+use web\Http\Requests\PesquisarRequest;
+>>>>>>> 1e1b56daae79119753c63993e2546e09f73a6994
 use Illuminate\Pagination\LengthAwarePaginator;
 class SalaController extends Controller
 {
@@ -59,9 +63,15 @@ class SalaController extends Controller
             $sala->delete();
             return redirect()->action('SalaController@listar');
         }
+<<<<<<< HEAD
     public function pesquisar(SalaRequest $request) {
         $salas = Sala::where($request->filtro, 'like', "%" . $request->texto . "%")->orderBy('id')->paginate(10);
         return view('sala.listagem')->withSalas($salas);
+=======
+    public function pesquisar(PesquisarRequest $request) {
+        $salas = Sala::where($request->filtro, 'like', "%" . $request->texto . "%")->orderBy('id')->paginate(10);
+        return view('sala.listagem',['salas'=> $salas]);
+>>>>>>> 1e1b56daae79119753c63993e2546e09f73a6994
     }
         
   //ORDENAR--------------------------------------------------------

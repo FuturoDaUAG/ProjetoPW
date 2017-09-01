@@ -53,6 +53,10 @@ Route::get('/patrimonio/remover/{id}', 'PatrimonioController@remover')->middlewa
 Route::get('/patrimonio/transferir/{id}', 'PatrimonioController@prepararTransferir')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::post('/patrimonio/transferir', 'PatrimonioController@transferir')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 Route::get('/patrimonio/historico/{id}', 'PatrimonioController@historico')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/devolucao/{id}','PatrimonioController@prepararDevolucao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/patrimonio/devolucao/','PatrimonioController@devolucao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/descarte/{id}', 'PatrimonioController@prepararDescarte')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::post('/patrimonio/descarte', 'PatrimonioController@descarte')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
 
 
 /*------------------------------ Marca --------------------------------------------------------*/
@@ -136,12 +140,19 @@ Route::post('/departamento/adiciona', 'DepartamentoController@adiciona');
 Route::get('/departamento/muda/{id}','DepartamentoController@muda')->where('id', '[0-9]+');
 Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar');
 
-Route::get('/patrimonio/relatorio', 'PatrimonioController@relatorioTodos');
-Route::get('/patrimonio/relatorio/setor={setor}', 'PatrimonioController@relatorioSetor');
-Route::get('/patrimonio/relatorio/sala={sala}', 'PatrimonioController@relatorioSala');
-Route::get('/patrimonio/relatorio/notafiscal={numero}', 'PatrimonioController@relatorioNotaFiscal');
+/*--------------------------- Patrimônio Relatórios ----------------------------------*/
+Route::get('/patrimonio/relatorio', 'PatrimonioController@relatorioTodos')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+Route::get('/patrimonio/relatorio/setor', 'PatrimonioController@relatorioSetor')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+Route::get('/patrimonio/relatorio/sala', 'PatrimonioController@relatorioSala')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+Route::get('/patrimonio/relatorio/notafiscal', 'PatrimonioController@relatorioNotaFiscal')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('/patrimonio/relatorio/empenho', 'PatrimonioController@relatorioEmpenho')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
 
 
 /*------------------------------ PDF ---------------------------------------------------*/
 Route::get('pdf/selecao', 'PDFController@selecao')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
 Route::get('pdf/gerarPdf', 'PDFController@gerarPdf')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');;
+Route::get('pdf/setor', 'PDFController@bensSetor')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('pdf/sala', 'PDFController@bensSala')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('pdf/nota', 'PDFController@bensNotaFiscal')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+Route::get('pdf/empenho', 'PDFController@bensEmpenho')->middleware('auth.TipoUsuario:Administrador,Operador,Basico');
+

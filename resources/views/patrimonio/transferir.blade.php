@@ -7,7 +7,7 @@
             <section class="container">
                 <div class="container-page">        
                     <div class="col-md-6">
-                        <h2 class="dark-grey">Emprestimo de Bem Permanente</h2> <br/>
+                        <h2 class="dark-grey">Empréstimo de Bem Permanente</h2> <br/>
                         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                         <input type="hidden" name="id"  value="{{$p->id}}"/>
 

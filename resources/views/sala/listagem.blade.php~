@@ -16,7 +16,10 @@
     <select name="filtro" class="form-group">
         <option value="descricao">Nome</option>
         <option value="ramal">Ramal</option>
+<<<<<<< HEAD
         <option value="predio">Prédio</option>
+=======
+>>>>>>> 1e1b56daae79119753c63993e2546e09f73a6994
         
     </select>
     <button type="submit"
@@ -34,9 +37,15 @@
     </ul>
 </div> 
 
+<<<<<<< HEAD
 <a href="sala/novo" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
 <table class="tini table table table-hover table-striped table-bordered" id="sala-table"  >
     <thead>
+=======
+<a href={{action('SalaController@novo')}} class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
+<table class="tini table table table-hover table-striped table-bordered" id="sala-table"  >
+    <thead class = "thead-inverse" >
+>>>>>>> 1e1b56daae79119753c63993e2546e09f73a6994
     <td class="">@lang('ID')</td> 
     <td>@lang('Nome')</td>
     <td>@lang('Ramal')</td>
