@@ -20,6 +20,7 @@ class CreateServidorsTable extends Migration
             $table->string('cargo');
             $table->string('matricula');
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('usuario_id')->references('id')->on('usuarios');
         });
     }

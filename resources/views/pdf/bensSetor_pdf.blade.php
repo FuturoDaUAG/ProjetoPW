@@ -16,7 +16,7 @@
     <tr>
         <th align="center">Nome</th>
         <th align="center">Número Patrimônio</th>
-        <th align="center">Setor</th>
+        <th align="center">Status</th>
     </tr>
 
     @foreach ($patrimonio as $p)

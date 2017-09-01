@@ -10,11 +10,12 @@
                         <h2 class="dark-grey">Descarte de Bem Permanente</h2> <br/>
                         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                         <input type="hidden" name="id"  value="{{$patrimonio->id}}"/>
+                        <input type="hidden" name="data" value="{{$patrimonio->dataaquisicao}}"/>
                         <div class="form-group col-lg-6">
-                            Descrição: <input name="descricao" disabled="true" class="form-control" type="text" value="{{$patrimonio->descricao}}"/>
+                            Descrição: <input name="descricao1" disabled=""class="form-control" type="text" value="{{$patrimonio->descricao}}"/>
                         </div>
                         <div class="form-group col-lg-6">
-                            Data Aquisição: <input name="data" disabled="true" class="form-control" type="text" value="{{$patrimonio->dataaquisicao}}"/>
+                            Data de Aquisição: <input name="data1"  disabled="" class="form-control" type="text" value="{{$patrimonio->dataaquisicao}}"/>
                         </div>
                         <div class="form-group col-lg-6">
                             Motivo:<br>

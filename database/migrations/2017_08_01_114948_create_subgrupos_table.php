@@ -19,6 +19,7 @@ class CreateSubgruposTable extends Migration
             $table->String('descricao');
             $table->foreign('grupo_id')->references('id')->on('grupos');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
     /**

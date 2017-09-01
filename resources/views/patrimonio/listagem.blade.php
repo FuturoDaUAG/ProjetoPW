@@ -85,24 +85,4 @@
 </div>
 @endif
 
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title text-center">Atenção </h4>
-            </div>
-            <div class="modal-body">
-                <p><b>Você está prestes a descartar um Bem Permante. Deseja realmente fazer isto?</b></p>
-            </div>
-            <div class="modal-footer">
-                <a href="{{action('PatrimonioController@prepararDescarte', $p->id)}}">  <button type="button" class="btn btn-default">Sim</button></a>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
 @stop

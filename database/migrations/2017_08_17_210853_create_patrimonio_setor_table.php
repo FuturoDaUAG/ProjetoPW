@@ -21,6 +21,7 @@ class CreatePatrimonioSetorTable extends Migration
             $table->foreign('patrimonio_id')->references('id')->on('patrimonios');
             $table->foreign('setor_id')->references('id')->on('setors');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

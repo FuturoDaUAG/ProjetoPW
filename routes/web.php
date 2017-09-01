@@ -39,6 +39,7 @@ Route::get('/departamento/detalhes/{id}','DepartamentoController@mostra')->where
 Route::post('/departamento/muda/alterar', 'DepartamentoController@alterar')->middleware('can:editar-global');
 
 /*------------------------------ Patrimônio ---------------------------------------------------*/
+
 Route::get('/patrimonio', 'PatrimonioController@listar');
 Route::get('/patrimonio/orderAlfa', 'PatrimonioController@ordemAlfabetica');
 Route::get('/patrimonio/orderEmpenho', 'PatrimonioController@ordemNumeroEmpenho');
@@ -57,6 +58,7 @@ Route::get('/patrimonio/devolucao/{id}','PatrimonioController@prepararDevolucao'
 Route::post('/patrimonio/devolucao/','PatrimonioController@devolucao');
 Route::get('/patrimonio/descarte/{id}', 'PatrimonioController@prepararDescarte')->middleware('can:remover-global');
 Route::post('/patrimonio/descarte', 'PatrimonioController@descarte')->middleware('can:remover-global');
+Route::get('/patrimonio/descartes/', 'PatrimonioController@listarDescartados');
 
 
 /*------------------------------ Marca --------------------------------------------------------*/

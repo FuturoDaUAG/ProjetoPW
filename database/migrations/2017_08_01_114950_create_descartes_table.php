@@ -17,6 +17,7 @@ class CreateDescartesTable extends Migration
             $table->increments('id');
             $table->string('motivo');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

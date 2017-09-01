@@ -19,6 +19,7 @@ class CreatePatrimonioStatusTable extends Migration
             $table->integer('status_id')->unsigned();
             $table->date('data');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
