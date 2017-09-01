@@ -20,13 +20,8 @@ class PredioRequest extends FormRequest
     public function rules()
     {
         return [
-                'descricao' => 'required|max:100',
+   
                 ];
     }
-     public function messages()
-    {
-      return [
-                'decricao.required' => 'O :attribute  não pode ficar vazio.', 
-      ];
-    }
+     
 }

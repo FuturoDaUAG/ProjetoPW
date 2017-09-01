@@ -9,7 +9,7 @@
                 <section class="container">
                     <div class="container-page">
                         <div class="col-md-6">
-                            <h2 class="dark-grey">Cadastrar novo servidor</h2>
+                            <h1 class="dark-grey">Cadastrar novo servidor</h1><br/>
 
                             <div class="form-group col-lg-12">
                                 <label>@lang('messages.nome')</label>
@@ -29,7 +29,7 @@
                             <div class="form-group col-lg-6">
                                 <!-- <label>@lang('messages.matricula')</label> -->
                                 <!-- Value '1' porque já está cadastrado no banco esse usuário, e não pode deixar esse campo NULL-->
-                                <input type="hidden" name="usuario_id" class="form-control" id=""  value="{{ 1 }}">
+                                <input type="hidden" name="usuario_id" class="form-control" id=""  value="{{ Auth::user()->id }}">
                             </div>
 
                             <div class="col-md-12">

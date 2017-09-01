@@ -11,7 +11,8 @@ class SetorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('setors')->insert(['descricao' => 'lab',
-            'sala_id' => 1, 'curso_id' => 1, 'servidor_id' => 1]);
-    }
+    	for ($i = 1; $i <= 20; $i++){
+        DB::table('setors')->insert(['descricao' => 'Setor '.$i,
+            'sala_id' => rand(1,20), 'curso_id' => rand(1,6), 'servidor_id' => rand(1,10)]);
+    }}
 }

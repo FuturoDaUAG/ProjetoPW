@@ -17,10 +17,10 @@
                 <section class="container">
                     <div class="container-page">
                         <div class="col-md-6">
-                            <h2 class="dark-grey">Registrar</h2>
+                            <h2 class="dark-grey">Registrar - Prédio</h2>
 
                             <div class="form-group col-lg-12">
-                                <label>@lang('Descricao')</label>
+                                <label>@lang('Nome')</label>
                                 <input type="text" name="descricao" class="form-control" id="" value="{{ old('descricao') }}">
                             </div>
 

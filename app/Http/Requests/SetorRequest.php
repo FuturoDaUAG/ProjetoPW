@@ -25,6 +25,8 @@ class SetorRequest extends FormRequest
     {
         return [
             'descricao' => 'required|max:40',
+            'sala' => 'required|max:20',
+            'predio' => 'required|max:20',
         ];
     }
 
@@ -32,6 +34,8 @@ class SetorRequest extends FormRequest
     {
         return [
             'descricao.required' => 'O campo :attribute não pode ficar vazio.',
+            'sala.required' => 'O campo :attribute não pode ficar vazio.',
+            'predio.required' => 'O campo :attribute não pode ficar vazio.',
         ];
     }
 
