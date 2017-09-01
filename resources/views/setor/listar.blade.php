@@ -31,15 +31,15 @@
 
 <table class="tini table table table-hover table-striped table-bordered" id="servidor-table"  >
 
-    <thead>
-    <td>@lang('messages.nome')</td>
-    <td>@lang('messages.sala')</td>
-    <td>@lang('messages.servidor')</td>
-    <td>@lang('messages.curso')</td>
-    <td></td>
-    <td></td>
-    <td></td>
-</thead>
+            <thead class = "thead-inverse" >
+            <td>@lang('messages.nome')</td>
+            <td>@lang('messages.sala')</td>
+            <td>@lang('messages.servidor')</td>
+            <td>@lang('messages.curso')</td>
+            <td class="col-lg-1 text-center">@lang('Detalhes')</td>
+            <td class="col-lg-1 text-center">@lang('Remover')</td>
+            <td class="col-lg-1 text-center">@lang('Editar')</td>
+            </thead>
 
 @foreach ($setores as $setor)
 <tbody>
@@ -51,7 +51,7 @@
 
         <td class="text-center">@can('visualizar-global')<a href="{{action('SetorController@visualizar', $setor->id)}}"><span class="glyphicon glyphicon-list-alt"></span></a>@endcan</td>
         <td class="text-center">@can('remover-global')<a href="{{action('SetorController@remover', $setor->id)}}" onclick="return confirm('Deseja realmente excluir este item?')"><span class="glyphicon glyphicon-trash"></span></a>@endcan</td>
-        <td class="text-center">@can('editar-global')<a href="{{action('SetorController@recuperar', $setor->id)}}"><span class="glyphicon glyphicon-pencil"></span></a>@endcan</td>
+        <td class="text-center">@can('editar-global')<a href="{{action('SetorController@recuperar', $setor->id)}}" ><span class="glyphicon glyphicon-pencil"></span></a>@endcan</td>
     </tr>
 </tbody>
 @endforeach

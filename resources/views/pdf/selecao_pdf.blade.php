@@ -14,7 +14,7 @@
         <label class="radio-inline"><input type="radio" name="rb" value="Setores">Setores</label>
         <label class="radio-inline"><input type="radio" name="rb" value="Departamentos">Departamentos</label>
         <label class="radio-inline"><input type="radio" name="rb" value="Salas_Predios">Salas - Prédios</label>
-        <label class="radio-inline"><input type="radio" name="rb" value="Bens_Moveis">Bens Móveis</label>
+        <label class="radio-inline"><input type="radio" name="rb" value="Bens">Bens Permanentes</label>
 
         <br/><br/><br/><br/>
 

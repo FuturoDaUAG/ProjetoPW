@@ -5,6 +5,8 @@ use Request;
 use web\Sala;
 use web\Predio;
 use web\Http\Requests\SalaRequest;
+use web\Http\Requests\PesquisarRequest;
+use Illuminate\Pagination\LengthAwarePaginator;
 class SalaController extends Controller
 {
     public function __construct() {
@@ -14,7 +16,7 @@ class SalaController extends Controller
     
       public function listar()
     {
-       $salas= Sala::paginate(5);
+       $salas= Sala::paginate(10);
         return view('sala.listagem')->withSalas($salas);
     }
  
@@ -34,10 +36,11 @@ class SalaController extends Controller
     }
     public function muda($id){
         $sala = Sala::find($id);
+        $predios = Predio::all();
         if(empty($sala)) {
             return "Esse Sala não existe";
         }
-        return view('sala.form_alterar')->with('sala', $sala);
+        return view('sala.form_alterar',['sala'=>$sala,'predios'=>$predios]);
     }
     
     public function adicionar(SalaRequest $request){
@@ -58,4 +61,15 @@ class SalaController extends Controller
             $sala->delete();
             return redirect()->action('SalaController@listar');
         }
+    public function pesquisar(PesquisarRequest $request) {
+        $salas = Sala::where($request->filtro, 'like', "%" . $request->texto . "%")->orderBy('id')->paginate(10);
+        return view('sala.listagem',['salas'=> $salas]);
+    }
+        
+  //ORDENAR--------------------------------------------------------
+  public function ordemAlfabetica() {
+        $salas = Sala::orderBy('descricao')->paginate(10);
+        return view('sala.listagem')->withSalas($salas);
+    }
+
     }

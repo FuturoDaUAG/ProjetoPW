@@ -23,11 +23,11 @@
 
     @foreach ($patrimonio as $p)
         <tr>
-            <td>{{ $p->descricao }}</td>
-            <td>{{ $p->numeropatrimonio }} </td>
-            <td>{{ $p->valor }} </td>
-            <td>{{ $p-> numeroempenho}} </td>
-            <td>{{ $p->numeronotafiscal}}</td>
+            <td align="left">{{ $p->descricao }}</td>
+            <td align="right">{{ $p->numeropatrimonio }} </td>
+            <td align="right">{{ $p->valor }} </td>
+            <td align="right">{{ $p-> numeroempenho}} </td>
+            <td align="right">{{ $p->numeronotafiscal}}</td>
         </tr>
     @endforeach
 </table>

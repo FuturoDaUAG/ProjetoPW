@@ -11,10 +11,10 @@
 
 <table class="tini table table table-hover table-striped table-bordered" id="marca-table"  >
     <thead>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td class="col-lg-1 text-center">@lang('Nome')</td>
+    <td class="col-lg-1 text-center">@lang('Detalhes')</td>
+    <td class="col-lg-1 text-center">@lang('Remover')</td>
+    <td class="col-lg-1 text-center">@lang('Editar')</td>
 </thead>
 
 </thead>

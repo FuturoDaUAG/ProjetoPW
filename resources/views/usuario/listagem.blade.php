@@ -14,12 +14,12 @@
 @endcan
 
 <table class="tini table table table-hover table-striped table-bordered" id="usuario-table"  >
-    <thead>
+    <thead class = "thead-inverse" >
     <td>@lang('messages.nome')</td>
     <td>@lang('messages.email')</td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td class="col-lg-1 text-center">@lang('Detalhes')</td>
+    <td class="col-lg-1 text-center">@lang('Remover')</td>
+    <td class="col-lg-1 text-center">@lang('Editar')</td>
 </thead>
 
 </thead>
@@ -31,12 +31,12 @@
         <td> {{$u->email}}  </td>
 
 
-        <td class="text-center"> @can('visualizar-global')<a href="{{action('UsuarioController@mostra', $u->id)}}"><button class="btn btn-default btn-mini"><span class="glyphicon glyphicon-list-alt"></span></button></a>@endcan</td>
+        <td class="text-center"> @can('visualizar-global')<a href="{{action('UsuarioController@mostra', $u->id)}}"><span class="glyphicon glyphicon-list-alt"></span></a>@endcan</td>
 
-        <td class="text-center">@can('remover-global') <button type="button" class="btn btn-default btn-mini"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button>@endcan</td>
+        <td class="text-center">@can('remover-global')<a href="{{action('UsuarioController@remove', $u->id)}}" onclick="return confirm('Deseja realmente excluir este item?')"> <span class="glyphicon glyphicon-trash"></span></a>@endcan</td>
 
 
-        <td class="text-center"> @can('editar-global')<a href="{{action('UsuarioController@muda', $u->id)}}"><button class="btn btn-default btn-mini"><span class="glyphicon glyphicon-pencil"></span></button></a>@endcan</td>
+        <td class="text-center"> @can('editar-global')<a href="{{action('UsuarioController@muda', $u->id)}}"><span class="glyphicon glyphicon-pencil"></span></a>@endcan</td>
 
 
     </tr>
@@ -60,28 +60,7 @@
 
 <!-- Trigger the modal with a button -->
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Atenção</h4>
-            </div>
-            <div class="modal-body">
-                <p>você realmente deseja exluir ?</p>
-            </div>
-
-            <div class="modal-footer">
-                <a href="{{action('UsuarioController@remove', $u->id)}}" onclick="return confirm('Deseja realmente excluir este item?')">  <button type="button" class="btn btn-default">sim</button></a>
-                <button type="button" class="btn btn-default" data-dismiss="modal">não</button>
-            </div>
-        </div>
-
-    </div>
-</div>
 
 @stop
 

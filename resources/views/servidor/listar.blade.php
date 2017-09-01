@@ -38,14 +38,14 @@
 
 <table class="tini table table table-hover table-striped table-bordered" id="servidor-table"  >
 
-    <thead>
-    <td>@lang('messages.matricula')</td>
-    <td>@lang('messages.nome')</td>
-    <td>@lang('messages.cargo')</td>
-    <td></td>
-    <td></td>
-    <td></td>
-</thead>
+            <thead class = "thead-inverse" >
+                <td>@lang('messages.matricula')</td>
+                <td>@lang('messages.nome')</td>
+                <td>@lang('messages.cargo')</td>
+                <td class="col-lg-1 text-center">@lang('Detalhes')</td>
+                <td class="col-lg-1 text-center">@lang('Remover')</td>
+                <td class="col-lg-1 text-center">@lang('Editar')</td>
+            </thead>
 
 @foreach ($servidores as $servidor)
 <tbody>

@@ -24,6 +24,9 @@
     <button type="submit"
             <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
     </button>
+    @can('criar-global')
+    <a href="{{action('PatrimonioController@prepararAdicionar')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
+    @endcan
 </form>
 
 
@@ -36,11 +39,9 @@
         <li><a href="{{action('PatrimonioController@ordemNumeroPatrimonio')}}">Número Patrimônio</a></li>
     </ul>
 </div>
-@can('criar-global')
-<a href="{{action('PatrimonioController@prepararAdicionar')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
-@endcan
+
 <table class="tini table table table-hover table-striped table-bordered" id="patrimonio-table"  >
-    <thead>
+    <thead class="thead-inverse">
     <td><b>@lang('ID')</b></td>
     <td><b>@lang('Nome')</b></td>
     <td><b>@lang('Número Patrimônio')</b></td>

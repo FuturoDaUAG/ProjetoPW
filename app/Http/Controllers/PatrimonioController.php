@@ -202,7 +202,7 @@ class PatrimonioController extends Controller {
 
     public function relatorioSetor(Request $request) {
         $setor = Setor::all();
-        $query = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, setors.descricao FROM projetoweb.patrimonios, projetoweb.patrimonio_setor, projetoweb.setors "
+        $query = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, setors.descricao FROM PATRIMONIO.patrimonios, PATRIMONIO.patrimonio_setor, PATRIMONIO.setors "
                         . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and setors.descricao = " . "'".$request -> setor."'"  ."");
        
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
@@ -216,7 +216,7 @@ class PatrimonioController extends Controller {
 
     public function relatorioSala(Request $request) {
         $sala = Sala::all();
-        $query = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, patrimonios.dataaquisicao FROM projetoweb.patrimonios, projetoweb.patrimonio_setor, projetoweb.setors, projetoweb.salas "
+        $query = DB::select("SELECT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, patrimonios.dataaquisicao FROM PATRIMONIO.patrimonios, PATRIMONIO.patrimonio_setor, PATRIMONIO.setors, PATRIMONIO.salas "
                         . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and salas.descricao = " . "'".$request -> sala."'". " and salas.id = setors.sala_id");   
         
         $currentPage = LengthAwarePaginator::resolveCurrentPage();

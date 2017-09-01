@@ -1,7 +1,7 @@
 @extends('layout.principal')
 @section('conteudo')
 
-<h1>Editar</h1>
+<h1>Editar - Prédio</h1>
 
 @if(count($errors)>0)
 <div class="alert alert-danger">
@@ -27,10 +27,10 @@
     <div class="container-page">        
       <div class="col-md-6">
          <div class="form-group col-lg-12">
-          <label>@lang('Descrição')</label>
+          <label>@lang('Nome')</label>
           <input type="text" name="descricao" class="form-control" id="" value="{{$predio->descricao}}">
         </div>
-        <button type="submit" class="btn-inverse btn-large btn-block">Editar</button>
+        <button type="submit" class="btn-inverse btn-block">Editar</button>
       </div>
       </div>
     

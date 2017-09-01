@@ -80,6 +80,8 @@ Route::get('/servidor/ordemMatricula', 'ServidorController@ordemMatricula');
 
 /*------------------------------ Sala ---------------------------------------------------*/
 Route::get('/sala', 'SalaController@listar');
+Route::get('/sala/orderAlfa', 'SalaController@ordemAlfabetica');
+Route::get('/sala/pesquisar', 'SalaController@pesquisar');
 Route::get('/sala/novo', 'SalaController@novo')->middleware('can:criar-global');
 Route::get('/sala/muda/{id}', 'SalaController@muda')->where('id', '[0-9]+')->middleware('can:editar-global');
 Route::get('/sala/detalhes/{id}', 'SalaController@mostra')->where('id', '[0-9]+')->middleware('can:visualizar-global');
@@ -88,6 +90,8 @@ Route::get('/sala/remover/{id}','SalaController@remover')->middleware('can:remov
 Route::post('/sala/muda/atualizar/', 'SalaController@atualizar')->middleware('can:editar-global');
 /*------------------------------ Predio ---------------------------------------------------*/
 Route::get('/predio', 'PredioController@listar');
+Route::get('/predio/orderAlfa', 'PredioController@ordemAlfabetica');
+Route::get('/predio/pesquisar', 'PredioController@pesquisar');
 Route::get('/predio/novo', 'PredioController@novo')->middleware('can:criar-global');
 Route::get('/predio/muda/{id}', 'PredioController@muda')->where('id', '[0-9]+')->middleware('can:editar-global');
 Route::get('/predio/detalhes/{id}', 'PredioController@mostra')->where('id', '[0-9]+')->middleware('can:visualizar-global');

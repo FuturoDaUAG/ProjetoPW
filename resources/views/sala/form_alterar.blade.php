@@ -28,7 +28,7 @@
       <div class="col-md-6">
         <div class="form-group col-lg-6">
           <label>@lang('Descricao')</label>
-          <input type="text" name="descricao" class="form-control" id=""  value="">
+          <input type="text" name="descricao" class="form-control" id=""  value="{{$sala->descricao}}">
         </div>
           
           <div class="form-group col-lg-12">
@@ -36,10 +36,14 @@
           <input type="text" name="ramal" class="form-control" id="" value="{{$sala->ramal}}">
         </div>
         
-        <div class="form-group col-lg-6">
-          <label>@lang('Prédio ID')</label>
-          <input type="text" name="predio_id" class="form-control" id="" value="">
-        </div>
+        <div class="form-group col-lg-8">
+           <label>@lang('Prédio')</label>
+             <select class="selectpicker" name="predio_id">
+               @foreach($predios as $predio)
+                 <option value="{{ $predio->id }}">{{ $predio->descricao }}</option>
+               @endforeach
+             </select>
+         </div>
        
         <button type="submit" class="btn-inverse btn-large btn-block">Editar</button>
       </div>

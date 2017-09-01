@@ -22,7 +22,7 @@
 <br><br>
 <a style="margin-left: 85%" href="{{action('PDFController@bensEmpenho')}}" class="btn"> Download PDF <i class="fa fa-file-pdf-o"></i></a>
 <table class="tini table table table-hover table-striped table-bordered" id="patrimonio-table"  >
-    <thead>
+    <thead class="thead-inverse">
     <td class="col-lg-1 text-center"><b>@lang('Descrição')</b></td>
     <td class="col-lg-1 text-center"><b>@lang('Número Patrimônio')</b></td>
     <td class="col-lg-1 text-center"><b>@lang('Valor')</b></td>

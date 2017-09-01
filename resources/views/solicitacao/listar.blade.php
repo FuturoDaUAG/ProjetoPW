@@ -11,15 +11,15 @@
 @endcan
 <table class="tini table table table-hover table-striped table-bordered" id="solicitacao-table"  >
 
-    <thead>
+    <thead class = "thead-inverse" >
     <td>@lang('messages.nome')</td>
     <td>@lang('messages.cargo')</td>
     <td>@lang('messages.curso')</td>
     <td>@lang('messages.data')</td>
     <td>@lang('messages.descricao')</td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td class="col-lg-1 text-center">@lang('Detalhes')</td>
+    <td class="col-lg-1 text-center">@lang('Remover')</td>
+    <td class="col-lg-1 text-center">@lang('Editar')</td>
 </thead>
 
 @foreach ($solicitacao as $s)
