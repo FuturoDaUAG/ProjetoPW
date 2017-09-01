@@ -82,17 +82,20 @@
                             </li>
                             <li class="dropdown1 row-sm-3">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bem Permanente</a>
-                                <span class="caret"></span></button>
                                 <ul class="dropdown-menu ">
-                                    <li ><a tabindex="-1" href="{{action('SolicitacaoController@listar')}}" >Solicitação</a></li>
+                                    <li ><a href="{{action('SolicitacaoController@listar')}}" >Solicitação</a></li>
+																											
 												<li role="separator" class="divider"></li>
-												<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Listar</a><li>
+												<li class="dropdown-submenu">
+												<a class="test" tabindex="-1" href="#">Listar<span class="caret"></span></a>
+												<ul class="dropdown-menu ">
 												<li><a href="{{action('PatrimonioController@listar')}}" >Por Item</a></li>
 												<li><a href="{{action('PatrimonioController@relatorioSetor')}}">Por Setor</a></li>
                                     <li><a href="{{action('PatrimonioController@relatorioSala')}}">Por Sala</a></li>
                                     <li><a href="{{action('PatrimonioController@relatorioNotaFiscal')}}">Por Nota Fiscal</a></li>
                                     <li><a href="{{action('PatrimonioController@relatorioEmpenho')}}">Por Empenho</a></li>							
-																					                               
+												</ul>
+												</li>								                               
                                 </ul>  
                             </li>
                             <li class="dropdown1 row-sm-3">
@@ -162,7 +165,16 @@
                 $(this).toggleClass('open');
             }
     );
-});</script>
+});
+	$(document).ready(function(){
+  		$('.dropdown-submenu a.test').on("click", function(e){
+    		$(this).next('ul').toggle();
+    			e.stopPropagation();
+    			e.preventDefault();
+  			});
+		});
+
+</script>
 
 
     <style type="text/css">
