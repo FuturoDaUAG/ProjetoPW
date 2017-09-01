@@ -21,6 +21,9 @@
     <button type="submit"
             <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
     </button>
+    @can('criar-global')
+    <a href="{{action('SalaController@novo')}}" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
+    @endcan
 </form>
 
 
@@ -33,9 +36,8 @@
     </ul>
 </div> 
 
-<a href={{action('SalaController@novo')}} class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
 <table class="tini table table table-hover table-striped table-bordered" id="sala-table"  >
-    <thead>
+    <thead class = "thead-inverse" >
     <td class="">@lang('ID')</td> 
     <td>@lang('Nome')</td>
     <td>@lang('Ramal')</td>
@@ -51,8 +53,8 @@
         <td> {{$sala -> descricao}}  </td>
         <td> {{$sala -> ramal}} </td>
         <td> {{$sala -> predio -> descricao}}</td>
-        <td class="text-center"> <a href="{{action('SalaController@muda', $sala->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
-        <td class="text-center"> <a href="{{action('SalaController@remover', $sala->id)}}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+        <td class="text-center"> @can('editar-global')<a href="{{action('SalaController@muda', $sala->id)}}"><span class="glyphicon glyphicon-pencil"></span></a>@endcan </td>
+        <td class="text-center">@can('remover-global') <a href="{{action('SalaController@remover', $sala->id)}}" onclick="return confirm('Deseja realmente excluir este item?')"><span class="glyphicon glyphicon-trash"></span></a>@endcan </td>
          </tr>
     @endforeach
 </tbody>

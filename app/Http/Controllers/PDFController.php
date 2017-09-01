@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\DB;
 
 class PDFController extends Controller {
 
+    public function __construct() {
+        $this->middleware('auth');
+        
+    }
+    
+    
     public function selecao() {
         return view('pdf.selecao_pdf');
     }
@@ -44,7 +50,7 @@ class PDFController extends Controller {
                 	  $pdf = $this->predioPdfDown();
                     return $pdf->download('Predios_Salas.pdf');
                     break;
-                case 'Bens_Permanentes':
+                case 'Bens':
                     $pdf = $this->bensPdfDown();
                     return $pdf->download('BensPermanentes.pdf');
                     break;
@@ -73,7 +79,7 @@ class PDFController extends Controller {
                 	  $pdf = $this->predioPdfStream();
                     return $pdf->stream('Predios_Salas.pdf');
                     break;
-                case 'Bens_Permanentes':
+                case 'Bens':
                     $pdf = $this->bensPdfStream();
                     return $pdf->stream('BensPermanentes.pdf');
                     break;
@@ -130,7 +136,7 @@ class PDFController extends Controller {
 
     public function bensSala(Request $request) {
         $sala = $request->sala;
-        $patrimonio = DB::select("SELECT DISTINCT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, patrimonios.dataaquisicao FROM projetoweb.patrimonios, projetoweb.patrimonio_setor, projetoweb.setors, projetoweb.salas "
+        $patrimonio = DB::select("SELECT DISTINCT patrimonios.descricao as nomep, patrimonios.numeropatrimonio, patrimonios.dataaquisicao FROM patrimonios, patrimonio_setor, setors, salas "
                         . "WHERE  patrimonios.id = patrimonio_setor.patrimonio_id and setors.id = patrimonio_setor.setor_id and salas.descricao = " . "'" . $request->sala . "'" . " and salas.id = setors.sala_id");
         return PDF::loadView('pdf.bensSala_pdf', ['patrimonio' => $patrimonio, 'sala' => $sala])->download('bensSala.pdf');
     }

@@ -20,6 +20,9 @@
     <button type="submit"
             <span class="btn-sm btn-success glyphicon glyphicon-search"></span>
     </button>
+    @can('criar-global')
+    <a href="predio/novo" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
+    @endcan
 </form>
 
 
@@ -32,9 +35,8 @@
     </ul>
 </div> 
 
-<a href="predio/novo" class="btn-sm btn-success  glyphicon glyphicon-plus" > Novo <br/></a>
 <table class="tini table table table-hover table-striped table-bordered" id="predio-table"  >
-    <thead>
+    <thead class = "thead-inverse" >
     <td class="">@lang('ID')</td> 
     <td>@lang('Nome')</td>
     <td class="col-lg-1 text-center">@lang('Editar')</td>
@@ -46,8 +48,8 @@
     <tr >
         <td> {{$predio -> id}} </td>
         <td> {{$predio -> descricao}}  </td>
-        <td class="text-center"> <a href="{{action('PredioController@muda', $predio->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
-        <td class="text-center"> <a href="{{action('PredioController@remover', $predio->id)}}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+        <td class="text-center"> @can('editar-global')<a href="{{action('PredioController@muda', $predio->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> @endcan</td>
+        <td class="text-center">@can('remover-global') <a href="{{action('PredioController@remover', $predio->id)}}" onclick="return confirm('Deseja realmente excluir este item?')"><span class="glyphicon glyphicon-trash"></span></a> @endcan</td>
          </tr>
     @endforeach
 </tbody>

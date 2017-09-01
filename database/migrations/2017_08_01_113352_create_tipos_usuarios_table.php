@@ -16,7 +16,11 @@ class CreateTiposUsuariosTable extends Migration
         Schema::create('tiposusuarios', function (Blueprint $table) {
 		$table->increments('id');
                 $table->string("tipousuario");
+                $table->string('slug')->unique();
+                $table->text('permissions');
+                
                 $table->timestamps();
+                $table->softDeletes();
 	});
     }
 

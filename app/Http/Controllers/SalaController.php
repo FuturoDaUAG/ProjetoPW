@@ -10,6 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class SalaController extends Controller
 {
     public function __construct() {
+        $this->middleware('auth');
         
     }
     

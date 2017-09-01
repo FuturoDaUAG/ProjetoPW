@@ -24,9 +24,15 @@
     <tr >
         <td> {{$m -> id}} </td>
         <td> {{$m -> descricao}}  </td>
-        <td> <a href="{{action('UsuarioController@mostra', $m->id)}}"><span class="glyphicon glyphicon-search"></span></a> </td>
-        <td> <a href="{{action('UsuarioController@remove', $m->id)}}"><span class="glyphicon glyphicon-trash"></span></a> </td>
-        <td> <a href="{{action('UsuarioController@muda', $m->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+        
+        <td class="text-center"> @can('visualizar-global')<a href="{{action('UsuarioController@mostra', $m->id)}}"><span class="glyphicon glyphicon-list-alt"></span></a> @endcan</td>
+        
+        
+        <td class="text-center"> @can('remover-global')<a href="{{action('UsuarioController@remove', $m->id)}}" onclick="return confirm('Deseja realmente excluir este item?')"><span class="glyphicon glyphicon-trash"></span></a> @endcan</td>
+        
+        
+        <td class="text-center"> @can('editar-global')<a href="{{action('UsuarioController@muda', $m->id)}}"><span class="glyphicon glyphicon-pencil"></span></a> @endcan</td>
+        
     </tr>
     @endforeach
 </tbody>

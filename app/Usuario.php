@@ -8,7 +8,7 @@ class Usuario extends Authenticatable
     
     protected $table ='usuarios';
     
-    protected $fillable = ['name','email','password','departamento_id','tipousuario_id'];
+    protected $fillable = ['name','email','password','departamento_id'];
     
     protected $hidden = [
         'password', 'remember_token',
@@ -21,8 +21,32 @@ class Usuario extends Authenticatable
     public function departamento() {
         return $this->belongsTo('web\Departamento');
     }
-    public function tipoUsuario(){
-        return $this->belongsTo('web\TipoUsuario','tipousuario_id');
+    
+     public function tiposUsuarios()
+    {
+        return $this->belongsToMany(TipoUsuario::class, 'tipousuariousuario', 'usuario_id', 'tipousuario_id');
+    }
+
+    /**
+     * Checks if User has access to $permissions.
+     */
+    public function hasAccess(array $permissions)
+    {
+        // check if the permission is available in any role
+        foreach ($this->tiposUsuarios as $tipoUsuario) {
+            if($tipoUsuario->hasAccess($permissions)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the user belongs to role.
+     */
+    public function inRole(string $roleSlug)
+    {
+        return $this->tiposUsuarios()->where('slug', $roleSlug)->count() == 1;
     }
      
 }

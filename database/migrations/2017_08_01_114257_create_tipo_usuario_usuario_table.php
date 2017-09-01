@@ -17,9 +17,12 @@ class CreateTipoUsuarioUsuarioTable extends Migration
 		$table->increments('id');
                 $table->integer('tipousuario_id')->unsigned();
                 $table->integer('usuario_id')->unsigned();
-                $table->foreign('tipousuario_id')->references('id')->on('tiposusuarios');
-                $table->foreign('usuario_id')->references('id')->on('usuarios');
+                $table->unique(['usuario_id','tipousuario_id']);
+                
+                $table->foreign('tipousuario_id')->references('id')->on('tiposusuarios')->onDelete('cascade');
+                $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
 		$table->timestamps();
+                $table->softDeletes();
 	});
     }
 

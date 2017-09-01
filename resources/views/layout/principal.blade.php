@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt">
     <head>
-        <style>
-            .dropdown-submenu {
-                position: relative;
-            }
 
-            .dropdown-submenu .dropdown-menu {
-                top: 0;
-                left: 100%;
-                margin-top: -1px;
-            }
-        </style>
+    <style>
+    </style>
+
 
         <title>{{ config('principal.title', 'Módulo Patrimônio') }}</title>
 
@@ -67,9 +60,10 @@
                             <li class="dropdown1 row-sm-3">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pessoas </a>
                                 <ul class="dropdown-menu">
+                                    @can('acessoRestrito-global')
                                     <li><a href="{{action('UsuarioController@lista')}}">Usuarios</a></li>
                                     <li role="separator" class="divider"></li>
-
+                                    @endcan
                                     <li><a href="{{action('ServidorController@listar')}}">Servidor</a></li>
                                 </ul>
                             </li>
@@ -91,18 +85,20 @@
                             </li>
                             <li class="dropdown1 row-sm-3">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bem Permanente</a>
-                                <span class="caret"></span></button>
                                 <ul class="dropdown-menu ">
                                     <li ><a tabindex="-1" href="{{action('SolicitacaoController@listar')}}" >Solicitação</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Listar</a><li>
-                                    <li><a href="{{action('PatrimonioController@listar')}}" >Por Item</a></li>
+                                    <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="#">Listar<span class="caret"></span></a>
+                                    <ul class="dropdown-menu ">
+                                    <li><a href="{{action('PatrimonioController@listar')}}" >Todos</a></li>
                                     <li><a href="{{action('PatrimonioController@relatorioSetor')}}">Por Setor</a></li>
                                     <li><a href="{{action('PatrimonioController@relatorioSala')}}">Por Sala</a></li>
                                     <li><a href="{{action('PatrimonioController@relatorioNotaFiscal')}}">Por Nota Fiscal</a></li>
                                     <li><a href="{{action('PatrimonioController@relatorioEmpenho')}}">Por Empenho</a></li>							
                                     <li><a href="{{action('PatrimonioController@listarDescartados')}}">Descartados</a></li>
-
+                                    </ul>
+                                    </li>
                                 </ul>  
                             </li>
                             <li class="dropdown1 row-sm-3">
@@ -124,7 +120,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @can('acessoRestrito-global')
                                     <li><a href="#" >Configuraçao</a></li>
+                                    @endcan
                                     <li>
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
@@ -172,7 +170,16 @@
                 $(this).toggleClass('open');
             }
     );
-});</script>
+});
+	$(document).ready(function(){
+  		$('.dropdown-submenu a.test').on("click", function(e){
+    		$(this).next('ul').toggle();
+    			e.stopPropagation();
+    			e.preventDefault();
+  			});
+		});
+
+</script>
 
 
     <style type="text/css">
@@ -221,6 +228,19 @@
         .left.carousel-control {
             right: 30px;
             left: inherit;
+        }
+        .dropdown-submenu {
+    			position: relative;
+			}
+
+			.dropdown-submenu .dropdown-menu {
+  		   	 top: 0;
+   			 left: 100%;
+   			 margin-top: -1px;
+			}
+			.thead-inverse{
+            color: #fff;
+            background-color: #373a3c;
         }
         .carousel-control .glyphicon-chevron-left,
         .carousel-control .glyphicon-chevron-right {
