@@ -24,8 +24,8 @@
     <tr >
         <td> {{$d -> id}} </td>
         <td> {{$d-> departamento}}  </td>
-        <td> <a href="{{action('DepartamentoController@mostra', $d->id)}}"><span class="glyphicon glyphicon-search"></span></a> </td>
-            </tr>
+        <td class="text-center"> <a href="{{action('DepartamentoController@mostra', $d->id)}}"><span class="glyphicon glyphicon-list-alt"></span></a> </td>
+    </tr>
     @endforeach
 </tbody>
 </table>
